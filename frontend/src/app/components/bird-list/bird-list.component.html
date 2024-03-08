@@ -1,0 +1,19 @@
+<div class="container">
+    <h2 class="text-center">User List</h2>
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Common name</th>
+                <th>scientificName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let bird of birds">
+                <td> {{ bird.id }} </td>
+                <td> {{ bird.commonName }} </td>
+                <td> {{ bird.scientificName }} </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

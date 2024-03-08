@@ -1,0 +1,51 @@
+header {
+    background-color: #343a40;
+    padding: 15px 0;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    color: white;
+    text-decoration: none;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  nav ul li {
+    margin: 0 10px;
+  }
+  
+  .menu-container {
+    position: relative;
+  }
+  
+  .menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #343a40;
+    display: none;
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .menu a {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 5px;
+  }
+  
+  .menu-container:hover .menu {
+    display: flex;
+  }
+  
