@@ -12,5 +12,5 @@ public class Bird {
     private Long id;
     private String commonName;
     private String scientificName;
-
+    private Integer euringBirdCode;
 }
