@@ -5,3 +5,7 @@ VALUES (1, 'Blackbird', 'Turdus merula', 11870),
        (4, 'Eurasian chaffinch', 'Fringilla coelebs', 16360),
        (5, 'House sparrow', 'Passer domesticus', 15910),
        (6, 'Kestrel', 'Falco tinnunculus', 3040);
+
+INSERT INTO PLACE (ID, NAME, LATITUDE, LONGITUDE, PLACE_CODE, PRECISION)
+VALUES (1, 'Posebni ornitloški rezervat Palud', 45.0378139, 13.703279, 'HR04', '1'),
+       (2, 'Park Prirode Učka', 45.2891591, 14.2482146, 'HR04','2');
