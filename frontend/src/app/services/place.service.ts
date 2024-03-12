@@ -13,4 +13,9 @@ export class PlaceService {
   getPlaceList(): Observable<Place[]> {
     return this.httpClient.get<Place[]>(`${this.basUrl}`);
   }
+
+  getPlaceById(id: number): Observable<Place> {
+    return this.httpClient.get<Place>(`${this.basUrl}/${id}`);
+  }
+  
 }

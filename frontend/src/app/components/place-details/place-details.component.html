@@ -1,24 +1,20 @@
 <div class="container">
-    <h2 class="text-center">Place List</h2>
+    <h2 class="text-center">Place Details</h2>
     <table class="table table-stripped">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Location name</th>
                 <th>latitude</th>
                 <th>Longitude</th>
+                <th>Precision</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let place of places">
-                <td> {{ place.id }} </td>
                 <td> {{ place.name }} </td>
                 <td> {{ place.latitude}} </td>
                 <td> {{ place.longitude}}</td>
-                <td>
-                    <button (click) = "placeDetails(place.id)" class="btn btn-info">Details</button>
-                </td>
-            </tr>
+                <td> {{place.precision}}</td>
         </tbody>
     </table>
+    <button (click)="return()" class="btn btn-info">Return</button>
 </div>

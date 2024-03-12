@@ -3,12 +3,10 @@ package org.springframework.boot.backend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.backend.entity.Place;
 import org.springframework.boot.backend.service.PlaceService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/place")
@@ -17,9 +15,13 @@ public class PlaceController {
     @Autowired
     private PlaceService placeService;
 
-    @GetMapping("/all")
+    @GetMapping("")
     public List<Place> getPlaces() {
         return placeService.getAllPlaces();
     }
 
+    @GetMapping(value = "/{id}")
+    public Optional<Place> getPlaceById(@PathVariable("id") Long id) {
+        return placeService.getPlaceById(id);
+    }
 }
