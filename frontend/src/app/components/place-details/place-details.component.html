@@ -1,3 +1,4 @@
+
 <div class="container">
     <h2 class="text-center">Place Details</h2>
     <table class="table table-stripped">
@@ -16,5 +17,11 @@
                 <td> {{place.precision}}</td>
         </tbody>
     </table>
+
+    <div class="map-container">
+        <div id="map" style="height: 400px;"></div>
+      </div>
+    <script type="module" src="./main.js"></script>
+
     <button (click)="return()" class="btn btn-info">Return</button>
 </div>
