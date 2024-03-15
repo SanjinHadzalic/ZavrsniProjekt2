@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Place } from '../../classes/place.model';
 import { PlaceService } from '../../services/place.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,6 +7,7 @@ import Map from 'ol/Map';
 import TileLayer from 'ol/layer/Tile';
 import { OSM } from 'ol/source';
 import View from 'ol/View';
+import L from 'leaflet';
 
 @Component({
   selector: 'app-place-details',
@@ -15,41 +16,60 @@ import View from 'ol/View';
   templateUrl: './place-details.component.html',
   styleUrl: './place-details.component.css'
 })
-export class PlaceDetailsComponent implements OnInit{
+export class PlaceDetailsComponent implements OnInit {
   id!: number;
   place: Place = new Place();
-  map!: Map;
-
+  
   constructor(private placeService: PlaceService, private route: ActivatedRoute, private router: Router) {}
+ 
+  ngOnInit() {
+    this.placeService.getPlaceById(this.route.snapshot.params['id']).subscribe(place => {
+      this.place = place;
+      console.log(this.place.latitude)
+      const map = L.map('map').setView([this.place.latitude, this.place.longitude], 13);
 
-  private getPlaceById() {
-    this.id = this.route.snapshot.params['id'];
-    this.placeService.getPlaceById(this.id).subscribe({
-      next: (data) => {
-        this.place = data;
-      },
-      error: (e) => {
-        console.log(e);
-      }
+      const marker = L.marker([this.place.latitude, this.place.longitude]);
+
+      const iconRetinaUrl = 'assets/marker-icon-2x.png';
+      const iconUrl = 'assets/marker-icon.png';
+      const shadowUrl = 'assets/marker-shadow.png';
+      const iconDefault = L.icon({
+        iconRetinaUrl,
+        iconUrl,
+        shadowUrl,
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        tooltipAnchor: [16, -28],
+        shadowSize: [41, 41]
+      });
+
+      L.Marker.prototype.options.icon = iconDefault;
+      marker.addTo(map);
+
+      const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+      const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+    
+      const tileLayer = L.tileLayer(tileUrl, { attribution });
+      tileLayer.addTo(map);
     })
-  }
+  
+  }  
 
-  ngOnInit(): void {
-    this.getPlaceById();
-    this.map = new Map({
-      layers: [
-        new TileLayer({
-          source: new OSM(),
-        }),
-      ],
-        target: 'map',
-        view: new View({
-          center: [0, 0],
-          zoom: 2, maxZoom: 18
-        })
-    })
-  }
+  // private getPlaceById() {
+  //   this.id = this.route.snapshot.params['id'];
+  //   this.placeService.getPlaceById(this.id).subscribe({
+  //     next: (data) => {
+  //       this.place = data;
+  //     },
+  //     error: (e) => {
+  //       console.log(e);
+  //     }
+  //   })
+  // }
 
+
+ 
    return() {
     this.router.navigate(["/place"])
   }

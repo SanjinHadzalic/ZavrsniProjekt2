@@ -1,10 +1,7 @@
-.map-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Set the height of the container to the full viewport height */
-  }
-  
-  #map {
-    width: 75%;
-  }
+#map {
+  height: 100vh;
+}
+
+.map-container{
+  border: 1px solid black;
+}

@@ -1,6 +1,6 @@
 package org.springframework.boot.backend.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.boot.backend.entity.Bird;
 import org.springframework.boot.backend.service.BirdService;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,8 +11,8 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@AllArgsConstructor
 public class BirdController {
-    @Autowired
     private BirdService birdService;
 
     @GetMapping("/birds")

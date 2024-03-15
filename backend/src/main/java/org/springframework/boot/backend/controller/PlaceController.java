@@ -1,6 +1,6 @@
 package org.springframework.boot.backend.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.boot.backend.entity.Place;
 import org.springframework.boot.backend.service.PlaceService;
 import org.springframework.web.bind.annotation.*;
@@ -11,8 +11,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/place")
 @CrossOrigin(origins = "http://localhost:4200")
+@AllArgsConstructor
 public class PlaceController {
-    @Autowired
     private PlaceService placeService;
 
     @GetMapping("")

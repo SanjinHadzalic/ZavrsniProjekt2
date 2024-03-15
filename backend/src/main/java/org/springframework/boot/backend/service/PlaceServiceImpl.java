@@ -1,6 +1,6 @@
 package org.springframework.boot.backend.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.boot.backend.entity.Place;
 import org.springframework.boot.backend.repository.PlaceRepository;
 import org.springframework.stereotype.Service;
@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class PlaceServiceImpl implements PlaceService{
-    @Autowired
     private PlaceRepository placeRepository;
 
     @Override
