@@ -1,20 +1,26 @@
 <div class="container">
-    <h2 class="text-center">User List</h2>
+    <h2 class="text-center">Bird List</h2>
     <table class="table table-stripped">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Common name</th>
+                <!-- <th>ID</th> -->
                 <th>Scientific name</th>
-                <th>EURING Bird code</th>
+                <th>Common name</th>
+                <th>AERC</th>
+                <th>Status</th>
+                <th>Season</th>
+                <!-- <th>EURING Bird code</th> -->
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let bird of birds">
-                <td> {{ bird.id }} </td>
-                <td> {{ bird.commonName }} </td>
+                <!-- <td> {{ bird.id }} </td> -->
                 <td> {{ bird.scientificName }} </td>
-                <td> {{ bird.euringBirdCode}}</td>
+                <td> {{ bird.commonName }} </td>
+                <td> {{ bird.aerc }} </td>
+                <td> {{ bird.status }} </td>
+                <td> {{ bird.season }} </td>
+                <!-- <td> {{ bird.euringBirdCode}}</td> -->
             </tr>
         </tbody>
     </table>

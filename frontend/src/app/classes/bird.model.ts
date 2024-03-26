@@ -1,7 +1,10 @@
 export class Bird {
 
     id!: number;
-    commonName!: string;
     scientificName!: string;
+    commonName!: string;
+    aerc!: string;
+    status!: string;
+    season!: string;
     euringBirdCode!: number;
 }
