@@ -6,6 +6,7 @@ import org.springframework.boot.backend.repository.BirdRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -15,6 +16,11 @@ public class BirdServiceImpl implements BirdService {
     @Override
     public List<Bird> getAllBirds() {
         return birdRepository.findAll();
+    }
+
+    @Override
+    public Optional<Bird> getBird(Long id) {
+        return birdRepository.findById(id);
     }
 
 }
