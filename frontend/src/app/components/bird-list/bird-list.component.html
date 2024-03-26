@@ -3,18 +3,18 @@
     <table class="table table-stripped">
         <thead>
             <tr>
-                <!-- <th>ID</th> -->
-                <th>Scientific name</th>
-                <th>Common name</th>
+                <th>ID</th>
+                <th>Znanstveni naziv</th>
+                <th>Hrvatski naziv</th>
                 <th>AERC</th>
                 <th>Status</th>
-                <th>Season</th>
+                <th>Sezona</th>
                 <!-- <th>EURING Bird code</th> -->
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let bird of birds">
-                <!-- <td> {{ bird.id }} </td> -->
+            <tr *ngFor="let bird of birds | paginate: { itemsPerPage: 20, currentPage: p} ">
+                <td> {{ bird.id }} </td>
                 <td> {{ bird.scientificName }} </td>
                 <td> {{ bird.commonName }} </td>
                 <td> {{ bird.aerc }} </td>
@@ -22,6 +22,7 @@
                 <td> {{ bird.season }} </td>
                 <!-- <td> {{ bird.euringBirdCode}}</td> -->
             </tr>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </tbody>
     </table>
 </div>
