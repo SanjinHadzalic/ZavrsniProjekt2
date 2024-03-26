@@ -1,3 +1,12 @@
+<style>
+    .my-pagination ::ng-deep .ngx-pagination .current {
+      background: blue;
+    }
+
+    .scientific-name{
+        font-style: italic;
+    }
+  </style>
 <div class="container">
     <h2 class="text-center">Bird List</h2>
     <table class="table table-stripped">
@@ -15,14 +24,14 @@
         <tbody>
             <tr *ngFor="let bird of birds | paginate: { itemsPerPage: 20, currentPage: p} ">
                 <td> {{ bird.id }} </td>
-                <td> {{ bird.scientificName }} </td>
+                <td class="scientific-name"> {{ bird.scientificName }} </td>
                 <td> {{ bird.commonName }} </td>
                 <td> {{ bird.aerc }} </td>
                 <td> {{ bird.status }} </td>
                 <td> {{ bird.season }} </td>
                 <!-- <td> {{ bird.euringBirdCode}}</td> -->
             </tr>
-            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
         </tbody>
     </table>
 </div>
