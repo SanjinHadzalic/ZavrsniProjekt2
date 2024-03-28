@@ -1,0 +1,24 @@
+
+<div class="container">
+    <h2 class="text-center">Bird Details</h2>
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th>Common name</th>
+                <th>Scientific name</th>
+                <th>AERC</th>
+                <th>Status</th>
+                <th>Season</th>
+            </tr>
+        </thead>
+        <tbody>
+                <td> {{ bird.commonName }} </td>
+                <td> {{ bird.scientificName}} </td>
+                <td> {{ bird.aerc}}</td>
+                <td> {{ bird.status}}</td>
+                <td> {{ bird.season}}</td>
+        </tbody>
+    </table>
+
+    <button (click)="return()" class="btn btn-info">Return</button>
+</div>

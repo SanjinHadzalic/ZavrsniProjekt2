@@ -14,4 +14,8 @@ export class BirdService {
   getBirdList(): Observable<Bird[]> {
     return this.httpClient.get<Bird[]>(`${this.basUrl}`);
   }
+
+  getBirdById(id: number): Observable<Bird> {
+    return this.httpClient.get<Bird>(`${this.basUrl}/${id}`);
+  } 
 }

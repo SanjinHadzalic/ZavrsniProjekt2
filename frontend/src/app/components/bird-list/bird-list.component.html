@@ -30,6 +30,9 @@
                 <td> {{ bird.status }} </td>
                 <td> {{ bird.season }} </td>
                 <!-- <td> {{ bird.euringBirdCode}}</td> -->
+                <td>
+                    <button (click) = "onBirdClick(bird.id)" class="btn btn-info">Details</button>
+                </td>
             </tr>
             <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
         </tbody>

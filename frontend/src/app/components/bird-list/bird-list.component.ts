@@ -31,4 +31,8 @@ export class BirdListComponent implements OnInit{
       this.birds = data;
     });
   }
+
+  onBirdClick(id: number) {
+    this.router.navigate(["birds", id]);
+  } 
 }
