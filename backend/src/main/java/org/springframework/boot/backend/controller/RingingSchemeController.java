@@ -28,4 +28,23 @@ public class RingingSchemeController {
         log.info("Called method getRingingSchemeById() with id: " + id);
         return ringingSchemeService.getRingingSchemeById(id);
     }
+
+    @PostMapping
+    public RingingScheme save(@RequestBody RingingScheme ringingScheme) {
+        log.info("Called method save() " + ringingScheme);
+        return ringingSchemeService.save(ringingScheme);
+    }
+
+    @PutMapping(value = "/{id}")
+    public RingingScheme update(@PathVariable Long id, @RequestBody RingingScheme ringingScheme) {
+        log.info("Called method update() " + ringingScheme);
+
+        return ringingSchemeService.update(id, ringingScheme);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public void delete(@PathVariable Long id) {
+        log.info("Called method delete() with id: " + id);
+        ringingSchemeService.delete(id);
+    }
 }
