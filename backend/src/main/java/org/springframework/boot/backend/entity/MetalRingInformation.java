@@ -3,6 +3,12 @@ package org.springframework.boot.backend.entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/**
+ *  N.b. within EURING there is an
+ * explicit agreement that ringers must not add a metal ring when one is already present (except in
+ * circumstances where the existing ring needs to be replaced because of wear).
+ */
+
 @Getter
 @AllArgsConstructor
 public enum MetalRingInformation {

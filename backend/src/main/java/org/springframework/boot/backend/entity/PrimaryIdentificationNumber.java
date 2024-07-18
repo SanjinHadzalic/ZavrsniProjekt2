@@ -2,6 +2,14 @@ package org.springframework.boot.backend.entity;
 
 import lombok.Getter;
 
+/**
+ * This field is to denote the primary method used to identify a bird. Where a metal ring is present, this
+ * will always be the primary identification method, regardless of what other marks are placed on
+ * the bird. With the development of new technology it is likely that, in the future, some birds may be marked
+ * by other methods (e.g. transponders) and will not have metal rings attached. This field anticipates that
+ * future need. At present, the primary identification marker will almost invariably be a metal ring.
+ */
+
 @Getter
 public enum PrimaryIdentificationNumber {
     A0("Metal ring"),
