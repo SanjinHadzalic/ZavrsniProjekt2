@@ -18,6 +18,4 @@ public enum AccuracyOfDate {
     _9("Date of issue of ring or other earliest possible use of ring");
 
     private final String description;
-
-
 }
