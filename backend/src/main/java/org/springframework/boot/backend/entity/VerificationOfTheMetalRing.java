@@ -1,6 +1,7 @@
 package org.springframework.boot.backend.entity;
 
-import lombok.Getter;
+import jakarta.persistence.*;
+import lombok.Data;
 
 /**
  * On the ringing encounter, always code this field as: 0 – Ring not verified by the scheme.
@@ -9,15 +10,14 @@ import lombok.Getter;
  * subsequently returned to the finder.
  */
 
-@Getter
-public enum VerificationOfTheMetalRing {
-    _0("Ring not verified by scheme"),
-    _1("Ring verified by scheme"),
-    _9("Unknown if ring verified by scheme");
-
-    private final String description;
-
-    VerificationOfTheMetalRing(String description) {
-        this.description = description;
-    }
+@Entity
+@Table(name = "verification_of_the_metal_ring")
+@Data
+public class VerificationOfTheMetalRing {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String code;
+    private String language;
+    private String description;
 }
