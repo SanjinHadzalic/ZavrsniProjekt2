@@ -1,14 +1,16 @@
 package org.springframework.boot.backend.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import jakarta.persistence.*;
+import lombok.Data;
 
-@Getter
-@AllArgsConstructor
-public enum Sex {
-    U("Unknown"),
-    M("Male"),
-    F("Female");
-
-    private final String description;
+@Entity
+@Table(name = "sex")
+@Data
+public class Sex {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String code;
+    private String language;
+    private String description;
 }

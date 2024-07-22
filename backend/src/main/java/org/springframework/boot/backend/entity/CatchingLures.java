@@ -4,14 +4,13 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "accuracy_of_pullus_age")
+@Table(name = "catching_lures")
 @Data
-public class AccuracyOfPullusAge {
+public class CatchingLures {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String code;
     private String language;
     private String description;
-
 }

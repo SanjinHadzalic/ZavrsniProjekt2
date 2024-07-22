@@ -1,23 +1,16 @@
 package org.springframework.boot.backend.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import jakarta.persistence.*;
+import lombok.Data;
 
-@Getter
-@AllArgsConstructor
-public enum Age {
-    _0("Age uknown"),
-    _1("Pullus"),
-    _2("Full-grown"),
-    _3("First-year"),
-    _4("After first-year"),
-    _5("Second year"),
-    _6("After second year"),
-    _7("Third year"),
-    _8("After third year"),
-    _9("Fourth year"),
-    A("After fourth year"),
-    B("Fifth year");
-
-    private final String description;
+@Entity
+@Table(name = "age")
+@Data
+public class Age {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String code;
+    private String language;
+    private String description;
 }
