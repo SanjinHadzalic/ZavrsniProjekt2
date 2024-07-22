@@ -1,7 +1,7 @@
 package org.springframework.boot.backend.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import jakarta.persistence.*;
+import lombok.Data;
 
 /**
  * The options are presented in order with the most important first.
@@ -11,20 +11,14 @@ import lombok.Getter;
  * theses codes to be used but not if the loss was during the normal course of the bird's moult
  */
 
-@Getter
-@AllArgsConstructor
-public enum Manipulated {
-    H("Hand reared"),
-    K("Fledgling provoked"),
-    C("Captive for more than 24 hours (code date of release)"),
-    F("Transported (more than 10 km) from co-ordinates coded"),
-    T("Transported (more than 10 km) to co-ordinates coded"),
-    M("Manipulated (injection, biopsy, radio- or satellite telemetry etc.)"),
-    R("Ringing accident"),
-    E("Euthanized; bird humanely destroyed (reasons will be explained in Circumstances)"),
-    P("Poor condition when caught"),
-    N("Normal, not manipulated bird"),
-    U("Uncoded or unknown if manipulated or not");
-
-    private final String description;
+@Entity
+@Table(name = "manipulated")
+@Data
+public class Manipulated {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String code;
+    private String language;
+    private String description;
 }
