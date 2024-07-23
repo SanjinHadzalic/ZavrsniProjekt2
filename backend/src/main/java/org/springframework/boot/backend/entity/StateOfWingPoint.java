@@ -1,17 +1,16 @@
 package org.springframework.boot.backend.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import jakarta.persistence.*;
+import lombok.Data;
 
-@Getter
-@AllArgsConstructor
-public enum StateOfWingPoint {
-    U("Unknown or not recorded"),
-    A("Abraded"),
-    B("Broken"),
-    G("Growing"),
-    M("Feather Missing"),
-    V("Very Abraded");
-
-    private final String description;
+@Entity
+@Table(name = "state_of_wing_point")
+@Data
+public class StateOfWingPoint {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String code;
+    private String language;
+    private String description;
 }

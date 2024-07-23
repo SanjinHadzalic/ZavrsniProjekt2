@@ -1,14 +1,15 @@
 package org.springframework.boot.backend.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import jakarta.persistence.*;
+import lombok.Data;
 
-@Getter
-@AllArgsConstructor
-public enum TarsusMethod {
-    M("Maximum tarsus - folded foot to extreme end of tarsal joint"),
-    S("Minimum tarsus - length of tarso-metatarsal bone"),
-    T("Tarsus and toe - from extreme end of tarsal joint to tip of longest toe with foot flattened on a rule");
-
-    private final String description;
-}
+@Entity
+@Table(name = "tarsus_method")
+@Data
+public class TarsusMethod {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String code;
+    private String language;
+    private String description;}

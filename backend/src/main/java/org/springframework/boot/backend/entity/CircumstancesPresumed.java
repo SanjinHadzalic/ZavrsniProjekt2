@@ -1,13 +1,16 @@
 package org.springframework.boot.backend.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import jakarta.persistence.*;
+import lombok.Data;
 
-@Getter
-@AllArgsConstructor
-public enum CircumstancesPresumed {
-    _0("No doubt about the circumstances"),
-    _1("Circumstances presumed");
-
-    private final String description;
+@Entity
+@Table(name = "circumstances_presumed")
+@Data
+public class CircumstancesPresumed {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String code;
+    private String language;
+    private String description;
 }

@@ -1,15 +1,15 @@
 package org.springframework.boot.backend.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import jakarta.persistence.*;
+import lombok.Data;
 
-@Getter
-@AllArgsConstructor
-public enum BillMethod {
-    C("From tip to Cere"),
-    F("From tip to Feathers"),
-    N("From tip to Nostril"),
-    S("From tip to Skull");
-
-    private final String description;
-}
+@Entity
+@Table(name = "bill_method")
+@Data
+public class BillMethod {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String code;
+    private String language;
+    private String description;}
