@@ -14,8 +14,8 @@ public class RingCode {
     private String code;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private AppUser id_user;
+    private AppUser appUser;
     @OneToOne
     @JoinColumn(name = "id_ringed_bird")
-    private RingedBird id_ringed_bird;
+    private RingedBird ringedBird;
 }
