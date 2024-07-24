@@ -18,96 +18,103 @@ public class RingedBird {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "ringing_scheme_id")
     private RingingScheme ringingScheme;
-    @OneToOne
+
+    @ManyToOne
+    @JoinColumn(name = "primary_identification_method_id")
     private PrimaryIdentificationMethod primaryIdentificationMethod;
-    @OneToOne
-    @JoinColumn(name = "id")
+
+    @ManyToOne
+    @JoinColumn(name = "ring_code_id")
     private RingCode ringCode; // alphanumeric 10 chars
-    @OneToOne
+
+    @ManyToOne
     private VerificationOfTheMetalRing verificationOfTheMetalRing;
-    @OneToOne
+    @ManyToOne
     private MetalRingInformation metalRingInformation;
-    @OneToOne
+    @ManyToOne
     private OtherMarksInformation otherMarksInformation;
-    @OneToOne
+    @ManyToOne
     private Bird species; // 5 digits
-    @OneToOne
+    @ManyToOne
     private Manipulated manipulated;
-    @OneToOne
+    @ManyToOne
     private MovedBeforeTheEncounter movedBeforeTheEncounter;
-    @OneToOne
+    @ManyToOne
     private CatchingMethods catchingMethods;
-    @OneToOne
+    @ManyToOne
     private CatchingLures catchingLures;
-    @OneToOne
+    @ManyToOne
     private Sex sex;
-    @OneToOne
+    @ManyToOne
     private Age age;
-    @OneToOne
+    @ManyToOne
     private Status status;
-    @OneToOne
+    @ManyToOne
     private BroodSize broodSize;
-    @OneToOne
+    @ManyToOne
     private PullusAge pullusAge;
-    @OneToOne
+    @ManyToOne
     private AccuracyOfPullusAge accuracyOfPullusAge;
     private LocalDate date; // 8 digits
-    @OneToOne
+    @ManyToOne
     private AccuracyOfDate accuracyOfDate;
     private LocalTime time; // 4 characters
-    @OneToOne
+    @ManyToOne
     private Place placeCode; // 4 characters
     private String geoCoordinates; // 15 chars, uzima iz Place
-    @OneToOne
+    @ManyToOne
     private AccuracyOfCoordinates accuracyOfCoordinates;
-    @OneToOne
+    @ManyToOne
     private Condition condition;
-    @OneToOne
+    @ManyToOne
     private Circumstances circumstances;
-    @OneToOne
+    @ManyToOne
     private EURINGCodeIdentifier euringCodeIdentifier;
     private String derivedDataDistance; // max 5 digs
     private String derivedDataDirection; // 3 digs with leading zeros
     private String derivedDataElapsedTime; // max 5 digits
     private Double wingLength; // max precision 0.5 mm
     private Double thirdPrimary; // max precision 0.5 mm
-    @OneToOne
+    @ManyToOne
     private StateOfWingPoint stateOfWingPoint;
     private Double mass; // max precision 0.1 g
-    @OneToOne
+    @ManyToOne
     private Moult moult;
-    @OneToOne
+    @ManyToOne
     private PlumageCode plumageCode;
     private Double hindClaw; // maximum precision 0.1 g
     private Double billLength; // maximum precision 0.1 g
-    @OneToOne
+    @ManyToOne
     private BillMethod billMethod;
     private Double totalHeadLength; // maximum precision 0.1 g
     private Double tarsus; // maximum precision 0.1 g
-    @OneToOne
+    @ManyToOne
     private TarsusMethod tarsusMethod;
     private Double tailLength; // maximum precision 0.1 g
     private Double tailDifference; // maximum precision 0.1 g
-    @OneToOne
+    @ManyToOne
     private FatScore fatScore;
     private String fatScoreMethod; // ESF method
-    @OneToOne
+    @ManyToOne
     private PectoralMuscleScore pectoralMuscleScore;
-    @OneToOne
+    @ManyToOne
     private BroodPatch broodPatch;
     private String primaryScore; // 2 digits; ignore
-    @OneToOne
+    @ManyToOne
     private PrimaryMoult primaryMoult; // 10 chars
     private String oldGreaterCoverts;
-    @OneToOne
+    @ManyToOne
     private Alula alula;
-    @OneToOne
+    @ManyToOne
     private CarpalCovert carpalCovert;
-    @OneToOne
-    @JoinColumn(name = "id")
+
+    @ManyToOne
+//    @JoinColumn(name = "sexing_method_id")
     private SexingMethod sexingMethod;
+
     private String placeName; // uzima iz Place objekta
     private String remarks; // opaske
     private String reference; // za referenciranje originalno prstenovane vrste
@@ -115,6 +122,4 @@ public class RingedBird {
     private String longitude;
     private String currentPlaceCode; // 4 chars
     private String moreOtherMarks;
-    //TODO napraviti atribute unutar tablice "ringed_bird"
-    //TODO repo, service & controller
 }

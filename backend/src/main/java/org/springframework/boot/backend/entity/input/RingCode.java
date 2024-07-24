@@ -15,7 +15,4 @@ public class RingCode {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private AppUser appUser;
-    @OneToOne
-    @JoinColumn(name = "id_ringed_bird")
-    private RingedBird ringedBird;
 }
