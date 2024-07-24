@@ -23,6 +23,7 @@ public class RingedBird {
     @OneToOne
     private PrimaryIdentificationMethod primaryIdentificationMethod;
     @OneToOne
+    @JoinColumn(name = "id")
     private RingCode ringCode; // alphanumeric 10 chars
     @OneToOne
     private VerificationOfTheMetalRing verificationOfTheMetalRing;
@@ -91,12 +92,12 @@ public class RingedBird {
     private Double tailDifference; // maximum precision 0.1 g
     @OneToOne
     private FatScore fatScore;
-    private String fatScoreMethod; //TODO pogledati sto je s ovim
+    private String fatScoreMethod; // ESF method
     @OneToOne
     private PectoralMuscleScore pectoralMuscleScore;
     @OneToOne
     private BroodPatch broodPatch;
-    private String primaryScore; //TODO pogledati sto je s ovim
+    private String primaryScore; // 2 digits; ignore
     @OneToOne
     private PrimaryMoult primaryMoult; // 10 chars
     private String oldGreaterCoverts;
@@ -105,17 +106,15 @@ public class RingedBird {
     @OneToOne
     private CarpalCovert carpalCovert;
     @OneToOne
+    @JoinColumn(name = "id")
     private SexingMethod sexingMethod;
     private String placeName; // uzima iz Place objekta
-    private String remarks;
-    private String reference; // TODO pogledati sto je s ovim i ispod toga
-    private String latitude;
+    private String remarks; // opaske
+    private String reference; // za referenciranje originalno prstenovane vrste
+    private String latitude; //
     private String longitude;
-    private String currentPlaceCode;
+    private String currentPlaceCode; // 4 chars
     private String moreOtherMarks;
-
-
-    private String name;
     //TODO napraviti atribute unutar tablice "ringed_bird"
     //TODO repo, service & controller
 }
