@@ -35,4 +35,16 @@ public class RingCodeController {
                                             @RequestParam String starter) {
         return ringCodeService.generateNewRingCode(code, range, starter);
     }
+
+    @PutMapping("/{id}")
+    public RingCode updateRingCode(@PathVariable Long id, @RequestBody RingCode toBeUpdated) {
+        log.info("Called method updateRingCode() with id= " + id + " and body= " + toBeUpdated .toString());
+        return ringCodeService.updateRingCode(id, toBeUpdated);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteRingCodeById(@PathVariable Long id) {
+        log.info("Called method deleteRingCodeById() with id= " + id);
+        ringCodeService.deleteRingCodeById(id);
+    }
 }

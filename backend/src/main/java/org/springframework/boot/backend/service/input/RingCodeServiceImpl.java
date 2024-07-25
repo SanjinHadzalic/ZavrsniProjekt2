@@ -55,4 +55,31 @@ public class RingCodeServiceImpl implements RingCodeService {
 
         return ringCodeRepository.saveAll(newCodes);
     }
+
+    @Override
+    public RingCode updateRingCode(Long id, RingCode toBeUpdated) {
+        Optional<RingCode> existingRingCodeOpt = ringCodeRepository.findById(id);
+        RingCode existingRingCode = existingRingCodeOpt.get();
+
+        if (existingRingCodeOpt.isPresent()) {
+            existingRingCode.setCode(toBeUpdated.getCode());
+            existingRingCode.setAppUser(toBeUpdated.getAppUser());
+
+            ringCodeRepository.save(existingRingCode);
+        } else {
+            throw new RuntimeException("RingCode not found with id= " + id);
+        }
+        return null;
+    }
+
+    @Override
+    public void deleteRingCodeById(Long id) {
+        Optional<RingCode> ringCodeOpt = ringCodeRepository.findById(id);
+
+        if (ringCodeOpt.isPresent()) {
+            ringCodeRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("RingCode with id= " + " not found!");
+        }
+    }
 }
