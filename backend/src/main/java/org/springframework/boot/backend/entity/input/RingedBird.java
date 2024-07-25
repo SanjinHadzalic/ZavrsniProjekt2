@@ -64,9 +64,9 @@ public class RingedBird {
     private LocalTime time; // 4 characters
     @ManyToOne
     private Place placeCode; // 4 characters
-    private String geoCoordinates; // 15 chars, uzima iz Place
-    @ManyToOne
-    private AccuracyOfCoordinates accuracyOfCoordinates;
+//    private String geoCoordinates; // 15 chars, uzima iz Place
+//    @ManyToOne
+//    private AccuracyOfCoordinates accuracyOfCoordinates;
     @ManyToOne
     private Condition condition;
     @ManyToOne
@@ -115,11 +115,11 @@ public class RingedBird {
 //    @JoinColumn(name = "sexing_method_id")
     private SexingMethod sexingMethod;
 
-    private String placeName; // uzima iz Place objekta
+//    private String placeName; // uzima iz Place objekta
     private String remarks; // opaske
     private String reference; // za referenciranje originalno prstenovane vrste
-    private String latitude; //
-    private String longitude;
-    private String currentPlaceCode; // 4 chars
+//    private String latitude; //
+//    private String longitude; //
+//    private String currentPlaceCode; // 4 chars
     private String moreOtherMarks;
 }

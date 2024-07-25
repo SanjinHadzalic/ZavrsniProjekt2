@@ -11,8 +11,12 @@ public class Place {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String country;
+    private String regionCode;
     private Double latitude;
     private Double longitude;
-    private String placeCode;
-    private String precision;
+    @ManyToOne
+    @JoinColumn(name = "precision_id")
+    private AccuracyOfCoordinates precision;
+    private String notes;
 }
