@@ -28,4 +28,11 @@ public class RingCodeController {
         log.info("Called method getRingCodeById() with id= " + id);
         return ringCodeService.getRingCodeById(id);
     }
+
+    @PostMapping("/generate")
+    public List<RingCode> generateRingCodes(@RequestParam String code,
+                                            @RequestParam Integer range,
+                                            @RequestParam String starter) {
+        return ringCodeService.generateNewRingCode(code, range, starter);
+    }
 }

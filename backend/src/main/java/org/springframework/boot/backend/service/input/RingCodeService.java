@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface RingCodeService {
     List<RingCode> getAllRingCodes();
     Optional<RingCode> getRingCodeById(Long id);
+    List<RingCode> generateNewRingCode(String code, Integer range, String starter);
 }
