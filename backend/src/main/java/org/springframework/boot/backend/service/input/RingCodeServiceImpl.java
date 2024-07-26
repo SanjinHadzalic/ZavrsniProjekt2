@@ -1,6 +1,7 @@
 package org.springframework.boot.backend.service.input;
 
 import lombok.AllArgsConstructor;
+import org.springframework.boot.backend.entity.command.RingCodeCommand;
 import org.springframework.boot.backend.entity.input.RingCode;
 import org.springframework.boot.backend.entity.user.AppUser;
 import org.springframework.boot.backend.repository.input.RingCodeRepository;
@@ -57,7 +58,7 @@ public class RingCodeServiceImpl implements RingCodeService {
     }
 
     @Override
-    public RingCode updateRingCode(Long id, RingCode toBeUpdated) {
+    public RingCode updateRingCode(Long id, RingCodeCommand toBeUpdated) {
         Optional<RingCode> existingRingCodeOpt = ringCodeRepository.findById(id);
         RingCode existingRingCode = existingRingCodeOpt.get();
 
@@ -65,11 +66,10 @@ public class RingCodeServiceImpl implements RingCodeService {
             existingRingCode.setCode(toBeUpdated.getCode());
             existingRingCode.setAppUser(toBeUpdated.getAppUser());
 
-            ringCodeRepository.save(existingRingCode);
+            return ringCodeRepository.save(existingRingCode);
         } else {
             throw new RuntimeException("RingCode not found with id= " + id);
         }
-        return null;
     }
 
     @Override

@@ -1,9 +1,12 @@
 package org.springframework.boot.backend.controller.input;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.backend.entity.command.RingCodeCommand;
 import org.springframework.boot.backend.entity.input.RingCode;
 import org.springframework.boot.backend.service.input.RingCodeService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,9 +40,9 @@ public class RingCodeController {
     }
 
     @PutMapping("/{id}")
-    public RingCode updateRingCode(@PathVariable Long id, @RequestBody RingCode toBeUpdated) {
+    public ResponseEntity<RingCode> updateRingCode(@PathVariable Long id, @RequestBody @Valid final RingCodeCommand toBeUpdated) {
         log.info("Called method updateRingCode() with id= " + id + " and body= " + toBeUpdated .toString());
-        return ringCodeService.updateRingCode(id, toBeUpdated);
+        return ResponseEntity.ok(ringCodeService.updateRingCode(id, toBeUpdated));
     }
 
     @DeleteMapping("/{id}")
