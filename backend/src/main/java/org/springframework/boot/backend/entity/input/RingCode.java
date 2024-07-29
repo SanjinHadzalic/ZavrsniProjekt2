@@ -15,6 +15,4 @@ public class RingCode {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private AppUser appUser;
-
-    //TODO Add jUnit tests with Mockito
 }
