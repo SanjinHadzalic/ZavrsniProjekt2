@@ -16,6 +16,5 @@ public class RingCode {
     @JoinColumn(name = "user_id")
     private AppUser appUser;
 
-    //TODO Add Entity & Controller Validators
     //TODO Add jUnit tests with Mockito
 }
