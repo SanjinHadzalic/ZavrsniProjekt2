@@ -46,9 +46,9 @@ INSERT INTO user_role (name) VALUES
     ('ROLE_ADMIN'),
     ('ROLE_MODERATOR');
 
-INSERT INTO app_user (username, password) VALUES
-    ('john_doe', 'password123'),
-    ('jane_smith', 'password456');
+INSERT INTO app_user (firstName, lastName, username, password) VALUES
+    ('John', 'Doe', 'john_doe', 'password123'),
+    ('Jane', 'Smith', 'jane_smith', 'password456');
 
 INSERT INTO user_authority (user_id, authority_id) VALUES
     (1, 1),

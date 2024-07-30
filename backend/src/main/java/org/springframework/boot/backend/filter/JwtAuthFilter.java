@@ -1,0 +1,25 @@
+package org.springframework.boot.backend.filter;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.AllArgsConstructor;
+import org.springframework.boot.backend.service.jwt.JwtService;
+import org.springframework.boot.backend.service.jwt.UserDetailsServiceImpl;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import java.io.IOException;
+
+@Component
+@AllArgsConstructor
+public class JwtAuthFilter extends OncePerRequestFilter {
+    private JwtService jwtService;
+    private UserDetailsServiceImpl userDetailsService;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+
+    }
+}
