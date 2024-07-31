@@ -41,14 +41,14 @@ INSERT INTO alula (code, language, description) VALUES
     ('A5', 'en', 'Fifth primary feather'),
     ('A6', 'en', 'Sixth primary feather');
 
-INSERT INTO user_role (name) VALUES
-    ('ROLE_USER'),
-    ('ROLE_ADMIN'),
-    ('ROLE_MODERATOR');
+INSERT INTO user_role (name) VALUES -- ROLE_ gets concatenated
+    ('USER'),
+    ('ADMIN'),
+    ('MODERATOR');
 
-INSERT INTO app_user (firstName, lastName, username, password) VALUES
-    ('John', 'Doe', 'john_doe', 'password123'),
-    ('Jane', 'Smith', 'jane_smith', 'password456');
+INSERT INTO users (firstname, lastname, username, password) VALUES
+    ('John', 'Doe', 'user', '$2a$12$RbH0HjMtuaOSK./5Jf7uQ.yG/rUCvTlE7xAJOuzwaUQTteN94oJ.a'), --password
+    ('Jane', 'Smith', 'jane_smith', '$2a$12$RbH0HjMtuaOSK./5Jf7uQ.yG/rUCvTlE7xAJOuzwaUQTteN94oJ.a'); --password
 
 INSERT INTO user_authority (user_id, authority_id) VALUES
     (1, 1),

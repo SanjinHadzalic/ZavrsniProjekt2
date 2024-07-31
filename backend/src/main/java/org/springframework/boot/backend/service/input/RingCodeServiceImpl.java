@@ -3,7 +3,7 @@ package org.springframework.boot.backend.service.input;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.backend.entity.command.RingCodeCommand;
 import org.springframework.boot.backend.entity.input.RingCode;
-import org.springframework.boot.backend.entity.user.AppUser;
+import org.springframework.boot.backend.entity.user.ApplicationUser;
 import org.springframework.boot.backend.repository.input.RingCodeRepository;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +30,7 @@ public class RingCodeServiceImpl implements RingCodeService {
 
     @Override
     public List<RingCode> generateNewRingCode(String code, Integer range, String starter) {
-        AppUser appUser = new AppUser(); // TODO treba dohvacati Usera iz JWOT tokena
+        ApplicationUser appUser = new ApplicationUser(); // TODO treba dohvacati Usera iz JWOT tokena
         appUser.setId(1L);
         // provjeriti postoji li jedan od kodova u seriji vec u tablici "ring_code"
         List<RingCode> exisitingRingCodes = getAllRingCodes();

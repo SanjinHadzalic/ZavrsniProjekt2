@@ -7,7 +7,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.backend.entity.command.RingCodeCommand;
 import org.springframework.boot.backend.entity.input.RingCode;
-import org.springframework.boot.backend.entity.user.AppUser;
+import org.springframework.boot.backend.entity.user.ApplicationUser;
 import org.springframework.boot.backend.repository.input.RingCodeRepository;
 
 import java.util.ArrayList;
@@ -87,7 +87,7 @@ class RingCodeServiceImplTest {
         RingCode existingRingCode = new RingCode();
         existingRingCode.setId(1L);
         existingRingCode.setCode("BJ001");
-        AppUser appUser = new AppUser();
+        ApplicationUser appUser = new ApplicationUser();
         appUser.setId(1L);
         existingRingCode.setAppUser(appUser);
 

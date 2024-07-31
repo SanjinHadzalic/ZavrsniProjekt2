@@ -2,7 +2,7 @@ package org.springframework.boot.backend.entity.input;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.boot.backend.entity.user.AppUser;
+import org.springframework.boot.backend.entity.user.ApplicationUser;
 
 @Entity
 @Table(name = "ring_code")
@@ -14,5 +14,5 @@ public class RingCode {
     private String code;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private AppUser appUser;
+    private ApplicationUser appUser;
 }
