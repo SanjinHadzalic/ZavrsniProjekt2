@@ -19,6 +19,11 @@ public class RingedBirdServiceImpl implements RingedBirdService{
     }
 
     @Override
+    public List<RingedBird> getAllRingedBirdByCode(String code) {
+        return ringedBirdRepository.findAllByRingCode_Code(code);
+    }
+
+    @Override
     public Optional<RingedBird> getRingedBirdById(Long id) {
         return ringedBirdRepository.findById(id);
     }
@@ -48,6 +53,22 @@ public class RingedBirdServiceImpl implements RingedBirdService{
     @Override
     public void deleteRingedBirdById(Long id) {
         ringedBirdRepository.deleteById(id);
+    }
+
+    @Override
+    public RingedBird createNewRingedBirdFromExisting(String ringCode, RingedBirdCommand ringedBirdCommand) {
+        Optional<RingedBird> ringedBirdOpt = ringedBirdRepository.findRingedBirdByReferenceIsNullAndRingCode_Code(ringCode);
+
+        if (ringedBirdOpt.isPresent()) {
+            RingedBird ringedBird = new RingedBird();
+            mapCommandToEntity(ringedBirdCommand, ringedBird);
+            ringedBird.setId(generateMaxId());
+            ringedBird.setReference(ringedBird.getRingCode().getCode()); //saves already existing ring code
+
+            return ringedBirdRepository.save(ringedBird);
+        } else {
+            throw new RuntimeException("RingedBird not found with ringCode= " + ringCode);
+        }
     }
 
     private Long generateMaxId() {
@@ -107,7 +128,7 @@ public class RingedBirdServiceImpl implements RingedBirdService{
         ringedBird.setCarpalCovert(ringedBirdCommand.getCarpalCovert());
         ringedBird.setSexingMethod(ringedBirdCommand.getSexingMethod());
         ringedBird.setRemarks(ringedBirdCommand.getRemarks());
-        ringedBird.setReference(ringedBirdCommand.getReference());
+        ringedBird.setReference(ringedBirdCommand.getReference()); //REFERENCE marker !!!
         ringedBird.setMoreOtherMarks(ringedBirdCommand.getMoreOtherMarks());
     }
 }

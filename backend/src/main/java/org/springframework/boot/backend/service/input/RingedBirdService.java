@@ -8,8 +8,10 @@ import java.util.Optional;
 
 public interface RingedBirdService {
     List<RingedBird> getAllRingedBird();
+    List<RingedBird> getAllRingedBirdByCode(String code);
     Optional<RingedBird> getRingedBirdById(Long id);
     RingedBird createNewRingedBird(RingedBirdCommand ringedBirdCommand);
+    RingedBird createNewRingedBirdFromExisting(String ringCode, RingedBirdCommand ringedBirdCommand);
     RingedBird updateRingedBird(Long id, RingedBirdCommand ringedBirdCommand);
     void deleteRingedBirdById(Long id);
 }

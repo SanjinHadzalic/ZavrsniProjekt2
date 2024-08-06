@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.backend.entity.command.RingedBirdCommand;
 import org.springframework.boot.backend.entity.input.RingedBird;
 import org.springframework.boot.backend.service.input.RingedBirdService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,9 +33,25 @@ public class RingedBirdController {
         return ringedBirdService.getRingedBirdById(id);
     }
 
+    @GetMapping("/ringCode/{code}")
+    public ResponseEntity<List<RingedBird>> getAllRingedBirdsByCode(@PathVariable String code) {
+        List<RingedBird> ringedBirds = ringedBirdService.getAllRingedBirdByCode(code);
+        return ResponseEntity.ok(ringedBirds);
+    }
+
     @PostMapping
     public RingedBird createRingedBird(@Valid @RequestBody RingedBirdCommand ringedBirdCommand) {
         return ringedBirdService.createNewRingedBird(ringedBirdCommand);
+    }
+
+    @PostMapping("/ringCode/{ringCode}")
+    public ResponseEntity<RingedBird> createNewRingedBirdFromExisting(@PathVariable String ringCode, @RequestBody RingedBirdCommand ringedBirdCommand) {
+        try {
+            RingedBird ringedBird = ringedBirdService.createNewRingedBirdFromExisting(ringCode, ringedBirdCommand);
+            return ResponseEntity.status(HttpStatus.CREATED).body(ringedBird);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PutMapping("/{id}")

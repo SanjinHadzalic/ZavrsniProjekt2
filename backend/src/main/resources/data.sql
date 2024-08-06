@@ -263,4 +263,8 @@ INSERT INTO verification_of_the_metal_ring (code, language, description) VALUES
      ('2', 'en', 'Ring verified by physical inspection');
 
 INSERT INTO ringed_bird (ringing_scheme_id, primary_identification_method_id, ring_code_id, species_id, date, time,
-                         remarks) VALUES (1, 1, 1, 1, '2024-01-01', '12:00', 'Initial ringed bird record');
+                         remarks, reference) VALUES
+                                      (1, 1, 1, 1, '2024-01-01', '12:00', 'Initial ringed bird record', null),
+                                      (1, 1, 2, 1, '2024-01-01', '12:00', 'Initial ringed bird record', null),
+                                      (1, 1, 3, 1, '2024-01-01', '12:00', 'Initial ringed bird record', null),
+                                      (1, 1, 1, 1, '2024-01-01', '12:00', 'Initial ringed bird record', 'R001');
