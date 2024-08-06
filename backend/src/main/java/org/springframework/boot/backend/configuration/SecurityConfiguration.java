@@ -33,8 +33,11 @@ public class SecurityConfiguration {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .requestMatchers("/auth/api/v1/login", "/auth/api/v1/refreshToken", "/auth/api/v1/logout", "/h2-console/**", "/auth/test").permitAll()
-                        .requestMatchers("/bugtracking/**").authenticated())
+                        .requestMatchers("/auth/api/v1/login", "/auth/api/v1/refreshToken",
+                                "/auth/api/v1/logout",  "/auth/api/v1/register").permitAll()
+                        .requestMatchers("/ringCode/**").hasAnyRole("USER")
+                        .requestMatchers("/bugtracking/**").authenticated()
+                        .requestMatchers("/h2-console/**").permitAll())
                 .authenticationProvider(authenticationProvider())
                 .csrf(AbstractHttpConfigurer::disable)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)

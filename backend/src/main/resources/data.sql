@@ -46,9 +46,9 @@ INSERT INTO user_role (name) VALUES -- ROLE_ gets concatenated
     ('ADMIN'),
     ('MODERATOR');
 
-INSERT INTO users (firstname, lastname, username, password) VALUES
-    ('John', 'Doe', 'user', '$2a$12$RbH0HjMtuaOSK./5Jf7uQ.yG/rUCvTlE7xAJOuzwaUQTteN94oJ.a'), --password
-    ('Jane', 'Smith', 'jane_smith', '$2a$12$RbH0HjMtuaOSK./5Jf7uQ.yG/rUCvTlE7xAJOuzwaUQTteN94oJ.a'); --password
+INSERT INTO users (firstname, lastname, email, username, password) VALUES
+    ('John', 'Doe', 'jdoe13@gmail.com', 'user', '$2a$12$RbH0HjMtuaOSK./5Jf7uQ.yG/rUCvTlE7xAJOuzwaUQTteN94oJ.a'), --password
+    ('Jane', 'Smith', 'janedoe12@hotmail.com', 'jane_smith', '$2a$12$RbH0HjMtuaOSK./5Jf7uQ.yG/rUCvTlE7xAJOuzwaUQTteN94oJ.a'); --password
 
 INSERT INTO user_authority (user_id, authority_id) VALUES
     (1, 1),

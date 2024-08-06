@@ -5,9 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.backend.dto.AuthRequestDTO;
 import org.springframework.boot.backend.dto.JwtResponseDTO;
 import org.springframework.boot.backend.dto.RefreshTokenRequestDTO;
+import org.springframework.boot.backend.dto.RegisterRequestDTO;
 import org.springframework.boot.backend.entity.user.RefreshToken;
 import org.springframework.boot.backend.service.jwt.JwtService;
 import org.springframework.boot.backend.service.jwt.RefreshTokenService;
+import org.springframework.boot.backend.service.jwt.UserDetailsServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -27,6 +29,7 @@ public class AuthController {
     private JwtService jwtService;
 
     private RefreshTokenService refreshTokenService;
+    private UserDetailsServiceImpl userDetailsService;
 
     @PostMapping("/api/v1/login")
     public JwtResponseDTO authenticateAndGetToken(@RequestBody AuthRequestDTO authRequestDTO){
@@ -57,13 +60,14 @@ public class AuthController {
                 }).orElseThrow(() ->new RuntimeException("Refresh Token is not in DB..!!"));
     }
 
+    @PostMapping("/api/v1/register")
+    public ResponseEntity<String> registerUser(@RequestBody RegisterRequestDTO registerRequestDTO) {
+        userDetailsService.registerNewUser(registerRequestDTO);
+        return ResponseEntity.ok("User registered successfully: " + registerRequestDTO.getUsername());
+    }
+
     @PostMapping("/api/v1/logout")
     public void logout() {
         System.out.println("Logout...");
-    }
-
-    @PostMapping("/test")
-    public ResponseEntity<String> testMe(@RequestBody String data) {
-        return ResponseEntity.ok(data);
     }
 }
