@@ -60,22 +60,25 @@ public class RingedBirdServiceImpl implements RingedBirdService{
         Optional<RingedBird> ringedBirdOpt = ringedBirdRepository.findRingedBirdByReferenceIsNullAndRingCode_Code(ringCode);
 
         if (ringedBirdOpt.isPresent()) {
-            RingedBird ringedBird = new RingedBird();
-            mapCommandToEntity(ringedBirdCommand, ringedBird);
-            ringedBird.setId(generateMaxId());
-            ringedBird.setReference(ringedBird.getRingCode().getCode()); //saves already existing ring code
+            RingedBird ringedBirdRaw = ringedBirdOpt.get(); //original data from database
+            RingedBird toBeSaved = new RingedBird(); //carrier object
+            mapCommandToEntity(ringedBirdCommand, toBeSaved);
 
-            return ringedBirdRepository.save(ringedBird);
+            toBeSaved.setId(generateMaxId());
+            toBeSaved.setRingCode(ringedBirdRaw.getRingCode()); //saves original ring code from database
+            toBeSaved.setReference(ringedBirdRaw.getRingCode().getCode()); //saves already existing ring code into ref.
+
+            return ringedBirdRepository.save(toBeSaved);
         } else {
             throw new RuntimeException("RingedBird not found with ringCode= " + ringCode);
         }
     }
 
-    private Long generateMaxId() {
+    public Long generateMaxId() {
         return getAllRingedBird().stream().map(RingedBird::getId).max(Long::compare).get() + 1L;
     }
 
-    private void mapCommandToEntity(RingedBirdCommand ringedBirdCommand, RingedBird ringedBird) {
+    public void mapCommandToEntity(RingedBirdCommand ringedBirdCommand, RingedBird ringedBird) {
         ringedBird.setRingingScheme(ringedBirdCommand.getRingingScheme());
         ringedBird.setPrimaryIdentificationMethod(ringedBirdCommand.getPrimaryIdentificationMethod());
         ringedBird.setRingCode(ringedBirdCommand.getRingCode());
