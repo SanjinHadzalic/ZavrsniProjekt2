@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PlaceListComponent } from './components/place-list/place-list.component';
 import { PlaceDetailsComponent } from './components/place-details/place-details.component';
 import { BirdDetailsComponent } from './components/bird-details/bird-details.component';
+import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
     {
@@ -25,5 +26,9 @@ export const routes: Routes = [
     {
         path: "place/:id",
         component: PlaceDetailsComponent
+    },
+    {
+        path: 'login',
+        component: LoginComponent
     }
 ];
