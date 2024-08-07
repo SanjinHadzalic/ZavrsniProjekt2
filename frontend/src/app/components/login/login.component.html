@@ -10,7 +10,7 @@
         <input type="password" formControlName="password" class="form-control" id="password" placeholder="Enter password">
       </div>
       <button type="submit" class="btn btn-primary">Login</button>
-      <!-- <button type="button" (click)="registerUser()" class="btn btn-primary">Register</button> -->
+      <button type="button" (click)="registerUser()" class="btn btn-primary">Register</button>
       <div class="text-danger mt-2" *ngIf="loginError">{{ loginError }}</div>
     </form>
   </div>

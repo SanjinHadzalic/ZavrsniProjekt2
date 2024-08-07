@@ -25,7 +25,7 @@ export class NotificationService {
     })
   }
 
-  authentificationMessageSuccess(title: string, text: string){
+  authenticationMessageSuccess(title: string, text: string){
     Swal.fire({
       title: title,
       text: text,

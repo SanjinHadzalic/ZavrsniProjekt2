@@ -61,9 +61,9 @@ public class AuthController {
     }
 
     @PostMapping("/api/v1/register")
-    public ResponseEntity<String> registerUser(@RequestBody RegisterRequestDTO registerRequestDTO) {
+    public ResponseEntity<RegisterRequestDTO> registerUser(@RequestBody RegisterRequestDTO registerRequestDTO) {
         userDetailsService.registerNewUser(registerRequestDTO);
-        return ResponseEntity.ok("User registered successfully: " + registerRequestDTO.getUsername());
+        return ResponseEntity.ofNullable(registerRequestDTO);
     }
 
     @PostMapping("/api/v1/logout")
