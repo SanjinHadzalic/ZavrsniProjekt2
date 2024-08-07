@@ -11,5 +11,9 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class AttributesComponent {
 
+constructor(private router: Router){}
 
+return(){
+  this.router.navigate(['/'])
+}
 }

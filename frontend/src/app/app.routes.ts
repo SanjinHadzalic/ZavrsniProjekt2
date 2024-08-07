@@ -20,6 +20,9 @@ import { BroodSizeComponent } from './components/attributes/brood-size/brood-siz
 import { CarpalCovertComponent } from './components/attributes/carpal-covert/carpal-covert.component';
 import { CatchingLuresComponent } from './components/attributes/catching-lures/catching-lures.component';
 import { CatchingMethodsComponent } from './components/attributes/catching-methods/catching-methods.component';
+import { CircumstancesPresumedComponent } from './components/attributes/circumstances-presumed/circumstances-presumed.component';
+import { CircumstancesComponent } from './components/attributes/circumstances/circumstances.component';
+import { EuringCodeIdentifierComponent } from './components/attributes/euring-code-identifier/euring-code-identifier.component';
 
 export const routes: Routes = [
   {
@@ -105,6 +108,21 @@ export const routes: Routes = [
   {
     path: 'catchingMethods',
     component: CatchingMethodsComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'circumstancesPresumed',
+    component: CircumstancesPresumedComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'circumstances',
+    component: CircumstancesComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'euring_code_identifier',
+    component: EuringCodeIdentifierComponent,
     canActivate: [authGuard]
   },
   {
