@@ -11,13 +11,11 @@ import { NotificationService } from '../../services/notification.service';
 })
 export class HeaderComponent {
   constructor(
-    private router: Router,
     private notificationService: NotificationService
   ) {}
 
   logout() {
     localStorage.clear(); 
-    // this.router.navigate(['/login']); 
     this.notificationService.logoutMessageSuccess(
       'Logged out!',
       'You have been successfully logged out.'

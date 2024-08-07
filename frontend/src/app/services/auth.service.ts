@@ -8,7 +8,6 @@ import { ApplicationUser } from '../interfaces/application-user';
 })
 export class AuthService {
   private baseUrl = 'http://localhost:8080/auth/api/v1';
-  private usersUrl = 'http://localhost:8080/users';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
@@ -53,8 +52,4 @@ export class AuthService {
       })
     );
   }
-
-  // getUserByUsername(username: string): Observable<ApplicationUser> {
-  //   return this.http.get<ApplicationUser>(`${this.usersUrl}/${username}`, this.httpOptions);
-  // }
 }

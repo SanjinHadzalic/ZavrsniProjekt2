@@ -5,7 +5,6 @@ import { ApplicationUser } from '../../interfaces/application-user';
 import { UserRole } from '../../interfaces/user-role';
 import { AuthService } from '../../services/auth.service';
 import { NotificationService } from '../../services/notification.service';
-import { first } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -17,6 +16,7 @@ import { first } from 'rxjs';
 export class RegisterComponent implements OnInit{
   newUser!: ApplicationUser
   newRole: UserRole = {id:1, name: 'USER'}
+  submitted: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -44,6 +44,8 @@ export class RegisterComponent implements OnInit{
   }
 
   register() {
+    this.submitted = true;
+
     if(this.registerForm.valid) {
       const formValue = this.registerForm.value
 

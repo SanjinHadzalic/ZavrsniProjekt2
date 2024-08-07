@@ -1,50 +1,43 @@
 <form [formGroup]="registerForm" (ngSubmit)="register()">
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" class="form-control" id="username" formControlName="username" required>
-      <div *ngIf="registerForm.get('username')?.invalid" class="alert alert-danger">
-        Username is required
-      </div>
-      <!-- <div *ngIf="registerForm.get('username')?.invalid" class="alert alert-danger">
-        Username must be at least 6 characters
-      </div> -->
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" id="username" formControlName="username" required>
+    <div *ngIf="submitted && registerForm.get('username')?.invalid" class="alert alert-danger">
+      Username is required
     </div>
+  </div>
 
-    <div class="form-group">
-        <label for="email">E-mail</label>
-        <input type="email" class="form-control" id="email" formControlName="email" required>
-        <div *ngIf="registerForm.get('email')?.invalid" class="alert alert-danger">
-            E-mail is required
-          </div>
+  <div class="form-group">
+    <label for="email">E-mail</label>
+    <input type="email" class="form-control" id="email" formControlName="email" required>
+    <div *ngIf="submitted && registerForm.get('email')?.invalid" class="alert alert-danger">
+      E-mail is required
     </div>
+  </div>
 
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" formControlName="password" required>
-      <div *ngIf="registerForm.get('password')?.invalid" class="alert alert-danger">
-        Password is required
-      </div>
-      <!-- <div *ngIf="registerForm.get('password')?.invalid" class="alert alert-danger">
-        Password must be at least 8 characters
-      </div> -->
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" formControlName="password" required>
+    <div *ngIf="submitted && registerForm.get('password')?.invalid" class="alert alert-danger">
+      Password is required
     </div>
+  </div>
 
-    <div class="form-group">
-      <label for="firstname">First Name</label>
-      <input type="text" class="form-control" id="firstname" formControlName="firstname" required>
-      <div *ngIf="registerForm.get('firstname')?.invalid" class="alert alert-danger">
-        First Name is required
-      </div>
+  <div class="form-group">
+    <label for="firstname">First Name</label>
+    <input type="text" class="form-control" id="firstname" formControlName="firstname" required>
+    <div *ngIf="submitted && registerForm.get('firstname')?.invalid" class="alert alert-danger">
+      First Name is required
     </div>
+  </div>
 
-    <div class="form-group">
-      <label for="lastname">Last Name</label>
-      <input type="text" class="form-control" id="lastname" formControlName="lastname" required>
-      <div *ngIf="registerForm.get('lastname')?.invalid" class="alert alert-danger">
-        Last Name is required
-      </div>
+  <div class="form-group">
+    <label for="lastname">Last Name</label>
+    <input type="text" class="form-control" id="lastname" formControlName="lastname" required>
+    <div *ngIf="submitted && registerForm.get('lastname')?.invalid" class="alert alert-danger">
+      Last Name is required
     </div>
-    
-    <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Save User</button>
-  </form>
-  
+  </div>
+
+  <button type="submit" class="btn btn-primary">Save User</button>
+</form>
