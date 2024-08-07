@@ -14,6 +14,9 @@ import { AccuracyOfDateComponent } from './components/attributes/accuracy-of-dat
 import { AccuracyOfPullusAgeComponent } from './components/attributes/accuracy-of-pullus-age/accuracy-of-pullus-age.component';
 import { AgeComponent } from './components/attributes/age/age.component';
 import { AlulaComponent } from './components/attributes/alula/alula.component';
+import { BillMethodComponent } from './components/attributes/bill-method/bill-method.component';
+import { BroodPatchComponent } from './components/attributes/brood-patch/brood-patch.component';
+import { BroodSizeComponent } from './components/attributes/brood-size/brood-size.component';
 
 export const routes: Routes = [
   {
@@ -69,6 +72,21 @@ export const routes: Routes = [
   {
     path: 'alula',
     component: AlulaComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'billMethod',
+    component: BillMethodComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'broodPatch',
+    component: BroodPatchComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'broodSize',
+    component: BroodSizeComponent,
     canActivate: [authGuard]
   },
   {

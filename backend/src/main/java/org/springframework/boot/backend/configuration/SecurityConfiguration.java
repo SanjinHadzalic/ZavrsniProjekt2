@@ -38,7 +38,8 @@ public class SecurityConfiguration {
                                 "/auth/api/v1/logout", "/auth/api/v1/register").permitAll()
                         .requestMatchers("/birds/**", "/ringCode/**", "/ringedBird/**", "/users/**").hasAnyRole(ROLE_USER)
                         .requestMatchers("/accuracyOfCoordinates/**", "/accuracyOfDate/**",
-                                "/accuracyOfPullusAge/**", "/age/**", "/alula/**").hasAnyRole(ROLE_USER)
+                                "/accuracyOfPullusAge/**", "/age/**", "/alula/**", "/billMethod/**", "/broodPatch/**",
+                                "/broodSize/**").hasAnyRole(ROLE_USER)
                         .requestMatchers("/bugtracking/**").authenticated()
                         .requestMatchers("/h2-console/**").permitAll())
                 .authenticationProvider(authenticationProvider())
