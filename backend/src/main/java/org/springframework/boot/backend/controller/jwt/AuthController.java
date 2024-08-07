@@ -6,6 +6,7 @@ import org.springframework.boot.backend.dto.AuthRequestDTO;
 import org.springframework.boot.backend.dto.JwtResponseDTO;
 import org.springframework.boot.backend.dto.RefreshTokenRequestDTO;
 import org.springframework.boot.backend.dto.RegisterRequestDTO;
+import org.springframework.boot.backend.entity.user.ApplicationUser;
 import org.springframework.boot.backend.entity.user.RefreshToken;
 import org.springframework.boot.backend.service.jwt.JwtService;
 import org.springframework.boot.backend.service.jwt.RefreshTokenService;
@@ -37,9 +38,11 @@ public class AuthController {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequestDTO.getUsername(), authRequestDTO.getPassword()));
         if(authentication.isAuthenticated()){
             log.info("Prosao if");
+            ApplicationUser user = userDetailsService.findApplicationUserByUsername(authRequestDTO.getUsername()); // Fetch user
+
             RefreshToken refreshToken = refreshTokenService.createRefreshToken(authRequestDTO.getUsername());
             return JwtResponseDTO.builder()
-                    .accessToken(jwtService.generateToken(authRequestDTO.getUsername()))
+                    .accessToken(jwtService.generateToken(user))
                     .token(refreshToken.getToken())
                     .build();
         } else {
@@ -53,7 +56,8 @@ public class AuthController {
                 .map(refreshTokenService::verifyExpiration)
                 .map(RefreshToken::getUserInfo)
                 .map(userInfo -> {
-                    String accessToken = jwtService.generateToken(userInfo.getUsername());
+                    ApplicationUser user = userDetailsService.findApplicationUserByUsername(userInfo.getUsername());
+                    String accessToken = jwtService.generateToken(user);
                     return JwtResponseDTO.builder()
                             .accessToken(accessToken)
                             .token(refreshTokenRequestDTO.getToken()).build();

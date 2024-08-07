@@ -21,4 +21,6 @@ export class JwtDecoderService {
 
     return JSON.parse(jsonPayload)
   }
+
+  
 }
