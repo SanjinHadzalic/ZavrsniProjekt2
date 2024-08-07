@@ -3,7 +3,9 @@
       <div class="card-header">
         <h1 class="card-title">User Profile</h1>
       </div>
-      <div class="card-body">
+      <div class="card-body text-center">
+        <img [src]="imageSrc" alt="Profile Image" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px;">
+        
         <div *ngIf="user">
           <div class="row mb-3">
             <div class="col-sm-3">
@@ -48,9 +50,7 @@
             </div>
           </div>
         </div>
-
-        // TODO: Add functionality to show all Ringed Birds for logged in user
-
+  
         <div *ngIf="!user" class="text-center">
           <p>Loading user data...</p>
         </div>

@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ProfileComponent implements OnInit {
   user: ApplicationUser | null = null;
+  imageSrc = 'assets/images/genericProfile.png'
 
   constructor(private jwtDecoderService: JwtDecoderService) {}
 
