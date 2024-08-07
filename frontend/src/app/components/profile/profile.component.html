@@ -1,0 +1,60 @@
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="card-title">User Profile</h1>
+      </div>
+      <div class="card-body">
+        <div *ngIf="user">
+          <div class="row mb-3">
+            <div class="col-sm-3">
+              <strong>Username:</strong>
+            </div>
+            <div class="col-sm-9">
+              {{ user?.username }}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-3">
+              <strong>First Name:</strong>
+            </div>
+            <div class="col-sm-9">
+              {{ user?.firstname }}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-3">
+              <strong>Last Name:</strong>
+            </div>
+            <div class="col-sm-9">
+              {{ user?.lastname }}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-3">
+              <strong>Email:</strong>
+            </div>
+            <div class="col-sm-9">
+              {{ user?.email }}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-3">
+              <strong>Roles:</strong>
+            </div>
+            <div class="col-sm-9">
+              <ul class="list-group">
+                <li class="list-group-item" *ngFor="let role of user?.roles">{{ role.name }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        // TODO: Add functionality to show all Ringed Birds for logged in user
+
+        <div *ngIf="!user" class="text-center">
+          <p>Loading user data...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

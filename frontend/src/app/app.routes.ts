@@ -6,27 +6,34 @@ import { PlaceDetailsComponent } from './components/place-details/place-details.
 import { BirdDetailsComponent } from './components/bird-details/bird-details.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { authGuard } from './guards/auth.guard';
+import { ProfileComponent } from './components/profile/profile.component';
 
 export const routes: Routes = [
-    {
-        path: '',
-        component: HomeComponent
-    },
-    {
+        {
         path: 'birds',
-        component: BirdListComponent
+        component: BirdListComponent,
+        canActivate: [authGuard]
     },
     {
         path: 'birds/:id',
-        component: BirdDetailsComponent
+        component: BirdDetailsComponent,
+        canActivate: [authGuard]
     },
     {
         path: 'place',
-        component: PlaceListComponent
+        component: PlaceListComponent,
+        canActivate: [authGuard]
     },
     {
         path: "place/:id",
-        component: PlaceDetailsComponent
+        component: PlaceDetailsComponent,
+        canActivate: [authGuard]
+    },
+    {
+        path:'profile',
+        component: ProfileComponent,
+        canActivate: [authGuard]
     },
     {
         path: 'login',
@@ -35,5 +42,10 @@ export const routes: Routes = [
     {
         path: 'register',
         component: RegisterComponent
-    }
+    },
+    {
+        path: '',
+        component: HomeComponent,
+        canActivate: [authGuard]
+    },
 ];

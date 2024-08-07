@@ -5,6 +5,7 @@ import { ApplicationUser } from '../../interfaces/application-user';
 import { UserRole } from '../../interfaces/user-role';
 import { AuthService } from '../../services/auth.service';
 import { NotificationService } from '../../services/notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,8 @@ export class RegisterComponent implements OnInit{
 
   constructor(
     private authService: AuthService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router: Router
   ) {}
 
   registerForm = new FormGroup({
@@ -66,5 +68,9 @@ export class RegisterComponent implements OnInit{
         }
       })
     }
+  }
+
+  return() {
+    this.router.navigate(['/login'])
   }
 }
