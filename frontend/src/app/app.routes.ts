@@ -10,6 +10,8 @@ import { authGuard } from './guards/auth.guard';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AttributesComponent } from './components/attributes/attributes.component';
 import { AccuracyOfCoordinatesComponent } from './components/attributes/accuracy-of-coordinates/accuracy-of-coordinates.component';
+import { AccuracyOfDateComponent } from './components/attributes/accuracy-of-date/accuracy-of-date.component';
+import { AccuracyOfPullusAgeComponent } from './components/attributes/accuracy-of-pullus-age/accuracy-of-pullus-age.component';
 
 export const routes: Routes = [
   {
@@ -45,6 +47,16 @@ export const routes: Routes = [
   {
     path: 'accuracyOfCoordinates',
     component: AccuracyOfCoordinatesComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'accuracyOfDate',
+    component: AccuracyOfDateComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'accuracyOfPullusAge',
+    component: AccuracyOfPullusAgeComponent,
     canActivate: [authGuard]
   },
   {
