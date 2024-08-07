@@ -41,10 +41,12 @@ export class LoginComponent implements OnInit{
     this.authService.login(username, password).subscribe((response) => {
       if(response.accessToken){
         this.notificationService.authenticationMessageSuccess("Logged in!", "Successfully logged in redirecting to home...")
-        const jwtToken = response.accessToken
-        localStorage.setItem('token', jwtToken)
+        const accessToken = response.accessToken
+        const jwtToken = response.token
+        localStorage.setItem('accessToken', accessToken)
+        localStorage.setItem('jwtToken', jwtToken)
 
-        this.decodedToken = this.jwtDecoderService.decodeToken(jwtToken)
+        this.decodedToken = this.jwtDecoderService.decodeToken(accessToken)
         
         console.log(this.decodedToken.sub)
 
