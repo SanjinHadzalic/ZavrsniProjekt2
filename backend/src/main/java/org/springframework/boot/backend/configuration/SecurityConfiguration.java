@@ -39,7 +39,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/birds/**", "/ringCode/**", "/ringedBird/**", "/users/**").hasAnyRole(ROLE_USER)
                         .requestMatchers("/accuracyOfCoordinates/**", "/accuracyOfDate/**",
                                 "/accuracyOfPullusAge/**", "/age/**", "/alula/**", "/billMethod/**", "/broodPatch/**",
-                                "/broodSize/**").hasAnyRole(ROLE_USER)
+                                "/broodSize/**", "/carpalCovert/**", "/catchingLures/**", "/catchingMethods/**").hasAnyRole(ROLE_USER)
                         .requestMatchers("/bugtracking/**").authenticated()
                         .requestMatchers("/h2-console/**").permitAll())
                 .authenticationProvider(authenticationProvider())

@@ -17,6 +17,9 @@ import { AlulaComponent } from './components/attributes/alula/alula.component';
 import { BillMethodComponent } from './components/attributes/bill-method/bill-method.component';
 import { BroodPatchComponent } from './components/attributes/brood-patch/brood-patch.component';
 import { BroodSizeComponent } from './components/attributes/brood-size/brood-size.component';
+import { CarpalCovertComponent } from './components/attributes/carpal-covert/carpal-covert.component';
+import { CatchingLuresComponent } from './components/attributes/catching-lures/catching-lures.component';
+import { CatchingMethodsComponent } from './components/attributes/catching-methods/catching-methods.component';
 
 export const routes: Routes = [
   {
@@ -87,6 +90,21 @@ export const routes: Routes = [
   {
     path: 'broodSize',
     component: BroodSizeComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'carpalCovert',
+    component: CarpalCovertComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'catchingLures',
+    component: CatchingLuresComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'catchingMethods',
+    component: CatchingMethodsComponent,
     canActivate: [authGuard]
   },
   {
