@@ -12,6 +12,8 @@ import { AttributesComponent } from './components/attributes/attributes.componen
 import { AccuracyOfCoordinatesComponent } from './components/attributes/accuracy-of-coordinates/accuracy-of-coordinates.component';
 import { AccuracyOfDateComponent } from './components/attributes/accuracy-of-date/accuracy-of-date.component';
 import { AccuracyOfPullusAgeComponent } from './components/attributes/accuracy-of-pullus-age/accuracy-of-pullus-age.component';
+import { AgeComponent } from './components/attributes/age/age.component';
+import { AlulaComponent } from './components/attributes/alula/alula.component';
 
 export const routes: Routes = [
   {
@@ -57,6 +59,16 @@ export const routes: Routes = [
   {
     path: 'accuracyOfPullusAge',
     component: AccuracyOfPullusAgeComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'age',
+    component: AgeComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'alula',
+    component: AlulaComponent,
     canActivate: [authGuard]
   },
   {
