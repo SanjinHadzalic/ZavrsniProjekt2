@@ -8,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  imageSrc = 'assets/images/homePage.jpg'
+  isRotated = false;
 
+
+  rotateImage() {
+    const cardContainer = document.querySelector('.card-container');
+    if (cardContainer) {
+      cardContainer.classList.toggle('flip');
+    }
+  }
+  
 }

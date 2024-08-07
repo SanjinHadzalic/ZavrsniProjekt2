@@ -22,3 +22,7 @@
     - [ ] Pogledati deploy aplikacije...
 11.
     - [ ] Implement dark mode in frontend
+12.
+    - [ ] Add functionality to show all ringed birds for that user on profile page
+13.
+    - [ ] Spring Mail koji salje na mail da je User uspjesno registriran

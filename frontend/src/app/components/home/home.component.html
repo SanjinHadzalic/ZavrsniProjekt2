@@ -1,25 +1,42 @@
 <div class="container">
-    <div class="text-center">
-      <h1>Larus</h1>
-      <h3>Application for Bird banding administration</h3>
-    </div>
-  
-    <div class="mt-5">
-      <div class="row">
-        <div class="col-md-6">
-          <img src="..." alt="Image for Left Card" class="img-fluid">
-        </div>
-        <div class="col-md-6">
+  <div class="text-center">
+    <h1>Larus</h1>
+    <h3>Application for Bird Banding Administration</h3>
+  </div>
+
+  <div class="mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card-container" (click)="rotateImage()">
           <div class="card">
-            <div class="card-body d-flex flex-column">
-              <a href="#" class="btn btn-primary mb-2">Go somewhere</a>
-              <a href="#" class="btn btn-primary mb-2">Go somewhere</a>
-              <a href="#" class="btn btn-primary mb-2">Go somewhere</a>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="card-front">
+              <img [src]="imageSrc" alt="Home page image" class="img-fluid rounded border border-primary shadow-sm">
             </div>
+            <div class="card-back">
+              <h4>Larus app</h4>
+              <p>
+                The genus Larus was introduced in 1758 by the Swedish naturalist Carl Linnaeus in the tenth edition of
+                his Systema Naturae.
+                The genus name is from Ancient Greek laros (λάῥος) or Latin larus, which appears to have referred to a
+                gull or other large seabird.
+                The type species is the great black-backed gull (Larus marinus). The Latin name Larus marinus translates
+                as "sea gull", and the
+                gulls in this genus generally are the species most often known colloquially as "seagulls".
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body d-flex flex-column">
+            <a href="#" class="btn btn-primary mb-2">Go somewhere</a>
+            <a href="#" class="btn btn-primary mb-2">Go somewhere</a>
+            <a href="#" class="btn btn-primary mb-2">Go somewhere</a>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
