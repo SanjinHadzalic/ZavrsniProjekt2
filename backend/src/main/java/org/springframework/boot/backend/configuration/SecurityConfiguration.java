@@ -25,6 +25,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfiguration {
 
     private JwtAuthFilter jwtAuthFilter;
+    private final String ROLE_USER = "USER";
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -35,7 +36,8 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/auth/api/v1/login", "/auth/api/v1/refreshToken",
                                 "/auth/api/v1/logout",  "/auth/api/v1/register").permitAll()
-                        .requestMatchers("/birds/**","/ringCode/**", "/ringedBird/**", "/users/**").hasAnyRole("USER")
+                        .requestMatchers("/birds/**","/ringCode/**", "/ringedBird/**", "/users/**").hasAnyRole(ROLE_USER)
+                        .requestMatchers("/accuracyOfCoordinates/**").hasAnyRole(ROLE_USER)
                         .requestMatchers("/bugtracking/**").authenticated()
                         .requestMatchers("/h2-console/**").permitAll())
                 .authenticationProvider(authenticationProvider())
