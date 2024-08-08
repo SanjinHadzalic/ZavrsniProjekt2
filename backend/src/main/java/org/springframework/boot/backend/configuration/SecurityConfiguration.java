@@ -62,7 +62,11 @@ public class SecurityConfiguration {
                                 "/plumageCode/**",
                                 "/primaryIdentificationMethod/**",
                                 "/primaryMoult/**",
-                                "/ringingScheme/**"
+                                "/ringingScheme/**",
+                                "/sex/**",
+                                "/sexingMethod/**",
+                                "/stateOfWingPoint/**",
+                                "/status/**"
                                 ).hasAnyRole(ROLE_USER)
                         .requestMatchers("/bugtracking/**").authenticated()
                         .requestMatchers("/h2-console/**").permitAll())

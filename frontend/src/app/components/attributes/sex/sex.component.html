@@ -1,0 +1,24 @@
+<div class="container">
+    <h2 class="text-center">Sex Information</h2>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Code</th>
+                <th>Language</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let sex of sexes">
+                <td>{{ sex.id }}</td>
+                <td>{{ sex.code }}</td>
+                <td>{{ sex.language }}</td>
+                <td>{{ sex.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button (click)="return()" class="btn btn-info">Return</button>
+</div>

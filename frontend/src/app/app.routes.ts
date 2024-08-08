@@ -34,6 +34,10 @@ import { PlumageCodeComponent } from './components/attributes/plumage-code/pluma
 import { PrimaryIdentificationMethodComponent } from './components/attributes/primary-identification-method/primary-identification-method.component';
 import { PrimaryMoultComponent } from './components/attributes/primary-moult/primary-moult.component';
 import { RingingSchemeComponent } from './components/attributes/ringing-scheme/ringing-scheme.component';
+import { SexComponent } from './components/attributes/sex/sex.component';
+import { SexingMethodComponent } from './components/attributes/sexing-method/sexing-method.component';
+import { StateOfWingPointComponent } from './components/attributes/state-of-wing-point/state-of-wing-point.component';
+import { StatusComponent } from './components/attributes/status/status.component';
 
 export const routes: Routes = [
   {
@@ -189,6 +193,26 @@ export const routes: Routes = [
   {
     path: 'ringingScheme',
     component: RingingSchemeComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'sex',
+    component: SexComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'sexingMethod',
+    component: SexingMethodComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'stateOfWingPoint',
+    component: StateOfWingPointComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'status',
+    component: StatusComponent,
     canActivate: [authGuard]
   },
   {
