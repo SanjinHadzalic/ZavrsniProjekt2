@@ -1,0 +1,50 @@
+<div class="container">
+    <h2 class="text-center">Add New Place</h2>
+  
+    <form [formGroup]="placeForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" type="text" class="form-control" formControlName="name">
+      </div>
+  
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input id="country" type="text" class="form-control" formControlName="country">
+      </div>
+  
+      <div class="form-group">
+        <label for="regionCode">Region Code</label>
+        <input id="regionCode" type="text" class="form-control" formControlName="regionCode">
+      </div>
+  
+      <div class="form-group">
+        <label for="latitude">Latitude</label>
+        <input id="latitude" type="text" class="form-control" formControlName="latitude" readonly>
+      </div>
+  
+      <div class="form-group">
+        <label for="longitude">Longitude</label>
+        <input id="longitude" type="text" class="form-control" formControlName="longitude" readonly>
+      </div>
+  
+      <div class="form-group">
+        <label for="precision">Precision</label>
+        <select id="precision" class="form-control" formControlName="precision">
+          <option *ngFor="let accuracy of precisions" [ngValue]="accuracy">
+            {{ accuracy.description }}
+          </option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="notes">Notes</label>
+        <textarea id="notes" class="form-control" formControlName="notes"></textarea>
+      </div>
+  
+      <div leaflet [leafletOptions]="mapOptions" (leafletClick)="onMapClick($event)" class="map"></div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="!placeForm.valid">Save Place</button>
+      <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+    </form>
+  </div>
+  

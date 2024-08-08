@@ -17,6 +17,24 @@ export class NotificationService {
     Swal.fire(title, message, 'error')
   }
 
+  confirmationDialog(title: string, message: string, confirmCallback: () => void, cancelCallback?: () => void) {
+    Swal.fire({
+      title: title,
+      text: message,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        confirmCallback();
+      } else if (cancelCallback) {
+        cancelCallback();
+      }
+    });
+  }
+
   warningNotification(title: string, message: string) {
     Swal.fire({
       icon: 'warning',
@@ -30,7 +48,7 @@ export class NotificationService {
       title: title,
       text: text,
       icon: 'success',
-      timer: 2000,
+      timer: 1000,
       timerProgressBar: true,
       showConfirmButton: false
     }).then(()=>{
@@ -43,7 +61,7 @@ export class NotificationService {
       title: title,
       text: text,
       icon: 'success',
-      timer: 2000,
+      timer: 1000,
       timerProgressBar: true,
       showConfirmButton: false
     }).then(()=>{

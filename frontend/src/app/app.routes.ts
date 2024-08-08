@@ -40,6 +40,7 @@ import { StateOfWingPointComponent } from './components/attributes/state-of-wing
 import { StatusComponent } from './components/attributes/status/status.component';
 import { TarsusMethodComponent } from './components/attributes/tarsus-method/tarsus-method.component';
 import { VerificationOfTheMetalRingComponent } from './components/attributes/verification-of-the-metal-ring/verification-of-the-metal-ring.component';
+import { PlaceAddComponent } from './components/attributes/place-add/place-add.component';
 
 export const routes: Routes = [
   {
@@ -65,6 +66,11 @@ export const routes: Routes = [
   {
     path: 'place/:id',
     component: PlaceDetailsComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'placeAdd',
+    component: PlaceAddComponent,
     canActivate: [authGuard],
   },
   {

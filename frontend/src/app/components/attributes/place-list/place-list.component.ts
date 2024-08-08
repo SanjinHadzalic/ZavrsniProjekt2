@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Place } from '../../../interfaces/attributes/place';
 import { PlaceService } from '../../../services/attributes/place.service';
+import Swal from 'sweetalert2';
+import { NotificationService } from '../../../services/notification.service';
 
 @Component({
   selector: 'app-place-list',
@@ -14,7 +16,7 @@ import { PlaceService } from '../../../services/attributes/place.service';
 })
 export class PlaceListComponent implements OnInit{
   places!: Place[];
-
+  notificationService = inject(NotificationService)
   constructor(private placeService: PlaceService, private router: Router) {}
 
 
@@ -31,6 +33,34 @@ export class PlaceListComponent implements OnInit{
 
   placeDetails(id: number) {
     this.router.navigate(["place", id]);
+  }
+
+  addNewPlace() {
+    this.router.navigate(['/placeAdd'])
+  }
+
+  deletePlace(id: number) {
+    this.notificationService.confirmationDialog(
+      'Are you sure?',
+      'Do you really want to delete this place? This action cannot be undone!',
+      () => {
+        this.placeService.deletePlace(id).subscribe(
+          () => {
+            this.notificationService.successNotification(
+              'Deleted!',
+              'Place has been deleted.'
+            );
+            this.getPlaces(); 
+          },
+          (error) => {
+            this.notificationService.errorNotification(
+              'Error!',
+              'There was a problem deleting the place.'
+            );
+          }
+        );
+      }
+    );
   }
 }
 

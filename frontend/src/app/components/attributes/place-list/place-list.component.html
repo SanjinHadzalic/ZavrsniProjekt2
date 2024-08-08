@@ -17,8 +17,10 @@
                 <td> {{ place.longitude}}</td>
                 <td>
                     <button (click) = "placeDetails(place.id)" class="btn btn-info">Details</button>
+                    <button class="btn btn-danger" (click)="deletePlace(place.id)">Delete</button>
                 </td>
             </tr>
         </tbody>
     </table>
+    <button type="button" (click)="addNewPlace()" class="btn btn-info">Add Place</button>
 </div>
