@@ -13,4 +13,5 @@ public class PlumageCode {
     private Long id;
     private String code;
     private String language;
-    private String description;}
+    private String description;
+}

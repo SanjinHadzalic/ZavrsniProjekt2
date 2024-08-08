@@ -1,0 +1,23 @@
+<div class="container">
+    <h2 class="text-center">Plumage Codes</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Code</th>
+                <th>Language</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let plumageCode of plumageCodes">
+                <td>{{ plumageCode.id }}</td>
+                <td>{{ plumageCode.code }}</td>
+                <td>{{ plumageCode.language }}</td>
+                <td>{{ plumageCode.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <button (click)="return()" class="btn btn-info">Return</button>
+</div>

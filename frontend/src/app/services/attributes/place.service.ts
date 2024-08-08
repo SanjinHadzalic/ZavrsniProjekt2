@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Place } from '../classes/place.model';
+import { Place } from '../../interfaces/attributes/place';
 
 @Injectable({
   providedIn: 'root'

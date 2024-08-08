@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { BirdListComponent } from './components/bird-list/bird-list.component';
 import { HomeComponent } from './components/home/home.component';
-import { PlaceListComponent } from './components/place-list/place-list.component';
-import { PlaceDetailsComponent } from './components/place-details/place-details.component';
+import { PlaceListComponent } from './components/attributes/place-list/place-list.component';
+import { PlaceDetailsComponent } from './components/attributes/place-details/place-details.component';
 import { BirdDetailsComponent } from './components/bird-details/bird-details.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -30,6 +30,7 @@ import { MoultComponent } from './components/attributes/moult/moult.component';
 import { MovedBeforeTheEncounterComponent } from './components/attributes/moved-before-the-encounter/moved-before-the-encounter.component';
 import { OtherMarksInformationComponent } from './components/attributes/other-marks-information/other-marks-information.component';
 import { PectoralMuscleScoreComponent } from './components/attributes/pectoral-muscle-score/pectoral-muscle-score.component';
+import { PlumageCodeComponent } from './components/attributes/plumage-code/plumage-code.component';
 
 export const routes: Routes = [
   {
@@ -165,6 +166,11 @@ export const routes: Routes = [
   {
     path: 'pectoralMuscleScore',
     component: PectoralMuscleScoreComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'plumageCode',
+    component: PlumageCodeComponent,
     canActivate: [authGuard]
   },
   {

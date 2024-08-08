@@ -1,6 +1,4 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Place } from '../../classes/place.model';
-import { PlaceService } from '../../services/place.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import Map from 'ol/Map';
@@ -8,6 +6,8 @@ import TileLayer from 'ol/layer/Tile';
 import { OSM } from 'ol/source';
 import View from 'ol/View';
 import L from 'leaflet';
+import { Place } from '../../../interfaces/attributes/place';
+import { PlaceService } from '../../../services/attributes/place.service';
 
 @Component({
   selector: 'app-place-details',
@@ -18,7 +18,7 @@ import L from 'leaflet';
 })
 export class PlaceDetailsComponent implements OnInit {
   id!: number;
-  place: Place = new Place();
+  place?: Place;
 
   constructor(
     private placeService: PlaceService,
@@ -31,7 +31,7 @@ export class PlaceDetailsComponent implements OnInit {
       .getPlaceById(this.route.snapshot.params['id'])
       .subscribe((place) => {
         this.place = place;
-        console.log(this.place.latitude);
+        // console.log(this.place.latitude);
         const map = L.map('map').setView(
           [this.place.latitude, this.place.longitude],
           13

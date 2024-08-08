@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PlaceService } from '../../services/place.service';
-import { Place } from '../../classes/place.model';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Place } from '../../../interfaces/attributes/place';
+import { PlaceService } from '../../../services/attributes/place.service';
 
 @Component({
   selector: 'app-place-list',
