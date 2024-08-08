@@ -37,11 +37,27 @@ public class SecurityConfiguration {
                         .requestMatchers("/auth/api/v1/login", "/auth/api/v1/refreshToken",
                                 "/auth/api/v1/logout", "/auth/api/v1/register").permitAll()
                         .requestMatchers("/birds/**", "/ringCode/**", "/ringedBird/**", "/users/**").hasAnyRole(ROLE_USER)
-                        .requestMatchers("/accuracyOfCoordinates/**", "/accuracyOfDate/**",
-                                "/accuracyOfPullusAge/**", "/age/**", "/alula/**", "/billMethod/**", "/broodPatch/**",
-                                "/broodSize/**", "/carpalCovert/**", "/catchingLures/**", "/catchingMethods/**",
-                                "/circumstancesPresumed/**", "/circumstances/**", "/euring_code_identifier/**",
-                                "/fatScore/**", "/manipulated/**", "/metalRingInformation/**").hasAnyRole(ROLE_USER)
+                        .requestMatchers("/accuracyOfCoordinates/**",
+                                "/accuracyOfDate/**",
+                                "/accuracyOfPullusAge/**",
+                                "/age/**",
+                                "/alula/**",
+                                "/billMethod/**",
+                                "/broodPatch/**",
+                                "/broodSize/**",
+                                "/carpalCovert/**",
+                                "/catchingLures/**",
+                                "/catchingMethods/**",
+                                "/circumstancesPresumed/**",
+                                "/circumstances/**",
+                                "/euring_code_identifier/**",
+                                "/fatScore/**",
+                                "/manipulated/**",
+                                "/metalRingInformation/**",
+                                "/moult/**",
+                                "/movedBeforeTheEncounter/**",
+                                "/otherMarksInformation/**"
+                                ).hasAnyRole(ROLE_USER)
                         .requestMatchers("/bugtracking/**").authenticated()
                         .requestMatchers("/h2-console/**").permitAll())
                 .authenticationProvider(authenticationProvider())

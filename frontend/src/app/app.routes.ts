@@ -26,6 +26,9 @@ import { EuringCodeIdentifierComponent } from './components/attributes/euring-co
 import { MetalRingInformationComponent } from './components/attributes/metal-ring-information/metal-ring-information.component';
 import { FatScoreComponent } from './components/attributes/fat-score/fat-score.component';
 import { ManipulatedComponent } from './components/attributes/manipulated/manipulated.component';
+import { MoultComponent } from './components/attributes/moult/moult.component';
+import { MovedBeforeTheEncounterComponent } from './components/attributes/moved-before-the-encounter/moved-before-the-encounter.component';
+import { OtherMarksInformationComponent } from './components/attributes/other-marks-information/other-marks-information.component';
 
 export const routes: Routes = [
   {
@@ -141,6 +144,21 @@ export const routes: Routes = [
   {
     path: 'metalRingInformation',
     component: MetalRingInformationComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'moult',
+    component: MoultComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'movedBeforeTheEncounter',
+    component: MovedBeforeTheEncounterComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'otherMarksInformation',
+    component: OtherMarksInformationComponent,
     canActivate: [authGuard]
   },
   {
