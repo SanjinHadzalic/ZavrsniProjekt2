@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap, throwError } from 'rxjs';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { ApplicationUser } from '../interfaces/application-user';
 
 @Injectable({
@@ -38,18 +38,27 @@ export class AuthService {
       return throwError(() => new Error('No refresh token found!'));
     }
 
-    const body = {
-      refreshToken: refreshToken,
-      expiredAccessToken: localStorage.getItem('jwtToken'),
-    };
+    const body = { token: refreshToken };
 
-    return this.http.post<any>(`${this.refreshToken}`, body).pipe(
-      tap((response) => {
-        if (response && response.tokens) {
-          localStorage.setItem('accessToken', response.tokens.accessToken);
-          localStorage.setItem('jwtToken', response.tokens.token);
-        }
-      })
-    );
-  }
-}
+    console.log('123')
+
+   
+
+    return this.http.post<any>(`${this.baseUrl}/refreshToken`, body)
+      .pipe(
+        tap((response) => {
+          if ( response.token) {
+            localStorage.setItem('accessToken', response.accessToken);
+            localStorage.setItem('jwtToken', response.token);
+          } else {
+            console.error('Invalid token response:', response);
+            localStorage.clear();  
+          }
+        }),
+        catchError((error) => {
+          console.error('Error during token refresh:', error);
+          localStorage.clear();
+          return throwError(error);
+        })
+      );
+  }}

@@ -40,7 +40,8 @@ public class SecurityConfiguration {
                         .requestMatchers("/accuracyOfCoordinates/**", "/accuracyOfDate/**",
                                 "/accuracyOfPullusAge/**", "/age/**", "/alula/**", "/billMethod/**", "/broodPatch/**",
                                 "/broodSize/**", "/carpalCovert/**", "/catchingLures/**", "/catchingMethods/**",
-                                "/circumstancesPresumed/**", "/circumstances/**", "/euring_code_identifier/**").hasAnyRole(ROLE_USER)
+                                "/circumstancesPresumed/**", "/circumstances/**", "/euring_code_identifier/**",
+                                "/fatScore/**", "/manipulated/**").hasAnyRole(ROLE_USER)
                         .requestMatchers("/bugtracking/**").authenticated()
                         .requestMatchers("/h2-console/**").permitAll())
                 .authenticationProvider(authenticationProvider())

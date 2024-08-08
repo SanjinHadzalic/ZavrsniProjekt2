@@ -9,17 +9,18 @@ import { AuthService } from '../services/auth.service';
 
 export const refreshInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
-  const jwtToken = localStorage.getItem('token');
+  const jwtToken = localStorage.getItem('jwtToken');
+  const accessToken = localStorage.getItem('accessToken')
 
   if (jwtToken) {
     const authReq = req.clone({
-      headers: req.headers.set('Authorization', `Bearer ${jwtToken}`)
+      headers: req.headers.set('Authorization', `Bearer ${accessToken}`)
     });
 
     return next(authReq).pipe(
       catchError((error: HttpErrorResponse) => {
+        // authService.refreshToken()
         if (error.status === 401 || error.status === 403) {
-          // Token might be expired, try to refresh it
           return authService.refreshToken().pipe(
             switchMap((tokenResponse: any) => {
               localStorage.setItem('accessToken', tokenResponse.tokens.accessToken);

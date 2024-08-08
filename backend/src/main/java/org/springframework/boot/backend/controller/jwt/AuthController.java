@@ -34,10 +34,8 @@ public class AuthController {
 
     @PostMapping("/api/v1/login")
     public JwtResponseDTO authenticateAndGetToken(@RequestBody AuthRequestDTO authRequestDTO){
-        log.info("Ipsred authentification");
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequestDTO.getUsername(), authRequestDTO.getPassword()));
         if(authentication.isAuthenticated()){
-            log.info("Prosao if");
             ApplicationUser user = userDetailsService.findApplicationUserByUsername(authRequestDTO.getUsername()); // Fetch user
 
             RefreshToken refreshToken = refreshTokenService.createRefreshToken(authRequestDTO.getUsername());
@@ -52,6 +50,7 @@ public class AuthController {
 
     @PostMapping("/api/v1/refreshToken")
     public JwtResponseDTO refreshToken(@RequestBody RefreshTokenRequestDTO refreshTokenRequestDTO){
+        log.info("Inside refreshToken method");
         return refreshTokenService.findByToken(refreshTokenRequestDTO.getToken())
                 .map(refreshTokenService::verifyExpiration)
                 .map(RefreshToken::getUserInfo)
@@ -72,6 +71,6 @@ public class AuthController {
 
     @PostMapping("/api/v1/logout")
     public void logout() {
-        System.out.println("Logout...");
+        log.info("Logout...");
     }
 }
