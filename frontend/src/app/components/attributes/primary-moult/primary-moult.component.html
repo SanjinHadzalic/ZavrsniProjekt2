@@ -1,0 +1,23 @@
+<div class="container">
+    <h2 class="text-center">Primary Moults</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Code</th>
+                <th>Language</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let moult of primaryMoults">
+                <td>{{ moult.id }}</td>
+                <td>{{ moult.code }}</td>
+                <td>{{ moult.language }}</td>
+                <td>{{ moult.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <button (click)="return()" class="btn btn-info">Return</button>
+</div>

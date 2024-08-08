@@ -31,6 +31,9 @@ import { MovedBeforeTheEncounterComponent } from './components/attributes/moved-
 import { OtherMarksInformationComponent } from './components/attributes/other-marks-information/other-marks-information.component';
 import { PectoralMuscleScoreComponent } from './components/attributes/pectoral-muscle-score/pectoral-muscle-score.component';
 import { PlumageCodeComponent } from './components/attributes/plumage-code/plumage-code.component';
+import { PrimaryIdentificationMethodComponent } from './components/attributes/primary-identification-method/primary-identification-method.component';
+import { PrimaryMoultComponent } from './components/attributes/primary-moult/primary-moult.component';
+import { RingingSchemeComponent } from './components/attributes/ringing-scheme/ringing-scheme.component';
 
 export const routes: Routes = [
   {
@@ -171,6 +174,21 @@ export const routes: Routes = [
   {
     path: 'plumageCode',
     component: PlumageCodeComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'primaryIdentificationMethod',
+    component: PrimaryIdentificationMethodComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'primaryMoult',
+    component: PrimaryMoultComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'ringingScheme',
+    component: RingingSchemeComponent,
     canActivate: [authGuard]
   },
   {

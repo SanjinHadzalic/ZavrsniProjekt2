@@ -59,7 +59,10 @@ public class SecurityConfiguration {
                                 "/otherMarksInformation/**",
                                 "/pectoralMuscleScore/**",
                                 "/place/**",
-                                "/plumageCode/**"
+                                "/plumageCode/**",
+                                "/primaryIdentificationMethod/**",
+                                "/primaryMoult/**",
+                                "/ringingScheme/**"
                                 ).hasAnyRole(ROLE_USER)
                         .requestMatchers("/bugtracking/**").authenticated()
                         .requestMatchers("/h2-console/**").permitAll())

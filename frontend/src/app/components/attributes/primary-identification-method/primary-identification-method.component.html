@@ -1,0 +1,23 @@
+<div class="container">
+    <h2 class="text-center">Primary Identification Methods</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Code</th>
+                <th>Language</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let method of primaryIdentificationMethods">
+                <td>{{ method.id }}</td>
+                <td>{{ method.code }}</td>
+                <td>{{ method.language }}</td>
+                <td>{{ method.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <button (click)="return()" class="btn btn-info">Return</button>
+</div>
