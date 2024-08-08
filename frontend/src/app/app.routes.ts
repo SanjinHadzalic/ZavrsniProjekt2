@@ -38,6 +38,8 @@ import { SexComponent } from './components/attributes/sex/sex.component';
 import { SexingMethodComponent } from './components/attributes/sexing-method/sexing-method.component';
 import { StateOfWingPointComponent } from './components/attributes/state-of-wing-point/state-of-wing-point.component';
 import { StatusComponent } from './components/attributes/status/status.component';
+import { TarsusMethodComponent } from './components/attributes/tarsus-method/tarsus-method.component';
+import { VerificationOfTheMetalRingComponent } from './components/attributes/verification-of-the-metal-ring/verification-of-the-metal-ring.component';
 
 export const routes: Routes = [
   {
@@ -213,6 +215,16 @@ export const routes: Routes = [
   {
     path: 'status',
     component: StatusComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'tarsusMethod',
+    component: TarsusMethodComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'verificationOfTheMetalRing',
+    component: VerificationOfTheMetalRingComponent,
     canActivate: [authGuard]
   },
   {

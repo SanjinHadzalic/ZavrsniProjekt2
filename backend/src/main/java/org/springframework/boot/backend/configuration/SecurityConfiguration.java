@@ -66,7 +66,9 @@ public class SecurityConfiguration {
                                 "/sex/**",
                                 "/sexingMethod/**",
                                 "/stateOfWingPoint/**",
-                                "/status/**"
+                                "/status/**",
+                                "/tarsusMethod/**",
+                                "/verificationOfTheMetalRing/**"
                                 ).hasAnyRole(ROLE_USER)
                         .requestMatchers("/bugtracking/**").authenticated()
                         .requestMatchers("/h2-console/**").permitAll())
