@@ -23,6 +23,7 @@ import { CatchingMethodsComponent } from './components/attributes/catching-metho
 import { CircumstancesPresumedComponent } from './components/attributes/circumstances-presumed/circumstances-presumed.component';
 import { CircumstancesComponent } from './components/attributes/circumstances/circumstances.component';
 import { EuringCodeIdentifierComponent } from './components/attributes/euring-code-identifier/euring-code-identifier.component';
+import { MetalRingInformationComponent } from './components/attributes/metal-ring-information/metal-ring-information.component';
 import { FatScoreComponent } from './components/attributes/fat-score/fat-score.component';
 import { ManipulatedComponent } from './components/attributes/manipulated/manipulated.component';
 
@@ -135,6 +136,11 @@ export const routes: Routes = [
   {
     path: 'manipulated',
     component: ManipulatedComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'metalRingInformation',
+    component: MetalRingInformationComponent,
     canActivate: [authGuard]
   },
   {

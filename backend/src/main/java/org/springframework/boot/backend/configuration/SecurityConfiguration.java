@@ -41,7 +41,7 @@ public class SecurityConfiguration {
                                 "/accuracyOfPullusAge/**", "/age/**", "/alula/**", "/billMethod/**", "/broodPatch/**",
                                 "/broodSize/**", "/carpalCovert/**", "/catchingLures/**", "/catchingMethods/**",
                                 "/circumstancesPresumed/**", "/circumstances/**", "/euring_code_identifier/**",
-                                "/fatScore/**", "/manipulated/**").hasAnyRole(ROLE_USER)
+                                "/fatScore/**", "/manipulated/**", "/metalRingInformation/**").hasAnyRole(ROLE_USER)
                         .requestMatchers("/bugtracking/**").authenticated()
                         .requestMatchers("/h2-console/**").permitAll())
                 .authenticationProvider(authenticationProvider())
