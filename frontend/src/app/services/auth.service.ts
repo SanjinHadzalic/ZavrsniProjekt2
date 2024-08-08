@@ -42,7 +42,7 @@ export class AuthService {
 
     console.log('123')
 
-   
+
 
     return this.http.post<any>(`${this.baseUrl}/refreshToken`, body)
       .pipe(
@@ -52,7 +52,7 @@ export class AuthService {
             localStorage.setItem('jwtToken', response.token);
           } else {
             console.error('Invalid token response:', response);
-            localStorage.clear();  
+            localStorage.clear();
           }
         }),
         catchError((error) => {
