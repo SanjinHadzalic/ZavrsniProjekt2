@@ -1,5 +1,6 @@
 package org.springframework.boot.backend.controller.jwt;
 
+import jakarta.mail.MessagingException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.backend.dto.AuthRequestDTO;
@@ -17,6 +18,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("auth")
@@ -64,7 +67,7 @@ public class AuthController {
     }
 
     @PostMapping("/api/v1/register")
-    public ResponseEntity<RegisterRequestDTO> registerUser(@RequestBody RegisterRequestDTO registerRequestDTO) {
+    public ResponseEntity<RegisterRequestDTO> registerUser(@RequestBody RegisterRequestDTO registerRequestDTO) throws MessagingException, IOException {
         userDetailsService.registerNewUser(registerRequestDTO);
         return ResponseEntity.ofNullable(registerRequestDTO);
     }

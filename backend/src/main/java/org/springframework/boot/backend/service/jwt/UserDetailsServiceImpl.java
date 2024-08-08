@@ -1,11 +1,13 @@
 package org.springframework.boot.backend.service.jwt;
 
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.backend.dto.ApplicationUserDTO;
 import org.springframework.boot.backend.dto.RegisterRequestDTO;
 import org.springframework.boot.backend.entity.user.ApplicationUser;
 import org.springframework.boot.backend.entity.user.UserRole;
 import org.springframework.boot.backend.repository.jwt.UserRepository;
+import org.springframework.boot.backend.service.EmailService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,6 +15,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +24,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     private UserRepository repository;
+    @Autowired
+    private EmailService emailService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -48,7 +53,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 .build();
     }
 
-    public ApplicationUser registerNewUser(RegisterRequestDTO userDto) {
+    public ApplicationUser registerNewUser(RegisterRequestDTO userDto) throws MessagingException, IOException {
         if (repository.existsByUsernameOrEmail(userDto.getUsername(), userDto.getEmail())) {
             throw new RuntimeException("User already exists by username or email: " + userDto.getUsername() + " " + userDto.getEmail());
         }
@@ -64,6 +69,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         newUser.setFirstname(userDto.getFirstname());
         newUser.setLastname(userDto.getLastname());
         newUser.setEmail(userDto.getEmail());
+
+        emailService.sendHtmlEmail(newUser, "Successful registration");
 
         return repository.save(newUser);
     }
