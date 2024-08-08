@@ -1,0 +1,23 @@
+<div class="container mt-5">
+    <h2>Pectoral Muscle Scores</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Code</th>
+          <th>Language</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let score of pectoralMuscleScores">
+          <td>{{ score.id }}</td>
+          <td>{{ score.code }}</td>
+          <td>{{ score.language }}</td>
+          <td>{{ score.description }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="goBack()">Back to Attributes</button>
+  </div>
+  

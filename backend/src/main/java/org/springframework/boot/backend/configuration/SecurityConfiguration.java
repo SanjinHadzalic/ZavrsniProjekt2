@@ -56,7 +56,9 @@ public class SecurityConfiguration {
                                 "/metalRingInformation/**",
                                 "/moult/**",
                                 "/movedBeforeTheEncounter/**",
-                                "/otherMarksInformation/**"
+                                "/otherMarksInformation/**",
+                                "/pectoralMuscleScore/**",
+                                "/place/**"
                                 ).hasAnyRole(ROLE_USER)
                         .requestMatchers("/bugtracking/**").authenticated()
                         .requestMatchers("/h2-console/**").permitAll())

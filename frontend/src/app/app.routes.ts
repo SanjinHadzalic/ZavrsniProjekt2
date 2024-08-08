@@ -29,6 +29,7 @@ import { ManipulatedComponent } from './components/attributes/manipulated/manipu
 import { MoultComponent } from './components/attributes/moult/moult.component';
 import { MovedBeforeTheEncounterComponent } from './components/attributes/moved-before-the-encounter/moved-before-the-encounter.component';
 import { OtherMarksInformationComponent } from './components/attributes/other-marks-information/other-marks-information.component';
+import { PectoralMuscleScoreComponent } from './components/attributes/pectoral-muscle-score/pectoral-muscle-score.component';
 
 export const routes: Routes = [
   {
@@ -159,6 +160,11 @@ export const routes: Routes = [
   {
     path: 'otherMarksInformation',
     component: OtherMarksInformationComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'pectoralMuscleScore',
+    component: PectoralMuscleScoreComponent,
     canActivate: [authGuard]
   },
   {
