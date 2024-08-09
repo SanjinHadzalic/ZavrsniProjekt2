@@ -8,6 +8,6 @@ import { refreshInterceptor } from './interceptors/refresh.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), provideHttpClient(), 
-    provideHttpClient(withInterceptors([authInterceptor/*, refreshInterceptor*/]))
+    provideHttpClient(withInterceptors([authInterceptor,refreshInterceptor]))
   ]
 };

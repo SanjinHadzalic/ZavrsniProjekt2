@@ -26,6 +26,20 @@ public class RingCodeController {
         return ringCodeService.getAllRingCodes();
     }
 
+    @GetMapping("/user/{username}/email/{email}")
+    public ResponseEntity<List<RingCode>> getAllRingCodesByUsernameAndEmail(
+            @PathVariable String username,
+            @PathVariable String email) {
+
+        List<RingCode> ringCodes = ringCodeService.getAllRingCodeByUsernameAndEmail(username, email);
+
+        if (ringCodes.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(ringCodes);
+    }
+
     @GetMapping("/{id}")
     public Optional<RingCode> getRingCodeById(@PathVariable Long id) {
         log.info("Called method getRingCodeById() with id= " + id);
@@ -33,10 +47,10 @@ public class RingCodeController {
     }
 
     @PostMapping("/generate")
-    public List<RingCode> generateRingCodes(@RequestParam String code,
-                                            @RequestParam Integer range,
-                                            @RequestParam String starter) {
-        return ringCodeService.generateNewRingCode(code, range, starter);
+    public List<RingCode> generateNewRingCode(@RequestParam String username,
+                                              @RequestParam String code,
+                                              @RequestParam Integer range) {
+        return ringCodeService.generateNewRingCode(username, code, range);
     }
 
     @PutMapping("/{id}")

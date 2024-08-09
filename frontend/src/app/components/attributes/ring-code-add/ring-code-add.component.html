@@ -1,0 +1,26 @@
+<div class="container mt-4">
+    <h2>Add New Ring Code</h2>
+    <form (ngSubmit)="onSubmit()" #ringCodeForm="ngForm">      
+      <div class="form-group">
+        <label for="code">Code</label>
+        <input type="text" class="form-control" id="code" required [(ngModel)]="code" name="code">
+      </div>
+      
+      <div class="form-group">
+        <label for="range">Range</label>
+        <select class="form-control" id="range" required [(ngModel)]="range" name="range">
+          <option value="" disabled selected>Select range</option>
+          <option *ngFor="let option of rangeOptions" [value]="option">{{ option }}</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="starter">Starter</label>
+        <input type="text" class="form-control" id="starter" required [(ngModel)]="starter" name="starter">
+      </div>
+      
+      <button type="submit" class="btn btn-primary mt-3" [disabled]="!ringCodeForm.form.valid">Generate Ring Code</button>
+    </form>
+  
+    <button class="btn btn-secondary mt-3" (click)="navigateBack()">Back</button>
+</div>

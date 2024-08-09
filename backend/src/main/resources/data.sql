@@ -213,10 +213,10 @@ VALUES
 
 INSERT INTO ring_code (code, user_id)
 VALUES
-    ('R001', 1),
-    ('R002', 1),
-    ('R003', 2),
-    ('R004', 2);
+    ('BJ001', 1),
+    ('BJ002', 1),
+    ('BJ003', 2),
+    ('BJ004', 2);
 
 INSERT INTO sex (code, language, description) VALUES
   ('M', 'en', 'Male'),

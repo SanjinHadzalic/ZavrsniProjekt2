@@ -1,0 +1,26 @@
+<div class="container mt-4">
+    <h2>Ring Codes</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>User</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ringCode of ringCodes">
+          <td>{{ ringCode.code }}</td>
+          <td>{{ ringCode.appUser.username }}</td>
+          <td>{{ ringCode.appUser.email }}</td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="deleteRingCode(ringCode.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+      <button class="btn btn-primary" (click)="addNewRingCodes()">Add new</button>
+    </table>
+    <button class="btn btn-primary" (click)="navigateBack()">Back to Attributes</button>
+  </div>
+  

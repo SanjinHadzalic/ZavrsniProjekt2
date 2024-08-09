@@ -5,6 +5,7 @@ import org.springframework.boot.backend.entity.command.RingCodeCommand;
 import org.springframework.boot.backend.entity.input.RingCode;
 import org.springframework.boot.backend.entity.user.ApplicationUser;
 import org.springframework.boot.backend.repository.input.RingCodeRepository;
+import org.springframework.boot.backend.service.jwt.UserDetailsServiceImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,10 +18,16 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class RingCodeServiceImpl implements RingCodeService {
     private RingCodeRepository ringCodeRepository;
+    private UserDetailsServiceImpl userDetailsService;
 
     @Override
     public List<RingCode> getAllRingCodes() {
         return ringCodeRepository.findAll();
+    }
+
+    @Override
+    public List<RingCode> getAllRingCodeByUsernameAndEmail(String username, String email) {
+        return ringCodeRepository.getRingCodesByAppUser_UsernameAndAppUser_Email(username, email);
     }
 
     @Override
@@ -29,34 +36,47 @@ public class RingCodeServiceImpl implements RingCodeService {
     }
 
     @Override
-    public List<RingCode> generateNewRingCode(String code, Integer range, String starter) {
-        ApplicationUser appUser = new ApplicationUser(); // TODO treba dohvacati Usera iz JWOT tokena
-        appUser.setId(1L);
-        // provjeriti postoji li jedan od kodova u seriji vec u tablici "ring_code"
-        List<RingCode> exisitingRingCodes = getAllRingCodes();
-        Set<String> existingCodes = exisitingRingCodes.stream()
+    public List<RingCode> generateNewRingCode(String username, String code, Integer range) {
+        ApplicationUser appUser = userDetailsService.findApplicationUserByUsername(username);
+
+        List<RingCode> existingRingCodes = getAllRingCodes();
+        Set<String> existingCodes = existingRingCodes.stream()
                 .map(RingCode::getCode)
                 .collect(Collectors.toSet());
 
         List<RingCode> newCodes = new ArrayList<>();
         List<String> duplicateCodes = new ArrayList<>();
+
+        Optional<String> latestRingCode = existingRingCodes.stream()
+                .map(RingCode::getCode)
+                .filter(c -> c.startsWith(code))
+                .reduce((first, second) -> first.compareTo(second) > 0 ? first : second);
+
+        // Determine the starting number for new ring codes
+        int startNumber = 0;  // Default starting number if no existing codes found
+        if (latestRingCode.isPresent()) {
+            String latestCode = latestRingCode.get();
+            // Extract the numeric part of the latest code
+            String numberPart = latestCode.substring(2); // Assuming the first character is "R"
+            startNumber = Integer.parseInt(numberPart); // Convert to integer
+        }
+
+        // Generate new ring codes based on the latest code
         for (int i = 1; i <= range; i++) {
             RingCode newRingCode = new RingCode();
-            String newCode = String.format("%s%03d", starter, i);
+            String newCode = String.format("R%03d", startNumber + i); // Start from the latest number + i
             newRingCode.setCode(newCode);
             newRingCode.setAppUser(appUser);
             if (!existingCodes.contains(newCode)) {
                 newCodes.add(newRingCode);
             } else {
                 duplicateCodes.add(newCode);
-                System.out.println("Code already exists " + duplicateCodes);
+                System.out.println("Code already exists: " + duplicateCodes);
             }
         }
 
-
         return ringCodeRepository.saveAll(newCodes);
     }
-
     @Override
     public RingCode updateRingCode(Long id, RingCodeCommand toBeUpdated) {
         Optional<RingCode> existingRingCodeOpt = ringCodeRepository.findById(id);

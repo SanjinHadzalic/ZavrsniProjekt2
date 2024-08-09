@@ -8,8 +8,9 @@ import java.util.Optional;
 
 public interface RingCodeService {
     List<RingCode> getAllRingCodes();
+    List<RingCode> getAllRingCodeByUsernameAndEmail(String username, String email);
     Optional<RingCode> getRingCodeById(Long id);
-    List<RingCode> generateNewRingCode(String code, Integer range, String starter);
+    List<RingCode> generateNewRingCode(String username, String code, Integer range);
     RingCode updateRingCode(Long id, RingCodeCommand toBeUpdated);
     void deleteRingCodeById(Long id);
 }

@@ -9,6 +9,7 @@ import org.springframework.boot.backend.entity.command.RingCodeCommand;
 import org.springframework.boot.backend.entity.input.RingCode;
 import org.springframework.boot.backend.entity.user.ApplicationUser;
 import org.springframework.boot.backend.repository.input.RingCodeRepository;
+import org.springframework.boot.backend.service.jwt.UserDetailsServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,8 @@ import static org.mockito.Mockito.*;
 class RingCodeServiceImplTest {
     @Mock
     private RingCodeRepository ringCodeRepository;
-
+    @Mock
+    private UserDetailsServiceImpl userDetailsService;
     @InjectMocks
     private RingCodeServiceImpl ringCodeService;
 
@@ -69,19 +71,41 @@ class RingCodeServiceImplTest {
 
     @Test
     public void GenerateNewRingCode_Valid_ReturnsNewObject() {
+        String username = "testUser";
+        String starter = "BJ";
+        int range = 5;
+        String codePrefix = "BJ";
+
+        ApplicationUser appUser = new ApplicationUser();
+        appUser.setUsername(username);
+
         List<RingCode> existingRingCodes = new ArrayList<>();
+        RingCode existingRingCode1 = new RingCode();
+        existingRingCode1.setCode("BJ001");
+        existingRingCodes.add(existingRingCode1);
+
+        RingCode existingRingCode2 = new RingCode();
+        existingRingCode2.setCode("BJ002");
+        existingRingCodes.add(existingRingCode2);
+
+        when(userDetailsService.findApplicationUserByUsername(username)).thenReturn(appUser);
+
         when(ringCodeRepository.findAll()).thenReturn(existingRingCodes);
         when(ringCodeRepository.saveAll(any())).thenAnswer(i -> i.getArguments()[0]);
 
-        List<RingCode> result = ringCodeService.generateNewRingCode("BJ", 5, "BJ");
+        List<RingCode> result = ringCodeService.generateNewRingCode(username, codePrefix, range);
 
-        assertEquals(5, result.size());
-        assertEquals("BJ001", result.get(0).getCode());
-        assertEquals("BJ005", result.get(4).getCode());
+        assertEquals(3, result.size());
+
+        assertEquals("BJ003", result.get(0).getCode());
+        assertEquals("BJ004", result.get(1).getCode());
+        assertEquals("BJ005", result.get(2).getCode());
+
+        result.forEach(ringCode -> assertEquals(username, ringCode.getAppUser().getUsername()));
+
         verify(ringCodeRepository, times(1)).findAll();
         verify(ringCodeRepository, times(1)).saveAll(any());
     }
-
     @Test
     public void UpdateRingCode_Valid_ReturnsUpdatedObject() {
         RingCode existingRingCode = new RingCode();

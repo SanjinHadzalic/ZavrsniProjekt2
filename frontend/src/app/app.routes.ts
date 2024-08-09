@@ -41,6 +41,8 @@ import { StatusComponent } from './components/attributes/status/status.component
 import { TarsusMethodComponent } from './components/attributes/tarsus-method/tarsus-method.component';
 import { VerificationOfTheMetalRingComponent } from './components/attributes/verification-of-the-metal-ring/verification-of-the-metal-ring.component';
 import { PlaceAddComponent } from './components/attributes/place-add/place-add.component';
+import { RingCodeComponent } from './components/attributes/ring-code/ring-code.component';
+import { AddRingCodeComponent } from './components/attributes/ring-code-add/ring-code-add.component';
 
 export const routes: Routes = [
   {
@@ -231,6 +233,16 @@ export const routes: Routes = [
   {
     path: 'verificationOfTheMetalRing',
     component: VerificationOfTheMetalRingComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'ringCode',
+    component: RingCodeComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'ringCodeAdd',
+    component: AddRingCodeComponent,
     canActivate: [authGuard]
   },
   {
