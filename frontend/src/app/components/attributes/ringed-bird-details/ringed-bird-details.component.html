@@ -1,0 +1,71 @@
+<div *ngIf="ringedBird" class="container mt-4">
+    <h2>Details for Ringed Bird: {{ ringedBird.ringCode.code }}</h2>
+  
+    <table class="table table-bordered mt-3">
+      <tr>
+        <th>Species</th>
+        <td>{{ ringedBird.species.commonName }}</td>
+      </tr>
+      <tr>
+        <th>Ring Code</th>
+        <td>{{ ringedBird.ringCode.code }}</td>
+      </tr>
+      <tr>
+        <th>Date</th>
+        <td>{{ ringedBird.date }}</td>
+      </tr>
+      <tr>
+        <th>Place Code</th>
+        <td>{{ ringedBird.placeCode.name }}</td>
+      </tr>
+      <tr>
+        <th>Remarks</th>
+        <td>{{ ringedBird.remarks }}</td>
+      </tr>
+      <tr>
+        <th>Reference</th>
+        <td>{{ ringedBird.reference }}</td>
+      </tr>
+    </table>
+  
+    <button class="btn btn-warning mt-3" (click)="toggleEditForm()">Edit</button>
+    <button class="btn btn-secondary mt-3 ml-2" (click)="goBack()">Back</button>
+  
+    <div *ngIf="editMode" class="mt-4">
+      <h3>Edit Ringed Bird</h3>
+      <form (ngSubmit)="onSubmit()" #ringedBirdForm="ngForm">
+        <div class="form-group">
+          <label for="species">Species</label>
+          <input type="text" class="form-control" id="species" [(ngModel)]="ringedBird.species" name="species" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="ringCode">Ring Code</label>
+          <input type="text" class="form-control" id="ringCode" [(ngModel)]="ringedBird.ringCode" name="ringCode" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input type="date" class="form-control" id="date" [(ngModel)]="ringedBird.date" name="date" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="placeCode">Place Code</label>
+          <input type="text" class="form-control" id="placeCode" [(ngModel)]="ringedBird.placeCode" name="placeCode" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="remarks">Remarks</label>
+          <textarea class="form-control" id="remarks" [(ngModel)]="ringedBird.remarks" name="remarks"></textarea>
+        </div>
+  
+        <div class="form-group">
+          <label for="reference">Reference</label>
+          <input type="text" class="form-control" id="reference" [(ngModel)]="ringedBird.reference" name="reference">
+        </div>
+  
+        <button type="submit" class="btn btn-primary mt-3" [disabled]="!ringedBirdForm.form.valid">Save Changes</button>
+      </form>
+    </div>
+  </div>
+  

@@ -43,6 +43,8 @@ import { VerificationOfTheMetalRingComponent } from './components/attributes/ver
 import { PlaceAddComponent } from './components/attributes/place-add/place-add.component';
 import { RingCodeComponent } from './components/attributes/ring-code/ring-code.component';
 import { AddRingCodeComponent } from './components/attributes/ring-code-add/ring-code-add.component';
+import { RingedBirdComponent } from './components/attributes/ringed-bird/ringed-bird.component';
+import { RingedBirdDetailComponent } from './components/attributes/ringed-bird-details/ringed-bird-details.component';
 
 export const routes: Routes = [
   {
@@ -243,6 +245,16 @@ export const routes: Routes = [
   {
     path: 'ringCodeAdd',
     component: AddRingCodeComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'ringedBird',
+    component: RingedBirdComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'ringedBird/:id',
+    component: RingedBirdDetailComponent,
     canActivate: [authGuard]
   },
   {

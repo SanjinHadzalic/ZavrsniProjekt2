@@ -1,0 +1,29 @@
+<div class="container mt-4">
+    <h2>Ringed Birds</h2>
+    <p class="information">Click on specific row to see details</p>
+    <table class="table table-bordered table-hover mt-3">
+      <thead class="thead-light">
+        <tr>
+          <th>ID</th>
+          <th>Species</th>
+          <th>Ring Code</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bird of ringedBirds" (click)="goToDetails(bird.id)" style="cursor: pointer;">
+          <td>{{ bird.id }}</td>
+          <td>{{ bird.species.commonName }}</td>
+          <td>{{ bird.ringCode.code }}</td>
+          <td>{{ bird.date }}</td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="onDelete(bird.id); $event.stopPropagation();">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <button class="btn btn-secondary mt-3" (click)="return()">Back</button>
+  </div>
+  
