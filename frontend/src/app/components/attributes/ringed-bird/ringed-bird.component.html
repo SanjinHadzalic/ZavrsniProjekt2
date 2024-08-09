@@ -1,29 +1,139 @@
 <div class="container mt-4">
-    <h2>Ringed Birds</h2>
-    <p class="information">Click on specific row to see details</p>
-    <table class="table table-bordered table-hover mt-3">
-      <thead class="thead-light">
-        <tr>
-          <th>ID</th>
-          <th>Species</th>
-          <th>Ring Code</th>
-          <th>Date</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let bird of ringedBirds" (click)="goToDetails(bird.id)" style="cursor: pointer;">
-          <td>{{ bird.id }}</td>
-          <td>{{ bird.species.commonName }}</td>
-          <td>{{ bird.ringCode.code }}</td>
-          <td>{{ bird.date }}</td>
-          <td>
-            <button class="btn btn-danger btn-sm" (click)="onDelete(bird.id); $event.stopPropagation();">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <h2>Ringed Birds</h2>
+  <p class="information">Click on a specific row to see details</p>
   
-    <button class="btn btn-secondary mt-3" (click)="return()">Back</button>
+  <!-- Button to toggle the add form -->
+  <button class="btn btn-primary mb-3" (click)="toggleAddForm()">Add New Ringed Bird</button>
+
+  <!-- Add new Ringed Bird form -->
+  <div *ngIf="showAddForm" class="card card-body mb-4">
+    <h4>Add New Ringed Bird</h4>
+    <form (ngSubmit)="addRingedBird()">
+      <div class="form-group">
+        <label for="species">Species</label>
+        <select id="species" [(ngModel)]="newRingedBird.species" name="species" class="form-control" required>
+          <option *ngFor="let bird of species" [ngValue]="bird">{{ bird.commonName }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="ringCode">Ring Code</label>
+        <select id="ringCodes" [(ngModel)]="newRingedBird.ringCode" name="ringCodes" class="form-control" required>
+          <option *ngFor="let ring of ringCodes" [ngValue]="ring">{{ ring.code }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="age">Age</label>
+        <select id="age" [(ngModel)]="newRingedBird.age" name="age" class="form-control" required>
+          <option *ngFor="let a of age" [ngValue]="a">{{ a.description }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="ringingScheme">Ringing Scheme</label>
+        <select id="ringingScheme" [(ngModel)]="newRingedBird.ringingScheme" name="ringingScheme" class="form-control" required>
+          <option *ngFor="let rs of ringingSchemes" [ngValue]="rs">{{ rs.code }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="sex">Sex</label>
+        <select id="sex" [(ngModel)]="newRingedBird.sex" name="sex" class="form-control" required>
+          <option *ngFor="let s of sex" [ngValue]="s">{{ s.code }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="euring">EURING Code identifier</label>
+        <select id="euring" [(ngModel)]="newRingedBird.euringCodeIdentifier" name="euring" class="form-control" required>
+          <option *ngFor="let e of eurings" [ngValue]="e">{{ e.code }}</option>
+        </select>
+      </div>
+
+
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select id="status" [(ngModel)]="newRingedBird.status" name="status" class="form-control" required>
+          <option *ngFor="let s of status" [ngValue]="s">{{ s.code }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="place">Place</label>
+        <select id="place" [(ngModel)]="newRingedBird.placeCode" name="place" class="form-control" required>
+          <option *ngFor="let p of places" [ngValue]="p">{{ p.name }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="metalRingInfo">Metal Ring Information</label>
+        <select id="metalRingInfo" [(ngModel)]="newRingedBird.metalRingInformation" name="metalRingInfo" class="form-control" required>
+          <option *ngFor="let m of metalRingInfo" [ngValue]="m">{{ m.code }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="primaryIdentification">Primary Identification Method</label>
+        <select id="primaryIdentification" [(ngModel)]="newRingedBird.primaryIdentificationMethod" name="primaryIdentification" class="form-control" required>
+          <option *ngFor="let pim of primaryIdentification" [ngValue]="pim">{{ pim.code }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="catchingLure">Catching lure</label>
+        <select id="catchingLure" [(ngModel)]="newRingedBird.catchingLures" name="catchingLure" class="form-control" required>
+          <option *ngFor="let cl of catchingLure" [ngValue]="cl">{{ cl.code }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="broodSize">Brood size</label>
+        <select id="broodSize" [(ngModel)]="newRingedBird.broodSize" name="broodSize" class="form-control" required>
+          <option *ngFor="let bs of broodSize" [ngValue]="bs">{{ bs.code }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="catchingMethod">Catching methods</label>
+        <select id="catchingMethod" [(ngModel)]="newRingedBird.catchingMethods" name="catchingMethod" class="form-control" required>
+          <option *ngFor="let cm of catchingMethod" [ngValue]="cm">{{ cm.code }}</option>
+        </select>
+      </div>
+
+
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" id="date" [(ngModel)]="newRingedBird.date" name="date" class="form-control" required>
+      </div>
+
+      <button type="submit" class="btn btn-success">Save</button>
+      <button type="button" class="btn btn-secondary ml-2" (click)="toggleAddForm()">Cancel</button>
+    </form>
   </div>
-  
+
+  <table class="table table-bordered table-hover mt-3">
+    <thead class="thead-light">
+      <tr>
+        <th>ID</th>
+        <th>Species</th>
+        <th>Ring Code</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bird of ringedBirds" (click)="goToDetails(bird.id)" style="cursor: pointer;">
+        <td>{{ bird.id }}</td>
+        <td>{{ bird.species.commonName }}</td>
+        <td>{{ bird.ringCode.code }}</td>
+        <td>{{ bird.date }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="onDelete(bird.id); $event.stopPropagation();">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-secondary mt-3" (click)="return()">Back</button>
+</div>

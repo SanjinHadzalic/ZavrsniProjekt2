@@ -39,6 +39,15 @@ public class RingedBirdController {
         return ResponseEntity.ok(ringedBirds);
     }
 
+    @GetMapping("/user/{username}")
+    public ResponseEntity<List<RingedBird>> getAllRingedBirdOfUser(@PathVariable String username) {
+        List<RingedBird> ringedBirdsByUser = ringedBirdService.getAllRingedBirdOfUser(username);
+        log.info("Called method getAllRingedBirdOfUser() with username= " + username + ", list.size() is= " + ringedBirdsByUser.size());
+
+
+        return ResponseEntity.ok(ringedBirdsByUser);
+    }
+
     @PostMapping
     public RingedBird createRingedBird(@Valid @RequestBody RingedBirdCommand ringedBirdCommand) {
         return ringedBirdService.createNewRingedBird(ringedBirdCommand);

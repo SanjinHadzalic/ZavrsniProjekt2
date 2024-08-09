@@ -3,6 +3,7 @@ package org.springframework.boot.backend.service.input;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.backend.entity.command.RingCodeCommand;
 import org.springframework.boot.backend.entity.input.RingCode;
+import org.springframework.boot.backend.entity.input.RingedBird;
 import org.springframework.boot.backend.entity.user.ApplicationUser;
 import org.springframework.boot.backend.repository.input.RingCodeRepository;
 import org.springframework.boot.backend.service.jwt.UserDetailsServiceImpl;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class RingCodeServiceImpl implements RingCodeService {
     private RingCodeRepository ringCodeRepository;
+    private RingedBirdService ringedBirdService;
     private UserDetailsServiceImpl userDetailsService;
 
     @Override
@@ -28,6 +30,24 @@ public class RingCodeServiceImpl implements RingCodeService {
     @Override
     public List<RingCode> getAllRingCodeByUsernameAndEmail(String username, String email) {
         return ringCodeRepository.getRingCodesByAppUser_UsernameAndAppUser_Email(username, email);
+    }
+
+    @Override
+    public List<RingCode> getAllAvailableRingCodes() {
+        List<RingCode> allRingCodes = ringCodeRepository.findAll();
+        List<RingedBird> allRingedBirds = ringedBirdService.getAllRingedBird();
+
+        // Get the RingCodes that are already used in RingedBirds
+        List<String> usedRingCodes = allRingedBirds.stream()
+                .map(ringedBird -> ringedBird.getRingCode().getCode())
+                .collect(Collectors.toList());
+
+        // Filter the RingCodes that are not in usedRingCodes
+        List<RingCode> availableRingCodes = allRingCodes.stream()
+                .filter(ringCode -> !usedRingCodes.contains(ringCode.getCode()))
+                .collect(Collectors.toList());
+
+        return availableRingCodes;
     }
 
     @Override

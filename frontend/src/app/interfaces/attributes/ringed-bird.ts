@@ -31,6 +31,8 @@ import { PrimaryMoult } from "./primary-moult";
 import { Alula } from "./alula";
 import { CarpalCovert } from "./carpal-covert";
 import { SexingMethod } from "./sexing-method";
+import { PullusAge } from "./pullus-age";
+import { Condition } from "./condition";
 
 export interface RingedBird {
     id: number;
@@ -49,13 +51,13 @@ export interface RingedBird {
     age: Age;
     status: Status;
     broodSize: BroodSize; 
-    pullusAge: any; // napraviti PullusAge
+    pullusAge: PullusAge; 
     accuracyOfPullusAge: AccuracyOfPullusAge;
     date: Date;
     accuracyOfDate: AccuracyOfDate;
     time: Time;
     placeCode: Place;
-    condition: any; // napraviti Condition
+    condition: Condition; 
     circumstances: Circumstances;
     euringCodeIdentifier: EuringCodeIdentifier;
     derivedDataDistance: string;
@@ -76,7 +78,7 @@ export interface RingedBird {
     tailLength: number;
     tailDifference: number;
     fatScore: FatScore;
-    fatScoreMethod: any; // nedostaje fatScoreMethod
+    fatScoreMethod: string; // ETF 
     pectoralMuscleScore: PectoralMuscleScore;
     broodPatch: BroodPatch;
     primaryMoult: PrimaryMoult;

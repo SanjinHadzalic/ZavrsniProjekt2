@@ -9,6 +9,7 @@ import java.util.Optional;
 public interface RingCodeService {
     List<RingCode> getAllRingCodes();
     List<RingCode> getAllRingCodeByUsernameAndEmail(String username, String email);
+    List<RingCode> getAllAvailableRingCodes();
     Optional<RingCode> getRingCodeById(Long id);
     List<RingCode> generateNewRingCode(String username, String code, Integer range);
     RingCode updateRingCode(Long id, RingCodeCommand toBeUpdated);

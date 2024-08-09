@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -21,6 +22,18 @@ public class RingedBirdServiceImpl implements RingedBirdService{
     @Override
     public List<RingedBird> getAllRingedBirdByCode(String code) {
         return ringedBirdRepository.findAllByRingCode_Code(code);
+    }
+
+    @Override
+    public List<RingedBird> getAllRingedBirdOfUser(String username) {
+        List<RingedBird> allRingedBirds = ringedBirdRepository.findAll();
+        List<RingedBird> ringedBirdsByUser = allRingedBirds.stream()
+                .filter(ringedBird -> ringedBird.getRingCode() != null &&
+                        ringedBird.getRingCode().getAppUser() != null &&
+                        username.equals(ringedBird.getRingCode().getAppUser().getUsername()))
+                .collect(Collectors.toList());
+
+        return ringedBirdsByUser;
     }
 
     @Override

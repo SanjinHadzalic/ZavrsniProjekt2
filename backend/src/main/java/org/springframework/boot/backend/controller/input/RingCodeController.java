@@ -46,6 +46,11 @@ public class RingCodeController {
         return ringCodeService.getRingCodeById(id);
     }
 
+    @GetMapping("/available")
+    public List<RingCode> getAllAvailableRingCodes(){
+        return ringCodeService.getAllAvailableRingCodes();
+    }
+
     @PostMapping("/generate")
     public List<RingCode> generateNewRingCode(@RequestParam String username,
                                               @RequestParam String code,

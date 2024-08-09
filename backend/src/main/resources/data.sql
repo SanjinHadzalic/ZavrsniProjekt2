@@ -272,6 +272,6 @@ VALUES ('0', 'en', 'Ring not verified by the scheme'),
 INSERT INTO ringed_bird (ringing_scheme_id, primary_identification_method_id, ring_code_id, species_id, place_code_id, date, time,
                          remarks, reference)
 VALUES (1, 1, 1, 1, 1, '2024-01-01', '12:00', 'Initial ringed bird record', null),
-       (1, 1, 2, 1, 1, '2024-01-01', '12:00', 'Initial ringed bird record', null),
-       (1, 1, 3, 1, 1, '2024-01-01', '12:00', 'Initial ringed bird record', null),
-       (1, 1, 1, 1, 1, '2024-01-01', '12:00', 'Initial ringed bird record', 'R001');
+       (1, 1, 2, 2, 1, '2024-01-01', '12:00', 'Initial ringed bird record', null),
+       (1, 1, 3, 3, 2, '2024-01-01', '12:00', 'Initial ringed bird record', null),
+       (1, 1, 1, 4, 2, '2024-01-01', '12:00', 'Initial ringed bird record', 'BJ001');

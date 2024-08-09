@@ -1,0 +1,25 @@
+<div class="container mt-4">
+    <h2>Conditions</h2>
+  
+    <table class="table table-bordered table-hover mt-3">
+      <thead class="thead-light">
+        <tr>
+          <th>ID</th>
+          <th>Code</th>
+          <th>Language</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let condition of conditions" (click)="viewDetails(condition.id)" style="cursor: pointer;">
+          <td>{{ condition.id }}</td>
+          <td>{{ condition.code }}</td>
+          <td>{{ condition.language }}</td>
+          <td>{{ condition.description }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <button class="btn btn-secondary mt-3" (click)="return()">Back to Attributes</button>
+  </div>
+  

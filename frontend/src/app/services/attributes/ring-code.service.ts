@@ -19,6 +19,10 @@ export class RingCodeService {
     return this.http.get<RingCode[]>(`${this.baseUrl}/user/${username}/email/${email}`);
   }
 
+  getAllAvailableRingCodes(): Observable<RingCode[]> {
+    return this.http.get<RingCode[]>(`${this.baseUrl}/available`)
+  }
+
   getRingCodeById(id: number): Observable<RingCode> {
     return this.http.get<RingCode>(`${this.baseUrl}/${id}`);
   }

@@ -19,8 +19,12 @@ export class RingedBirdService {
     return this.http.get<RingedBird>(`${this.apiUrl}/${id}`);
   }
 
+  getAllRingedBirdsByUser(username: string): Observable<RingedBird[]> {
+    return this.http.get<RingedBird[]>(`${this.apiUrl}/user/${username}`);
+  }
+
   createRingedBird(ringedBird: RingedBird): Observable<RingedBird> {
-    return this.http.post<RingedBird>(this.apiUrl, ringedBird);
+    return this.http.post<RingedBird>(`${this.apiUrl}`, ringedBird);
   }
 
   updateRingedBird(id: number, ringedBird: RingedBird): Observable<RingedBird> {
