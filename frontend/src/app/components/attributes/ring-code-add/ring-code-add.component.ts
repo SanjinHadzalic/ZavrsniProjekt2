@@ -22,7 +22,7 @@ export class AddRingCodeComponent {
   accessToken: any
 
   rangeOptions: number[] = [1, 5, 10, 50, 100];
-
+  codeOptions: string[] = ["AA", "BJ", "BA", "CA", "DA", "DS", "EA", "HA", "HS", "JA", "KA", "LA", "LS", "MA", "MS", "PA", "PS", "SA", "TA", "UA"];
 
   constructor(
     private ringCodeService: RingCodeService,
@@ -47,6 +47,6 @@ export class AddRingCodeComponent {
   }
 
   navigateBack(): void {
-    this.router.navigate(['/ring-codes']);
+    this.router.navigate(['/ringCode']);
   }
 }

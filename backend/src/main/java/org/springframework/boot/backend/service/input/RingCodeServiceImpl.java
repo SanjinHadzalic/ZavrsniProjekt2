@@ -52,19 +52,16 @@ public class RingCodeServiceImpl implements RingCodeService {
                 .filter(c -> c.startsWith(code))
                 .reduce((first, second) -> first.compareTo(second) > 0 ? first : second);
 
-        // Determine the starting number for new ring codes
-        int startNumber = 0;  // Default starting number if no existing codes found
+        int startNumber = 0;
         if (latestRingCode.isPresent()) {
             String latestCode = latestRingCode.get();
-            // Extract the numeric part of the latest code
-            String numberPart = latestCode.substring(2); // Assuming the first character is "R"
-            startNumber = Integer.parseInt(numberPart); // Convert to integer
+            String numberPart = latestCode.substring(2);
+            startNumber = Integer.parseInt(numberPart);
         }
 
-        // Generate new ring codes based on the latest code
         for (int i = 1; i <= range; i++) {
             RingCode newRingCode = new RingCode();
-            String newCode = String.format("R%03d", startNumber + i); // Start from the latest number + i
+            String newCode = String.format("%s%03d", code, startNumber + i);
             newRingCode.setCode(newCode);
             newRingCode.setAppUser(appUser);
             if (!existingCodes.contains(newCode)) {

@@ -81,4 +81,18 @@ export class NotificationService {
       this.router.navigate(['/login'])
     })
   }
+
+  notifyDuplicateCodes(duplicateCodes: string[]) {
+    const title = 'Duplicate Ring Codes';
+    const message = duplicateCodes.length > 0
+      ? 'The following ring codes cannot be inserted due to duplication:\n' + duplicateCodes.join('\n')
+      : 'No duplicate ring codes found.';
+
+    Swal.fire({
+      title: title,
+      text: message,
+      icon: 'error',
+      confirmButtonText: 'Close'
+    });
+  }
 }
