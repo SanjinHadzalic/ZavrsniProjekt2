@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface RingedBirdRepository extends JpaRepository<RingedBird, Long> {
     Optional<RingedBird> findRingedBirdByReferenceIsNullAndRingCode_Code(String ringCode);
     List<RingedBird> findAllByRingCode_Code(String ringCode);
+
 }

@@ -47,6 +47,7 @@ import { RingedBirdComponent } from './components/attributes/ringed-bird/ringed-
 import { RingedBirdDetailComponent } from './components/attributes/ringed-bird-details/ringed-bird-details.component';
 import { PullusAgeComponent } from './components/attributes/pullus-age/pullus-age.component';
 import { ConditionComponent } from './components/attributes/condition/condition.component';
+import { RingedBirdAddExistingComponent } from './components/attributes/ringed-bird-add-existing/ringed-bird-add-existing.component';
 
 export const routes: Routes = [
   {
@@ -252,6 +253,11 @@ export const routes: Routes = [
   {
     path: 'ringedBird',
     component: RingedBirdComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'ringedBirdExisting',
+    component: RingedBirdAddExistingComponent,
     canActivate: [authGuard]
   },
   {

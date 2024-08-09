@@ -19,12 +19,20 @@ export class RingedBirdService {
     return this.http.get<RingedBird>(`${this.apiUrl}/${id}`);
   }
 
+  getRingedBirdByCode(rCode: string): Observable<RingedBird> {
+    return this.http.get<RingedBird>(`${this.apiUrl}/code/${rCode}`)
+  }
+
   getAllRingedBirdsByUser(username: string): Observable<RingedBird[]> {
     return this.http.get<RingedBird[]>(`${this.apiUrl}/user/${username}`);
   }
 
   createRingedBird(ringedBird: RingedBird): Observable<RingedBird> {
     return this.http.post<RingedBird>(`${this.apiUrl}`, ringedBird);
+  }
+
+  createNewRingedBirdFromExisting(rCode: string, ringedBird: RingedBird): Observable<RingedBird> {
+    return this.http.post<RingedBird>(`${this.apiUrl}/ringCode/${rCode}`, ringedBird);
   }
 
   updateRingedBird(id: number, ringedBird: RingedBird): Observable<RingedBird> {

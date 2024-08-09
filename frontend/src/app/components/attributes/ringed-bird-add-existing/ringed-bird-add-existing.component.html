@@ -1,0 +1,40 @@
+<div class="container">
+    <h2>Add New Ringed Bird from Existing</h2>
+    
+    <!-- Input for Ring Code -->
+    <div class="form-group">
+      <label for="ringCode">Enter Existing Ring Code:</label>
+      <input type="text" id="ringCode" [(ngModel)]="ringCode" class="form-control" placeholder="Enter ring code" />
+      <button (click)="fetchExistingRingedBird()" class="btn btn-primary mt-2">Fetch Ringed Bird</button>
+    </div>
+  
+    <!-- Error Message Display -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- Form to Edit Ringed Bird Attributes -->
+    <form *ngIf="newRingedBird" (ngSubmit)="saveNewRingedBird()">
+      <h3>Edit Ringed Bird Details</h3>
+      
+      <div class="form-group">
+        <label for="species">Species:</label>
+        <input type="text" id="species" [(ngModel)]="newRingedBird.species.commonName" name="species" class="form-control" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="ringingScheme">Ringing Scheme:</label>
+        <input type="text" id="ringingScheme" [(ngModel)]="newRingedBird.ringingScheme.code" name="ringingScheme" class="form-control" />
+      </div>
+  
+      <div class="form-group">
+        <label for="primaryIdentificationMethod">Primary Identification Method:</label>
+        <input type="text" id="primaryIdentificationMethod" [(ngModel)]="newRingedBird.primaryIdentificationMethod.description" name="primaryIdentificationMethod" class="form-control" />
+      </div>
+  
+      <!-- Add more input fields for other attributes as needed -->
+      
+      <button type="submit" class="btn btn-success mt-3">Save New Ringed Bird</button>
+    </form>
+  </div>
+  

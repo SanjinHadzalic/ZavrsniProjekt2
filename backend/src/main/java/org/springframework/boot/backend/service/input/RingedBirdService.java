@@ -10,7 +10,7 @@ public interface RingedBirdService {
     List<RingedBird> getAllRingedBird();
     List<RingedBird> getAllRingedBirdByCode(String code);
     List<RingedBird> getAllRingedBirdOfUser(String username);
-
+    Optional<RingedBird> getRingedBirdByCode(String code);
     Optional<RingedBird> getRingedBirdById(Long id);
     RingedBird createNewRingedBird(RingedBirdCommand ringedBirdCommand);
     RingedBird createNewRingedBirdFromExisting(String ringCode, RingedBirdCommand ringedBirdCommand);

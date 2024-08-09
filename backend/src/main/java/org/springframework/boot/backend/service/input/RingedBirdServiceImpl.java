@@ -19,6 +19,8 @@ public class RingedBirdServiceImpl implements RingedBirdService{
         return ringedBirdRepository.findAll();
     }
 
+
+
     @Override
     public List<RingedBird> getAllRingedBirdByCode(String code) {
         return ringedBirdRepository.findAllByRingCode_Code(code);
@@ -34,6 +36,11 @@ public class RingedBirdServiceImpl implements RingedBirdService{
                 .collect(Collectors.toList());
 
         return ringedBirdsByUser;
+    }
+
+    @Override
+    public Optional<RingedBird> getRingedBirdByCode(String code) {
+        return ringedBirdRepository.findRingedBirdByReferenceIsNullAndRingCode_Code(code);
     }
 
     @Override
@@ -73,13 +80,13 @@ public class RingedBirdServiceImpl implements RingedBirdService{
         Optional<RingedBird> ringedBirdOpt = ringedBirdRepository.findRingedBirdByReferenceIsNullAndRingCode_Code(ringCode);
 
         if (ringedBirdOpt.isPresent()) {
-            RingedBird ringedBirdRaw = ringedBirdOpt.get(); //original data from database
-            RingedBird toBeSaved = new RingedBird(); //carrier object
+            RingedBird ringedBirdRaw = ringedBirdOpt.get();
+            RingedBird toBeSaved = new RingedBird();
             mapCommandToEntity(ringedBirdCommand, toBeSaved);
 
             toBeSaved.setId(generateMaxId());
-            toBeSaved.setRingCode(ringedBirdRaw.getRingCode()); //saves original ring code from database
-            toBeSaved.setReference(ringedBirdRaw.getRingCode().getCode()); //saves already existing ring code into ref.
+            toBeSaved.setRingCode(ringedBirdRaw.getRingCode());
+            toBeSaved.setReference(ringedBirdRaw.getRingCode().getCode());
 
             return ringedBirdRepository.save(toBeSaved);
         } else {

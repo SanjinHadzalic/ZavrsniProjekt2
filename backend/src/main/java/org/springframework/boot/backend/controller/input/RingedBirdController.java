@@ -33,6 +33,10 @@ public class RingedBirdController {
         return ringedBirdService.getRingedBirdById(id);
     }
 
+    @GetMapping("/code/{code}")
+    public RingedBird getRingedBirdByCode(@PathVariable String code) {
+        return ringedBirdService.getRingedBirdByCode(code).get();
+    }
     @GetMapping("/ringCode/{code}")
     public ResponseEntity<List<RingedBird>> getAllRingedBirdsByCode(@PathVariable String code) {
         List<RingedBird> ringedBirds = ringedBirdService.getAllRingedBirdByCode(code);
