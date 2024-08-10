@@ -6,6 +6,7 @@ import org.springframework.boot.backend.entity.input.RingedBird;
 import org.springframework.boot.backend.repository.input.RingedBirdRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -19,6 +20,43 @@ public class RingedBirdServiceImpl implements RingedBirdService{
         return ringedBirdRepository.findAll();
     }
 
+    public List<RingedBird> getRingedBirdsByCriteria(
+            String ringCode,
+            LocalDate date,
+            String country,
+            Integer year,
+            Integer month,
+            String placeCode,
+            String username,
+            String sex,
+            String age,
+            String species) {
+
+        // Check and set parameters to null if blank or invalid
+        if (ringCode != null && ringCode.isBlank()) {
+            ringCode = null;
+        }
+        if (country != null && country.isBlank()) {
+            country = null;
+        }
+        if (placeCode != null && placeCode.isBlank()) {
+            placeCode = null;
+        }
+        if (username != null && username.isBlank()) {
+            username = null;
+        }
+        if (species != null && species.isBlank()) {
+            species = null;
+        }
+        if (sex != null && sex.isBlank()) {
+            sex = null;
+        }
+        if (age != null && age.isBlank()) {
+            age = null;
+        }
+
+        return ringedBirdRepository.findByCriteria(ringCode, date, country, year, month, placeCode, username, sex, age, species);
+    }
 
 
     @Override

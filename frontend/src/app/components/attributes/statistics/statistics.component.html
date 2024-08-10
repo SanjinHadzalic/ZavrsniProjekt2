@@ -1,0 +1,65 @@
+<!-- statistics.component.html -->
+<form (submit)="fetchRingedBirds()">
+  <div class="form-group">
+    <label for="ringCode">Ring Code:</label>
+    <input type="text" id="ringCode" [(ngModel)]="filters.ringCode" name="ringCode" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="date">Date:</label>
+    <input type="date" id="date" [(ngModel)]="filters.date" name="date" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="country">Country:</label>
+    <input type="text" id="country" [(ngModel)]="filters.country" name="country" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="year">Year:</label>
+    <input type="number" id="year" [(ngModel)]="filters.year" name="year" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="month">Month:</label>
+    <input type="number" id="month" [(ngModel)]="filters.month" name="month" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="placeCode">Place:</label>
+    <input type="text" id="placeCode" [(ngModel)]="filters.placeCode" name="placeCode" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input type="text" id="username" [(ngModel)]="filters.username" name="username" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="sex">Sex:</label>
+    <input type="text" id="sex" [(ngModel)]="filters.sex" name="sex" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="age">Age:</label>
+    <input type="text" id="age" [(ngModel)]="filters.age" name="age" class="form-control" />
+  </div>
+
+  <button type="submit" class="btn btn-primary mt-3">Fetch Ringed Birds</button>
+</form>
+
+<div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+
+<div *ngIf="ringedBirds.length > 0">
+  <h3>Results</h3>
+  <table class="table table-bordered mt-3">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Species</th>
+        <th>Ring Code</th>
+        <!-- Add more columns as needed -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bird of ringedBirds">
+        <td>{{ bird.id }}</td>
+        <td>{{ bird.species.commonName }}</td>
+        <td>{{ bird.ringCode.code }}</td>
+        <!-- Add more columns as needed -->
+      </tr>
+    </tbody>
+  </table>
+</div>

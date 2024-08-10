@@ -49,6 +49,7 @@ import { PullusAgeComponent } from './components/attributes/pullus-age/pullus-ag
 import { ConditionComponent } from './components/attributes/condition/condition.component';
 import { RingedBirdAddExistingComponent } from './components/attributes/ringed-bird-add-existing/ringed-bird-add-existing.component';
 import { RingedBirdSearchComponent } from './components/attributes/ringed-bird-search/ringed-bird-search.component';
+import { StatisticsComponent } from './components/attributes/statistics/statistics.component';
 
 export const routes: Routes = [
   {
@@ -279,6 +280,11 @@ export const routes: Routes = [
   {
     path: 'condition',
     component: ConditionComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'statistics',
+    component: StatisticsComponent,
     canActivate: [authGuard]
   },
   {

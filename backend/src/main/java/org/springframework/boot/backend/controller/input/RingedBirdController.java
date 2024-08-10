@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +41,7 @@ public class RingedBirdController {
     @GetMapping("/ringCode/{code}")
     public ResponseEntity<List<RingedBird>> getAllRingedBirdsByCode(@PathVariable String code) {
         List<RingedBird> ringedBirds = ringedBirdService.getAllRingedBirdByCode(code);
+        log.info("ringedBirds size by id= " + code + " " + ringedBirds.size());
         return ResponseEntity.ok(ringedBirds);
     }
 
@@ -51,7 +53,23 @@ public class RingedBirdController {
 
         return ResponseEntity.ok(ringedBirdsByUser);
     }
+    @GetMapping("/search")
+    public List<RingedBird> searchRingedBirds(
+            @RequestParam(required = false) String ringCode,
+            @RequestParam(required = false) LocalDate date,
+            @RequestParam(required = false) String country,
+            @RequestParam(required = false) Integer year,
+            @RequestParam(required = false) Integer month,
+            @RequestParam(required = false) String placeCode,
+            @RequestParam(required = false) String username,
+            @RequestParam(required = false) String sex,
+            @RequestParam(required = false) String age,
+            @RequestParam(required = false) String species) {
 
+        List<RingedBird> criteriaList = ringedBirdService.getRingedBirdsByCriteria(ringCode, date, country, year, month, placeCode, username, sex, age, species);
+        log.info("List size in criteria: " + criteriaList.size());
+        return criteriaList;
+    }
     @PostMapping
     public RingedBird createRingedBird(@Valid @RequestBody RingedBirdCommand ringedBirdCommand) {
         return ringedBirdService.createNewRingedBird(ringedBirdCommand);

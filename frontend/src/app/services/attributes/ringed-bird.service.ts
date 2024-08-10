@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RingedBird } from '../../interfaces/attributes/ringed-bird';
@@ -45,5 +45,18 @@ export class RingedBirdService {
 
   deleteRingedBird(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  searchRingedBirds(filters: any): Observable<RingedBird[]> {
+    let params = new HttpParams();
+
+    // Add each filter to the parameters if it has a value
+    for (const key in filters) {
+      if (filters[key]) {
+        params = params.append(key, filters[key]);
+      }
+    }
+
+    return this.http.get<RingedBird[]>(`${this.apiUrl}/search`, { params });
   }
 }
