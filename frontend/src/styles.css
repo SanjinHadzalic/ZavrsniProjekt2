@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+[data-bs-theme="dark"] {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  [data-bs-theme="dark"] .navbar {
+    background-color: #343a40;
+  }
+  
+  [data-bs-theme="dark"] .card {
+    background-color: #343a40;
+    color: #ffffff;
+  }
+  
+  [data-bs-theme="dark"] .form-check-label {
+    color: #ffffff;
+  }
+  
+  [data-bs-theme="dark"] .navbar-nav .nav-link {
+    color: #ffffff !important;
+  }
+  
+  [data-bs-theme="light"] .navbar-nav .nav-link {
+    color: #000000 !important;
+  }

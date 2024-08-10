@@ -1,0 +1,18 @@
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.navbar-dark-mode {
+  background-color: #343a40;
+  color: white;
+}
+
+.dark-mode .navbar {
+  background-color: #343a40;
+  color: #ffffff;
+}
+
+.nav-item.nav-link.custom-link {
+  color: white !important;
+}

@@ -6,20 +6,16 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-       <!-- <a routerLink="/birds" class="nav-item nav-link">
-        Birds List
-      </a> -->
-      <!-- <a routerLink="/place" class="nav-item nav-link">
-        Places List
-      </a>  -->
+       <!-- Add navigation links here -->
     </div>
     <div class="navbar-nav ms-auto">
-      <a routerLink="/profile" class="nav-item nav-link">
-        Profile
-      </a>
-      <a routerLink="#" (click)="logout()" class="nav-item nav-link">
-        Logout
-      </a>
+      <!-- Dark Mode Toggle -->
+      <div class="form-check form-switch ms-3">
+        <input class="form-check-input" type="checkbox" id="darkModeSwitch" (change)="toggleDarkMode()" [checked]="isDarkMode">
+        <label class="form-check-label" for="darkModeSwitch">{{ isDarkMode ? 'Dark' : 'Light' }}</label>
+      </div>
+      <a routerLink="/profile" class="nav-item nav-link custom-link">Profile</a>
+      <a routerLink="#" (click)="logout()" class="nav-item nav-link custom-link">Logout</a>
     </div>
   </div>
 </nav>
