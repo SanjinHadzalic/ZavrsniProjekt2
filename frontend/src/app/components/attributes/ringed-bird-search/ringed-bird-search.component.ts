@@ -11,9 +11,9 @@ import { Place } from '../../../interfaces/attributes/place';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './ringed-bird-search.component.html',
-  styleUrl: './ringed-bird-search.component.css'
+  styleUrl: './ringed-bird-search.component.css',
 })
-export class RingedBirdSearchComponent implements OnInit{
+export class RingedBirdSearchComponent implements OnInit {
   ringCode: string = '';
   ringedBirds: RingedBird[] = [];
   errorMessage: string = '';
@@ -33,8 +33,10 @@ export class RingedBirdSearchComponent implements OnInit{
     });
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(this.map);
+    
 
     this.markers = L.layerGroup().addTo(this.map);
   }
@@ -47,7 +49,8 @@ export class RingedBirdSearchComponent implements OnInit{
         this.updateMap();
       },
       (error) => {
-        this.errorMessage = 'Error fetching RingedBirds or no RingedBirds found.';
+        this.errorMessage =
+          'Error fetching RingedBirds or no RingedBirds found.';
         console.error(error);
       }
     );
@@ -56,15 +59,28 @@ export class RingedBirdSearchComponent implements OnInit{
   private updateMap(): void {
     this.markers.clearLayers(); // Clear previous markers
 
+    // Sort ringedBirds by date
+    this.ringedBirds.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+    const latlngs: L.LatLngExpression[] = []; // Array to hold the coordinates for polylines
+
     this.ringedBirds.forEach((bird) => {
       const place = bird.placeCode;
       if (place && place.latitude && place.longitude) {
         const marker = L.marker([place.latitude, place.longitude]);
         marker.bindPopup(this.createPopupContent(place));
         marker.addTo(this.markers);
+        latlngs.push([place.latitude, place.longitude]); // Add coordinates for polyline
       }
     });
 
+    // Create a polyline if there are at least two markers
+    if (latlngs.length > 1) {
+      const polyline = L.polyline(latlngs, { color: 'blue' }).addTo(this.map);
+      this.map.fitBounds(polyline.getBounds()); // Adjust the view to fit the polyline
+    }
+
+    // Set the view to the first marker
     if (this.ringedBirds.length > 0) {
       const firstBird = this.ringedBirds[0];
       const place = firstBird.placeCode;
@@ -81,4 +97,5 @@ export class RingedBirdSearchComponent implements OnInit{
       <div><strong>Longitude:</strong> ${place.longitude}</div>
       <div><strong>Precision:</strong> ${place.precision?.code}</div>
     `;
-  }}
+  }
+}

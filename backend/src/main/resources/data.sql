@@ -193,7 +193,8 @@ VALUES ('A', 'en', 'Excellent pectoral muscle condition'),
 
 INSERT INTO PLACE (NAME, COUNTRY, REGION_CODE, LATITUDE, LONGITUDE, precision_id, NOTES)
 VALUES ('Posebni ornitloški rezervat Palud', 'HR', 'HR04', 45.0298213, 13.6993519, 1, 'test place 1'),
-       ('Park Prirode Učka', 'HR', 'HR04', 45.2891591, 14.2482146, 2, 'test place 2');
+       ('Park Prirode Učka', 'HR', 'HR04', 45.2891591, 14.2482146, 2, 'test place 2'),
+        ('Savica', 'HR', 'HR04', 45.7734042, 16.0296344, 2, 'test place 2');
 
 INSERT INTO plumage_code (code, language, description)
 VALUES ('P1', 'en', 'Adult male plumage'),

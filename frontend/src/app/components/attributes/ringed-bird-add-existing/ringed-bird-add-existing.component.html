@@ -32,6 +32,15 @@
         <input type="text" id="primaryIdentificationMethod" [(ngModel)]="newRingedBird.primaryIdentificationMethod.description" name="primaryIdentificationMethod" class="form-control" />
       </div>
   
+      <div class="form-group">
+        <label for="placeCode">Place</label>
+        <select id="placeCode" [(ngModel)]="newRingedBird.placeCode" name="placeCode" class="form-control" required>
+          <option *ngFor="let place of places" [ngValue]="place">{{ place.name }}</option>
+        </select>
+      </div>
+
+
+
       <!-- Add more input fields for other attributes as needed -->
       
       <button type="submit" class="btn btn-success mt-3">Save New Ringed Bird</button>

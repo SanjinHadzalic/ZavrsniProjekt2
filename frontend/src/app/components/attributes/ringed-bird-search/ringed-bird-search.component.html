@@ -1,19 +1,12 @@
 <div class="container">
     <h2>Search Ringed Birds by Code</h2>
   
-    <!-- Input for Ring Code -->
     <div class="form-group">
       <label for="ringCode">Enter Ring Code:</label>
       <input type="text" id="ringCode" [(ngModel)]="ringCode" class="form-control" placeholder="Enter ring code" />
       <button (click)="searchRingedBirds()" class="btn btn-primary mt-2">Search</button>
     </div>
   
-    <!-- Error Message Display -->
-    <div *ngIf="errorMessage" class="alert alert-danger">
-      {{ errorMessage }}
-    </div>
-  
-    <!-- Table for Displaying RingedBirds -->
     <div *ngIf="ringedBirds.length > 0">
       <h3>Results</h3>
       <table class="table table-bordered mt-3">
@@ -21,7 +14,9 @@
           <tr>
             <th>ID</th>
             <th>Species</th>
-            <th>Ringing Scheme</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Ringer</th>
             <!-- Add more columns as needed -->
           </tr>
         </thead>
@@ -29,7 +24,9 @@
           <tr *ngFor="let bird of ringedBirds">
             <td>{{ bird.id }}</td>
             <td>{{ bird.species.commonName }}</td>
-            <td>{{ bird.ringingScheme.code }}</td>
+            <td>{{ bird.date }}</td>
+            <td>{{ bird.time }}</td>
+            <td>{{ bird.ringCode.appUser.firstname + ' ' + bird.ringCode.appUser.lastname}}</td>
             <!-- Add more columns as needed -->
           </tr>
         </tbody>
