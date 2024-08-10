@@ -5,11 +5,12 @@ import { HeaderComponent } from './partials/header/header.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { filter } from 'rxjs/operators';
 import { FooterComponent } from './partials/footer/footer.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, HeaderComponent, RouterLink, RouterLinkActive, FooterComponent],
+  imports: [RouterOutlet, CommonModule, HeaderComponent, RouterLink, RouterLinkActive, FooterComponent, LeafletModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

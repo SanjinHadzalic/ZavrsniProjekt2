@@ -23,6 +23,10 @@ export class RingedBirdService {
     return this.http.get<RingedBird>(`${this.apiUrl}/code/${rCode}`)
   }
 
+  getAllRingedBirdsByCode(rCode: string): Observable<RingedBird[]> {
+    return this.http.get<RingedBird[]>(`${this.apiUrl}/ringCode/${rCode}`);
+  }
+
   getAllRingedBirdsByUser(username: string): Observable<RingedBird[]> {
     return this.http.get<RingedBird[]>(`${this.apiUrl}/user/${username}`);
   }
