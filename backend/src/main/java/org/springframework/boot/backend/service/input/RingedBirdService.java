@@ -28,4 +28,5 @@ public interface RingedBirdService {
     RingedBird createNewRingedBirdFromExisting(String ringCode, RingedBirdCommand ringedBirdCommand);
     RingedBird updateRingedBird(Long id, RingedBirdCommand ringedBirdCommand);
     void deleteRingedBirdById(Long id);
+    Long generateMaxId();
 }

@@ -1,16 +1,18 @@
 package org.springframework.boot.backend.service.pdf;
 
+import com.itextpdf.text.Font;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import lombok.AllArgsConstructor;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.boot.backend.entity.input.RingCode;
 import org.springframework.boot.backend.entity.input.RingedBird;
 import org.springframework.boot.backend.repository.input.RingedBirdRepository;
+import org.springframework.boot.backend.service.input.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
@@ -18,12 +20,51 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class GenerateDocumentService {
     private final RingedBirdRepository ringedBirdRepository;
+    RingedBirdService ringedBirdService;
+    RingingSchemeService ringingSchemeService;
+    PrimaryIdentificationMethodService primaryIdentificationMethodService;
+    RingCodeService ringCodeService;
+    VerificationOfTheMetalRingService verificationOfTheMetalRingService;
+    MetalRingInformationService metalRingInformationService;
+    OtherMarksInformationService otherMarksInformationService;
+    BirdService birdService;
+    ManipulatedService manipulatedService;
+    MovedBeforeTheEncounterService movedBeforeTheEncounterService;
+    CatchingMethodsService catchingMethodsService;
+    CatchingLuresService catchingLuresService;
+    SexService sexService;
+    AgeService ageService;
+    StatusService statusService;
+    BroodSizeService broodSizeService;
+    PullusAgeService pullusAgeService;
+    AccuracyOfPullusAgeService accuracyOfPullusAgeService;
+    AccuracyOfDateService accuracyOfDateService;
+    PlaceService placeService;
+    ConditionService conditionService;
+    CircumstancesService circumstancesService;
+    EURINGCodeIdentifierService euringCodeIdentifierService;
+    StateOfWingPointService stateOfWingPointService;
+    MoultService moultService;
+    PlumageCodeService plumageCodeService;
+    BillMethodService billMethodService;
+    TarsusMethodService tarsusMethodService;
+    FatScoreService fatScoreService;
+    PectoralMuscleScoreService pectoralMuscleScoreService;
+    BroodPatchService broodPatchService;
+    PrimaryMoultService primaryMoultService;
+    AlulaService alulaService;
+    CarpalCovertService carpalCovertService;
+    SexingMethodService sexingMethodService;
 
     public byte[] generatePdfFile() {
         List<RingedBird> ringedBirds = ringedBirdRepository.findAll();
@@ -40,10 +81,12 @@ public class GenerateDocumentService {
         List<RingedBird> ringedBirds = ringedBirdRepository.findAll();
         return createExcelDocument(ringedBirds, "RingedBirdsReport.xlsx");
     }
+
     public byte[] generateExcelFileByUsername(String username) {
         List<RingedBird> ringedBirds = ringedBirdRepository.findAllByRingCode_AppUser_Username(username);
         return createExcelDocument(ringedBirds, "RingedBirdsReport_" + username + ".xlsx");
     }
+
     private byte[] createExcelDocument(List<RingedBird> ringedBirds, String fileName) {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Ringed Birds");
@@ -194,5 +237,106 @@ public class GenerateDocumentService {
             table.addCell(bird.getPlaceCode().getName());
         }
         document.add(table);
+    }
+
+    public List<String> processExcelFile(MultipartFile file) throws IOException {
+        List<String> existingRingCodes = new ArrayList<>();
+        XSSFWorkbook workbook = new XSSFWorkbook(file.getInputStream());
+        Sheet sheet = workbook.getSheetAt(0);
+
+        for (Row row : sheet) {
+            if (row.getRowNum() == 0) continue;
+
+            // Check if the first column is empty
+            Cell firstCell = row.getCell(0);
+            if (firstCell == null || firstCell.getCellType() == CellType.BLANK) {
+                continue; // Skip this row if the first cell is empty
+            }
+
+            String ringCode = row.getCell(3).getStringCellValue();
+            if (ringedBirdRepository.existsRingedBirdByRingCode_Code(ringCode)) {
+                existingRingCodes.add(ringCode);
+            } else {
+                RingedBird bird = new RingedBird();
+
+                Long id = (long) row.getCell(0).getNumericCellValue();
+
+                if (ringedBirdService.getRingedBirdById(id).isPresent()) {
+                    bird.setId(ringedBirdService.generateMaxId());
+                } else {
+                    bird.setId((long) row.getCell(0).getNumericCellValue());
+                }
+
+                RingCode rc = new RingCode();
+                rc.setCode(ringCode);
+
+                Optional<RingCode> optionalRingCode = ringCodeService.getRingCodeByCode(ringCode);
+                if (!optionalRingCode.isPresent()) {
+                    ringCodeService.saveNewRingCode(rc);
+                } else {
+                    rc = optionalRingCode.get();
+                }
+                bird.setRingCode(rc);
+
+
+                bird.setRingingScheme(ringingSchemeService.getRingingSchemeById(Long.valueOf(row.getCell(1).getStringCellValue())).orElse(null));
+                bird.setPrimaryIdentificationMethod(primaryIdentificationMethodService.getPrimaryIdentificationMethodById(Long.valueOf(row.getCell(2).getStringCellValue())).orElse(null));
+                bird.setVerificationOfTheMetalRing(verificationOfTheMetalRingService.getVerificationOfTheMetalRingById(Long.valueOf((long) row.getCell(4).getNumericCellValue())).orElse(null));
+                bird.setMetalRingInformation(metalRingInformationService.getMetalRingInformationById(Long.valueOf((long) row.getCell(5).getNumericCellValue())).orElse(null));
+                bird.setOtherMarksInformation(otherMarksInformationService.getOtherMarksInformationById(Long.valueOf((long) row.getCell(6).getNumericCellValue())).orElse(null));
+                bird.setSpecies(birdService.getBird(Long.valueOf(row.getCell(7).getStringCellValue())).orElse(null));
+                bird.setManipulated(manipulatedService.getManipulatedById(Long.valueOf((long) row.getCell(8).getNumericCellValue())).orElse(null));
+                bird.setMovedBeforeTheEncounter(movedBeforeTheEncounterService.getMovedBeforeTheEncounterById(Long.valueOf((long) row.getCell(9).getNumericCellValue())).orElse(null));
+                bird.setCatchingMethods(catchingMethodsService.getCatchingMethodsById(Long.valueOf((long) row.getCell(10).getNumericCellValue())).orElse(null));
+                bird.setCatchingLures(catchingLuresService.getCatchingLuresById(Long.valueOf((long) row.getCell(11).getNumericCellValue())).orElse(null));
+                bird.setSex(sexService.findSexById(Long.valueOf((long) row.getCell(12).getNumericCellValue())).orElse(null));
+                bird.setAge(ageService.getAgeById(Long.valueOf((long) row.getCell(13).getNumericCellValue())).orElse(null));
+                bird.setStatus(statusService.getStatusById(Long.valueOf((long) row.getCell(14).getNumericCellValue())).orElse(null));
+                bird.setBroodSize(broodSizeService.getBroodSizeById(Long.valueOf((long) row.getCell(15).getNumericCellValue())).orElse(null));
+                bird.setPullusAge(pullusAgeService.getPullusAgeById(Long.valueOf((long) row.getCell(16).getNumericCellValue())).orElse(null));
+                bird.setAccuracyOfPullusAge(accuracyOfPullusAgeService.getAccuracyOfPullusAgeById(Long.valueOf((long) row.getCell(17).getNumericCellValue())).orElse(null));
+                bird.setDate(LocalDate.parse(row.getCell(18).getStringCellValue()));
+                bird.setAccuracyOfDate(accuracyOfDateService.getAccuracyOfDateById(Long.valueOf((long) row.getCell(19).getNumericCellValue())).orElse(null));
+                bird.setTime(LocalTime.parse(row.getCell(20).getStringCellValue()));
+                bird.setPlaceCode(placeService.getPlaceById(Long.valueOf(row.getCell(21).getStringCellValue())).orElse(null));
+                bird.setCondition(conditionService.getConditionById(Long.valueOf((long) row.getCell(22).getNumericCellValue())).orElse(null));
+                bird.setCircumstances(circumstancesService.getCircumstancesById(Long.valueOf((long) row.getCell(23).getNumericCellValue())).orElse(null));
+                bird.setEuringCodeIdentifier(euringCodeIdentifierService.getEURINGCodeIdentifierById(Long.valueOf((long) row.getCell(24).getNumericCellValue())).orElse(null));
+                bird.setDerivedDataDistance(String.valueOf(row.getCell(25).getNumericCellValue()));
+                bird.setDerivedDataDirection(String.valueOf(row.getCell(26).getNumericCellValue()));
+                bird.setDerivedDataElapsedTime(String.valueOf(row.getCell(27).getNumericCellValue()));
+                bird.setWingLength(Double.valueOf(row.getCell(28).getNumericCellValue()));
+                bird.setThirdPrimary(Double.valueOf(row.getCell(28).getNumericCellValue()));
+                bird.setStateOfWingPoint(stateOfWingPointService.getStateOfWingPointById(Long.valueOf((long) row.getCell(30).getNumericCellValue())).orElse(null));
+                bird.setMass(Double.valueOf(row.getCell(31).getNumericCellValue()));
+                bird.setMoult(moultService.getMoultById(Long.valueOf((long) row.getCell(32).getNumericCellValue())).orElse(null));
+                bird.setPlumageCode(plumageCodeService.getPlumageCodeById(Long.valueOf((long) row.getCell(33).getNumericCellValue())).orElse(null));
+                bird.setHindClaw(Double.valueOf(row.getCell(34).getNumericCellValue()));
+                bird.setBillLength(Double.valueOf(row.getCell(35).getNumericCellValue()));
+                bird.setBillMethod(billMethodService.getBillMethodById(Long.valueOf((long) row.getCell(36).getNumericCellValue())).orElse(null));
+                bird.setTotalHeadLength(Double.valueOf(row.getCell(37).getNumericCellValue()));
+                bird.setTarsus(Double.valueOf(row.getCell(38).getNumericCellValue()));
+                bird.setTarsusMethod(tarsusMethodService.getTarsusMethodById(Long.valueOf((long) row.getCell(39).getNumericCellValue())).orElse(null));
+                bird.setTailLength(Double.valueOf(row.getCell(40).getNumericCellValue()));
+                bird.setTailDifference(Double.valueOf(row.getCell(41).getNumericCellValue()));
+                bird.setFatScore(fatScoreService.getFatScore(Long.valueOf((long) row.getCell(42).getNumericCellValue())).orElse(null));
+                bird.setFatScoreMethod(String.valueOf(row.getCell(43).getNumericCellValue()));
+                bird.setPectoralMuscleScore(pectoralMuscleScoreService.getPectoralMuscleScoreById(Long.valueOf((long) row.getCell(44).getNumericCellValue())).orElse(null));
+                bird.setBroodPatch(broodPatchService.getBroodPatchById(Long.valueOf((long) row.getCell(45).getNumericCellValue())).orElse(null));
+                bird.setPrimaryScore(String.valueOf(row.getCell(46).getNumericCellValue()));
+                bird.setPrimaryMoult(primaryMoultService.getPrimaryMoultById(Long.valueOf((long) row.getCell(47).getNumericCellValue())).orElse(null));
+                bird.setOldGreaterCoverts(String.valueOf(row.getCell(48).getNumericCellValue()));
+                bird.setAlula(alulaService.getAlulaById(Long.valueOf((long) row.getCell(49).getNumericCellValue())).orElse(null));
+                bird.setCarpalCovert(carpalCovertService.getCarpalCovertById(Long.valueOf((long) row.getCell(50).getNumericCellValue())).orElse(null));
+                bird.setSexingMethod(sexingMethodService.getSexingMethodById(Long.valueOf((long) row.getCell(51).getNumericCellValue())).orElse(null));
+                bird.setRemarks(String.valueOf(row.getCell(52).getStringCellValue()));
+                bird.setReference(String.valueOf(row.getCell(53).getStringCellValue()));
+                bird.setMoreOtherMarks(String.valueOf(row.getCell(54).getStringCellValue()));
+
+                ringedBirdRepository.save(bird);
+            }
+        }
+        workbook.close();
+        return existingRingCodes;
     }
 }

@@ -53,6 +53,7 @@ import { StatisticsComponent } from './components/attributes/statistics/statisti
 import { GenerateComponent } from './components/attributes/generate/generate.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { adminAuthGuard } from './guards/admin-auth.guard';
+import { UploadExcelComponent } from './components/attributes/upload/upload.component';
 
 export const routes: Routes = [
   {
@@ -293,6 +294,11 @@ export const routes: Routes = [
   {
     path: 'generate',
     component: GenerateComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'upload',
+    component: UploadExcelComponent,
     canActivate: [authGuard],
   },
   {

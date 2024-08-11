@@ -13,6 +13,7 @@ public interface RingedBirdRepository extends JpaRepository<RingedBird, Long> {
     Optional<RingedBird> findRingedBirdByReferenceIsNullAndRingCode_Code(String ringCode);
     List<RingedBird> findAllByRingCode_AppUser_Username(String username);
     List<RingedBird> findAllByRingCode_Code(String ringCode);
+    Boolean existsRingedBirdByRingCode_Code(String ringCode);
     @Query("SELECT rb FROM RingedBird rb WHERE " +
             "(:ringCode IS NULL OR rb.ringCode.code = :ringCode) " +
             "AND (:date IS NULL OR rb.date = :date) " +

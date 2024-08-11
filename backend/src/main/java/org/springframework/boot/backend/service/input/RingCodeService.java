@@ -11,6 +11,8 @@ public interface RingCodeService {
     List<RingCode> getAllRingCodeByUsernameAndEmail(String username, String email);
     List<RingCode> getAllAvailableRingCodes();
     Optional<RingCode> getRingCodeById(Long id);
+    Optional<RingCode> getRingCodeByCode(String code);
+    void saveNewRingCode(RingCode ringCode);
     List<RingCode> generateNewRingCode(String username, String code, Integer range);
     RingCode updateRingCode(Long id, RingCodeCommand toBeUpdated);
     void deleteRingCodeById(Long id);

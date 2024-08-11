@@ -56,6 +56,16 @@ public class RingCodeServiceImpl implements RingCodeService {
     }
 
     @Override
+    public Optional<RingCode> getRingCodeByCode(String code) {
+        return ringCodeRepository.getRingCodeByCode(code);
+    }
+
+    @Override
+    public void saveNewRingCode(RingCode rc) {
+        ringCodeRepository.save(rc);
+    }
+
+    @Override
     public List<RingCode> generateNewRingCode(String username, String code, Integer range) {
         ApplicationUser appUser = userDetailsService.findApplicationUserByUsername(username);
 
