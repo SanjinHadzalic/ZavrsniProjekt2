@@ -56,4 +56,33 @@ export class GenerateComponent {
       alert('Failed to generate PDF for the specified username');
     });
   }
+
+  downloadExcel() {
+    this.http.get('http://localhost:8080/generate/excel', { responseType: 'blob' }).subscribe(blob => {
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = 'RingedBirdsReport.xlsx';
+      link.click();
+    }, error => {
+      console.error('Error downloading Excel:', error);
+      alert('Failed to generate Excel report');
+    });
+  }
+
+  downloadExcelByUsername() {
+    if (this.username.trim() === '') {
+      alert('Please enter a username');
+      return;
+    }
+
+    this.http.get(`http://localhost:8080/generate/excel/${this.username}`, { responseType: 'blob' }).subscribe(blob => {
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = `RingedBirdsReport_${this.username}.xlsx`;
+      link.click();
+    }, error => {
+      console.error('Error downloading Excel:', error);
+      alert('Failed to generate Excel report for the specified username');
+    });
+  }
 }
