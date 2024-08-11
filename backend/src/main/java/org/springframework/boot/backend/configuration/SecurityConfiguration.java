@@ -36,7 +36,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/auth/api/v1/login", "/auth/api/v1/refreshToken",
                                 "/auth/api/v1/logout", "/auth/api/v1/register").permitAll()
-                        .requestMatchers("/birds/**", "/ringCode/**", "/ringedBird/**", "/users/**").hasAnyRole(ROLE_USER)
+                        .requestMatchers("/generate/**", "/birds/**", "/ringCode/**", "/ringedBird/**", "/users/**").hasAnyRole(ROLE_USER)
                         .requestMatchers("/accuracyOfCoordinates/**",
                                 "/accuracyOfDate/**",
                                 "/accuracyOfPullusAge/**",

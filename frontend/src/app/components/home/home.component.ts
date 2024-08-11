@@ -12,11 +12,11 @@ export class HomeComponent implements OnInit {
   imageSrc = 'assets/images/homePage.jpg';
   isRotated = false;
   isExtended = false;
+  isImportExportExtended = false; 
 
   constructor() {}
 
   ngOnInit(): void {
-    // No dark mode logic needed here anymore
   }
 
   rotateImage() {
@@ -29,5 +29,8 @@ export class HomeComponent implements OnInit {
   toggleButtonGroup() {
     this.isExtended = !this.isExtended; 
   }
-  
+
+  toggleImportExport() {
+    this.isImportExportExtended = !this.isImportExportExtended;
+  }
 }

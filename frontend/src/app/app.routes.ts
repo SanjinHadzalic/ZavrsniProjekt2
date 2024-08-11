@@ -50,6 +50,7 @@ import { ConditionComponent } from './components/attributes/condition/condition.
 import { RingedBirdAddExistingComponent } from './components/attributes/ringed-bird-add-existing/ringed-bird-add-existing.component';
 import { RingedBirdSearchComponent } from './components/attributes/ringed-bird-search/ringed-bird-search.component';
 import { StatisticsComponent } from './components/attributes/statistics/statistics.component';
+import { GenerateComponent } from './components/attributes/generate/generate.component';
 
 export const routes: Routes = [
   {
@@ -285,6 +286,11 @@ export const routes: Routes = [
   {
     path: 'statistics',
     component: StatisticsComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'generate',
+    component: GenerateComponent,
     canActivate: [authGuard]
   },
   {

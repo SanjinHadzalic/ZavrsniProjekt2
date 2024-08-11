@@ -1,0 +1,16 @@
+<div class="container">
+    <div *ngIf="isAdmin">
+      <button class="btn btn-primary" (click)="downloadPdf()">Download All Birds PDF</button>
+    </div>
+  
+    <div class="mt-4" *ngIf="isAdmin">
+      <input type="text" [(ngModel)]="username" placeholder="Enter Username" class="form-control" />
+      <button class="btn btn-secondary mt-2" (click)="downloadPdfByUsername()">Download PDF by Username</button>
+    </div>
+  
+    <div *ngIf="!isAdmin">
+      <h5>Download your personal report:</h5>
+      <button class="btn btn-secondary mt-2" (click)="downloadPdfByUsername()">Download My Report</button>
+    </div>
+  </div>
+  
