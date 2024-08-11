@@ -83,18 +83,4 @@
   /* Cover the card while maintaining aspect ratio */
 }
 
-/* Optional: Additional custom styles for dark mode */
-[data-bs-theme='dark'] {
-  background-color: #121212;
-  color: #ffffff;
-}
 
-[data-bs-theme='dark'] .navbar {
-  background-color: #343a40;
-  color: #ffffff;
-}
-
-[data-bs-theme='dark'] .card {
-  background-color: #1e1e1e;
-  color: #ffffff;
-}

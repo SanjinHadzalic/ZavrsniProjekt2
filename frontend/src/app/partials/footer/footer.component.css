@@ -1,12 +1,17 @@
 .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 60px; /* Set a height for the footer */
-    background-color: #f8f9fa; /* Background color for the footer */
-    text-align: center;
-    line-height: 60px; /* Center the text vertically */
-    border-top: 1px solid #e0e0e0; /* Optional: Add a border for styling */
-  }
-  
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px; /* Set a height for the footer */
+  background-color: #2874a6; /* Blue color for the footer */
+  text-align: center;
+  line-height: 60px; /* Center the text vertically */
+  color: #ffffff; /* Text color */
+  border-top: 1px solid #e0e0e0; /* Optional: Add a border for styling */
+}
+
+.footer p {
+  margin: 0; /* Remove default margin from the paragraph */
+  color: #ffffff; /* Ensure text color is white */
+}

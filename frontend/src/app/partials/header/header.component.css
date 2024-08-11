@@ -4,15 +4,15 @@ body.dark-mode {
 }
 
 .navbar-dark-mode {
-  background-color: #343a40;
+  background-color: #2874a6; /* Bootstrap's primary blue */
   color: white;
 }
 
-.dark-mode .navbar {
-  background-color: #343a40;
+.navbar {
+  background-color: #2874a6; /* Blue color for the navbar */
   color: #ffffff;
 }
 
 .nav-item.nav-link.custom-link {
-  color: white !important;
+  color: white !important; /* Keep links white */
 }
