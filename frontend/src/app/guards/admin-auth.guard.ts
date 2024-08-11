@@ -5,7 +5,7 @@ import { JwtDecoderService } from '../services/jwt-decoder.service';
 export const adminAuthGuard: CanActivateFn = (route, state) => {
   const router = inject(Router)
   const decoder = inject(JwtDecoderService)
-  const jwtToken = localStorage.getItem('JWT')
+  const jwtToken = localStorage.getItem('accessToken')
 
   if(jwtToken) {
     if(decoder.decodeToken(jwtToken).sub == 'admin') {

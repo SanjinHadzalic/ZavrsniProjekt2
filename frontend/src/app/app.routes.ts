@@ -51,6 +51,8 @@ import { RingedBirdAddExistingComponent } from './components/attributes/ringed-b
 import { RingedBirdSearchComponent } from './components/attributes/ringed-bird-search/ringed-bird-search.component';
 import { StatisticsComponent } from './components/attributes/statistics/statistics.component';
 import { GenerateComponent } from './components/attributes/generate/generate.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { adminAuthGuard } from './guards/admin-auth.guard';
 
 export const routes: Routes = [
   {
@@ -91,207 +93,207 @@ export const routes: Routes = [
   {
     path: 'accuracyOfCoordinates',
     component: AccuracyOfCoordinatesComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'accuracyOfDate',
     component: AccuracyOfDateComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'accuracyOfPullusAge',
     component: AccuracyOfPullusAgeComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'age',
     component: AgeComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'alula',
     component: AlulaComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'billMethod',
     component: BillMethodComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'broodPatch',
     component: BroodPatchComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'broodSize',
     component: BroodSizeComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'carpalCovert',
     component: CarpalCovertComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'catchingLures',
     component: CatchingLuresComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'catchingMethods',
     component: CatchingMethodsComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'circumstancesPresumed',
     component: CircumstancesPresumedComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'circumstances',
     component: CircumstancesComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'euring_code_identifier',
     component: EuringCodeIdentifierComponent,
-    canActivate: [authGuard]
+    canActivate: [adminAuthGuard],
   },
   {
     path: 'fatScore',
     component: FatScoreComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'manipulated',
     component: ManipulatedComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'metalRingInformation',
     component: MetalRingInformationComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'moult',
     component: MoultComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'movedBeforeTheEncounter',
     component: MovedBeforeTheEncounterComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'otherMarksInformation',
     component: OtherMarksInformationComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'pectoralMuscleScore',
     component: PectoralMuscleScoreComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'plumageCode',
     component: PlumageCodeComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'primaryIdentificationMethod',
     component: PrimaryIdentificationMethodComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'primaryMoult',
     component: PrimaryMoultComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'ringingScheme',
     component: RingingSchemeComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'sex',
     component: SexComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'sexingMethod',
     component: SexingMethodComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'stateOfWingPoint',
     component: StateOfWingPointComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'status',
     component: StatusComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'tarsusMethod',
     component: TarsusMethodComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'verificationOfTheMetalRing',
     component: VerificationOfTheMetalRingComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'ringCode',
     component: RingCodeComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'ringCodeAdd',
     component: AddRingCodeComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'ringedBird',
     component: RingedBirdComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'ringedBirdExisting',
     component: RingedBirdAddExistingComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'ringedBird/:id',
     component: RingedBirdDetailComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'ringedBirdSearch',
     component: RingedBirdSearchComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'pullusAge',
     component: PullusAgeComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'condition',
     component: ConditionComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'statistics',
     component: StatisticsComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'generate',
     component: GenerateComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: 'login',
@@ -306,8 +308,8 @@ export const routes: Routes = [
     component: HomeComponent,
     canActivate: [authGuard],
   },
-//   {
-//     path: "**",                          // TODO Add 404 page
-//     component: PageNotFoundComponent
-//   }
+  {
+    path: 'forbidden',
+    component: ForbiddenComponent,
+  },
 ];
