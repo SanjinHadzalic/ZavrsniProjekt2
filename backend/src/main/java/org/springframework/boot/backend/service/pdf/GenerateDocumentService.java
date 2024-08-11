@@ -48,24 +48,84 @@ public class GenerateDocumentService {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Ringed Birds");
 
-        // Create header row
         Row headerRow = sheet.createRow(0);
-        headerRow.createCell(0).setCellValue("ID");
-        headerRow.createCell(1).setCellValue("Bird Name");
-        headerRow.createCell(2).setCellValue("Ring Code");
-        headerRow.createCell(3).setCellValue("Location");
+        String[] headers = {
+                "ID", "Ringing Scheme", "Primary Identification Method", "Ring Code", "Verification Of The Metal Ring",
+                "Metal Ring Information", "Other Marks Information", "Species", "Manipulated", "Moved Before The Encounter",
+                "Catching Methods", "Catching Lures", "Sex", "Age", "Status", "Brood Size", "Pullus Age",
+                "Accuracy Of Pullus Age", "Date", "Accuracy Of Date", "Time", "Place Code", "Condition",
+                "Circumstances", "EURING Code Identifier", "Derived Data Distance", "Derived Data Direction",
+                "Derived Data Elapsed Time", "Wing Length", "Third Primary", "State Of Wing Point", "Mass",
+                "Moult", "Plumage Code", "Hind Claw", "Bill Length", "Bill Method", "Total Head Length",
+                "Tarsus", "Tarsus Method", "Tail Length", "Tail Difference", "Fat Score", "Fat Score Method",
+                "Pectoral Muscle Score", "Brood Patch", "Primary Score", "Primary Moult", "Old Greater Coverts",
+                "Alula", "Carpal Covert", "Sexing Method", "Remarks", "Reference", "More Other Marks"
+        };
 
-        // Add data to rows
+        for (int i = 0; i < headers.length; i++) {
+            headerRow.createCell(i).setCellValue(headers[i]);
+        }
+
         int rowNum = 1;
         for (RingedBird bird : ringedBirds) {
             Row row = sheet.createRow(rowNum++);
             row.createCell(0).setCellValue(bird.getId());
-            row.createCell(1).setCellValue(bird.getSpecies().getCommonName());
-            row.createCell(2).setCellValue(bird.getRingCode().getCode());
-            row.createCell(3).setCellValue(bird.getPlaceCode().getName());
+            row.createCell(1).setCellValue(bird.getRingingScheme() != null ? bird.getRingingScheme().getId().toString() : "");
+            row.createCell(2).setCellValue(bird.getPrimaryIdentificationMethod() != null ? bird.getPrimaryIdentificationMethod().getId().toString() : "");
+            row.createCell(3).setCellValue(bird.getRingCode().getCode() != null ? bird.getRingCode().getCode() : "");
+            row.createCell(4).setCellValue(bird.getVerificationOfTheMetalRing() != null ? bird.getVerificationOfTheMetalRing().getId().toString() : "");
+            row.createCell(5).setCellValue(bird.getMetalRingInformation() != null ? bird.getMetalRingInformation().getId().toString() : "");
+            row.createCell(6).setCellValue(bird.getOtherMarksInformation() != null ? bird.getOtherMarksInformation().getId().toString() : "");
+            row.createCell(7).setCellValue(bird.getSpecies() != null ? bird.getSpecies().getId().toString() : "");
+            row.createCell(8).setCellValue(bird.getManipulated() != null ? bird.getManipulated().getId().toString() : "");
+            row.createCell(9).setCellValue(bird.getMovedBeforeTheEncounter() != null ? bird.getMovedBeforeTheEncounter().getId().toString() : "");
+            row.createCell(10).setCellValue(bird.getCatchingMethods() != null ? bird.getCatchingMethods().getId().toString() : "");
+            row.createCell(11).setCellValue(bird.getCatchingLures() != null ? bird.getCatchingLures().getId().toString() : "");
+            row.createCell(12).setCellValue(bird.getSex() != null ? bird.getSex().getId().toString() : "");
+            row.createCell(13).setCellValue(bird.getAge() != null ? bird.getAge().getId().toString() : "");
+            row.createCell(14).setCellValue(bird.getStatus() != null ? bird.getStatus().getId().toString() : "");
+            row.createCell(15).setCellValue(bird.getBroodSize() != null ? bird.getBroodSize().getId().toString() : "");
+            row.createCell(16).setCellValue(bird.getPullusAge() != null ? bird.getPullusAge().getId().toString() : "");
+            row.createCell(17).setCellValue(bird.getAccuracyOfPullusAge() != null ? bird.getAccuracyOfPullusAge().getId().toString() : "");
+            row.createCell(18).setCellValue(bird.getDate() != null ? bird.getDate().toString() : "");
+            row.createCell(19).setCellValue(bird.getAccuracyOfDate() != null ? bird.getAccuracyOfDate().getId().toString() : "");
+            row.createCell(20).setCellValue(bird.getTime() != null ? bird.getTime().toString() : "");
+            row.createCell(21).setCellValue(bird.getPlaceCode() != null ? bird.getPlaceCode().getId().toString() : "");
+            row.createCell(22).setCellValue(bird.getCondition() != null ? bird.getCondition().getId().toString() : "");
+            row.createCell(23).setCellValue(bird.getCircumstances() != null ? bird.getCircumstances().getId().toString() : "");
+            row.createCell(24).setCellValue(bird.getEuringCodeIdentifier() != null ? bird.getEuringCodeIdentifier().getId().toString() : "");
+            row.createCell(25).setCellValue(bird.getDerivedDataDistance() != null ? bird.getDerivedDataDistance() : "");
+            row.createCell(26).setCellValue(bird.getDerivedDataDirection() != null ? bird.getDerivedDataDirection() : "");
+            row.createCell(27).setCellValue(bird.getDerivedDataElapsedTime() != null ? bird.getDerivedDataElapsedTime() : "");
+            row.createCell(28).setCellValue(bird.getWingLength() != null ? bird.getWingLength() : 0.0);
+            row.createCell(29).setCellValue(bird.getThirdPrimary() != null ? bird.getThirdPrimary() : 0.0);
+            row.createCell(30).setCellValue(bird.getStateOfWingPoint() != null ? bird.getStateOfWingPoint().getId().toString() : "");
+            row.createCell(31).setCellValue(bird.getMass() != null ? bird.getMass() : 0.0);
+            row.createCell(32).setCellValue(bird.getMoult() != null ? bird.getMoult().getId().toString() : "");
+            row.createCell(33).setCellValue(bird.getPlumageCode() != null ? bird.getPlumageCode().getId().toString() : "");
+            row.createCell(34).setCellValue(bird.getHindClaw() != null ? bird.getHindClaw() : 0.0);
+            row.createCell(35).setCellValue(bird.getBillLength() != null ? bird.getBillLength() : 0.0);
+            row.createCell(36).setCellValue(bird.getBillMethod() != null ? bird.getBillMethod().getId().toString() : "");
+            row.createCell(37).setCellValue(bird.getTotalHeadLength() != null ? bird.getTotalHeadLength() : 0.0);
+            row.createCell(38).setCellValue(bird.getTarsus() != null ? bird.getTarsus() : 0.0);
+            row.createCell(39).setCellValue(bird.getTarsusMethod() != null ? bird.getTarsusMethod().getId().toString() : "");
+            row.createCell(40).setCellValue(bird.getTailLength() != null ? bird.getTailLength() : 0.0);
+            row.createCell(41).setCellValue(bird.getTailDifference() != null ? bird.getTailDifference() : 0.0);
+            row.createCell(42).setCellValue(bird.getFatScore() != null ? bird.getFatScore().getId().toString() : "");
+            row.createCell(43).setCellValue(bird.getFatScoreMethod() != null ? bird.getFatScoreMethod() : "");
+            row.createCell(44).setCellValue(bird.getPectoralMuscleScore() != null ? bird.getPectoralMuscleScore().getId().toString() : "");
+            row.createCell(45).setCellValue(bird.getBroodPatch() != null ? bird.getBroodPatch().getId().toString() : "");
+            row.createCell(46).setCellValue(bird.getPrimaryScore() != null ? bird.getPrimaryScore() : "");
+            row.createCell(47).setCellValue(bird.getPrimaryMoult() != null ? bird.getPrimaryMoult().getId().toString() : "");
+            row.createCell(48).setCellValue(bird.getOldGreaterCoverts() != null ? bird.getOldGreaterCoverts() : "");
+            row.createCell(49).setCellValue(bird.getAlula() != null ? bird.getAlula().getId().toString() : "");
+            row.createCell(50).setCellValue(bird.getCarpalCovert() != null ? bird.getCarpalCovert().getId().toString() : "");
+            row.createCell(51).setCellValue(bird.getSexingMethod() != null ? bird.getSexingMethod().getId().toString() : "");
+            row.createCell(52).setCellValue(bird.getRemarks() != null ? bird.getRemarks() : "");
+            row.createCell(53).setCellValue(bird.getReference() != null ? bird.getReference() : "");
+            row.createCell(54).setCellValue(bird.getMoreOtherMarks() != null ? bird.getMoreOtherMarks() : "");
         }
 
-        // Write the output to a byte array
         try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
             workbook.write(byteArrayOutputStream);
             workbook.close();
@@ -74,6 +134,8 @@ public class GenerateDocumentService {
             throw new RuntimeException("Error generating Excel file", e);
         }
     }
+
+
     private byte[] createPdfDocument(List<RingedBird> ringedBirds, String fileName) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         Document document = new Document();
