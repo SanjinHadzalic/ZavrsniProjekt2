@@ -1,19 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import {
+  Router,
+  RouterLink,
+  RouterLinkActive,
+  RouterOutlet,
+} from '@angular/router';
 import { NotificationService } from '../../services/notification.service';
 import { CommonModule } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule, ],
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    CommonModule,
+    TranslateModule,
+    FormsModule,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit {
   isDarkMode = false;
+  selectedLanguage = 'hr';
 
-  constructor(private notificationService: NotificationService) {}
+  constructor(private notificationService: NotificationService, private translateService: TranslateService) {}
 
   ngOnInit(): void {
     const savedTheme = localStorage.getItem('theme');
@@ -29,7 +44,10 @@ export class HeaderComponent implements OnInit {
 
   applyTheme(): void {
     const htmlElement = document.documentElement;
-    htmlElement.setAttribute('data-bs-theme', this.isDarkMode ? 'dark' : 'light');
+    htmlElement.setAttribute(
+      'data-bs-theme',
+      this.isDarkMode ? 'dark' : 'light'
+    );
   }
 
   logout(): void {
@@ -38,5 +56,9 @@ export class HeaderComponent implements OnInit {
       'Logged out!',
       'You have been successfully logged out.'
     );
+  }
+
+  onLanguageChange() {
+    this.translateService.use(this.selectedLanguage)
   }
 }

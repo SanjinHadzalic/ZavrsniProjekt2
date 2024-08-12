@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import { Bird } from '../../classes/bird.model';
 import { BirdService } from '../../services/bird.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-bird-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './bird-details.component.html',
   styleUrl: './bird-details.component.css'
 })

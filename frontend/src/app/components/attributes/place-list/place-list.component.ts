@@ -3,13 +3,13 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Place } from '../../../interfaces/attributes/place';
 import { PlaceService } from '../../../services/attributes/place.service';
-import Swal from 'sweetalert2';
 import { NotificationService } from '../../../services/notification.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-place-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './place-list.component.html',
   styleUrl: './place-list.component.css',
   providers: [PlaceService]

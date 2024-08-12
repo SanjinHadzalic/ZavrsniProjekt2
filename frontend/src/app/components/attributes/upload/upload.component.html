@@ -1,12 +1,13 @@
 <div class="container mt-5">
-    <h2 class="mb-4">Upload Excel File</h2>
-    <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
-      <div class="mb-3">
-        <input type="file" formControlName="file" (change)="onFileChange($event)" required class="form-control" />
-      </div>
-      <button type="submit" class="btn btn-primary">Upload</button>
-    </form>
-    <p *ngIf="message" class="mt-3 alert" [ngClass]="{'alert-success': message === 'File uploaded successfully!', 'alert-danger': message !== 'File uploaded successfully!'}">
-      {{ message }}
-    </p>
+  <h2 class="mb-4">{{ 'TITLE' | translate }}</h2>
+  <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <input type="file" formControlName="file" (change)="onFileChange($event)" required class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">{{ 'UPLOAD_BUTTON' | translate }}</button>
+  </form>
+  <p *ngIf="message" class="mt-3 alert"
+    [ngClass]="{'alert-success': message === 'File uploaded successfully!', 'alert-danger': message !== 'File uploaded successfully!'}">
+    {{ message }}
+  </p>
 </div>

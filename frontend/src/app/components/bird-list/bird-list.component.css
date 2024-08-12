@@ -1,0 +1,17 @@
+.my-pagination ::ng-deep .ngx-pagination .current {
+    background: blue;
+  }
+
+  .scientific-name{
+      font-style: italic;
+  }
+
+  .table-hover tbody tr:hover {
+    background-color: #f1f1f1; /* Lighter gray on hover */
+    cursor: pointer;
+}
+
+.table-hover tbody tr:hover .btn-info {
+    background-color: #0056b3; /* Darken the button color on hover */
+    border-color: #0056b3; /* Darken the button border on hover */
+}

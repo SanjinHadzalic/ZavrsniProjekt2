@@ -1,0 +1,90 @@
+{
+    "navbar": {
+        "title": "Larus",
+        "profile": "Profile",
+        "logout": "Logout"
+    },
+    "home": {
+        "title": "Application for bird banding administration",
+        "title-card": "Application Larus",
+        "card-description": "The genus Larus was introduced in 1758 by the Swedish naturalist Carl Linnaeus in the tenth edition of his Systema Naturae. The genus name is from Ancient Greek laros (λάῥος) or Latin larus, which appears to have referred to a gull or other large seabird. The type species is the great black-backed gull (Larus marinus). The Latin name Larus marinus translates as 'sea gull', and the gulls in this genus generally are the species most often known colloquially as 'seagulls'.",
+        "ring-archive": "Ring code archive",
+        "ring_found": "New Ring / Finding",
+        "ring_new": "New Ring",
+        "ring_finding": "Existing Ring",
+        "statistics": "Statistics",
+        "locations": "Locations",
+        "import_export": "Import / Export",
+        "import": "Import",
+        "export": "Export",
+        "attributes": "Attributes",
+        "specific": "Find Specific"
+    },
+    "attributes": {
+        "title": "Attributes",
+        "accuracy_of_coordinates": "Accuracy of Coordinates",
+        "accuracy_od_date": "Accuracy of Date",
+        "accuracy_of_pullus_age": "Accuracy of Pullus Age",
+        "age": "Age",
+        "alula": "Alula",
+        "bill_methods": "Bill methods",
+        "bird_species": "Bird species",
+        "brood_patch": "Brood patch",
+        "brood_size": "Brood size",
+        "carpal_covert": "Carpal covert",
+        "catching_lures": "Catching lures",
+        "catching_methods": "Catching methods",
+        "circumstances_presumed": "Circumstances Presumed",
+        "circumstances": "Circumstances",
+        "condition": "Conditions",
+        "euring_code_identifier": "EURING code Identifiers",
+        "fat_score": "Fat Score",
+        "manipulated": "Manipulated",
+        "metal_ring_information": "Metal Ring Information",
+        "moult": "Moult",
+        "moved_before_the_encounter": "Moved before the Encounter",
+        "other_marks_information": "Other marks information",
+        "pectoral_muscle_score": "Pectoral Muscle Score",
+        "plumage_code": "Plumage Code",
+        "primary_identification_method": "Primary Identification Method",
+        "primary_moult": "Primary Moult",
+        "pullus_age": "Pullus Age",
+        "ringing_scheme": "Ringing Scheme",
+        "sex": "Sex",
+        "sexing_method": "Sexing Method",
+        "state_of_wing_point": "State of Wing Point",
+        "status": "Status",
+        "tarsus_method": "Tarsus Method",
+        "verification_of_the_metal_ring": "Verification of the Metal Ring",
+        "return": "Return"
+    },
+    "birds": {
+        "title": "Bird List",
+        "title_details": "Bird details",
+        "id": "Id",
+        "scientific_name": "Scientific name",
+        "common_name": "Common name",
+        "aerc": "AERC",
+        "status": "Status",
+        "season": "Season",
+        "return": "Return"
+
+    },
+    "places": {
+        "title": "Places",
+        "id": "Id",
+        "name": "Name",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "delete": "Delete",
+        "add": "Add Place"
+    },
+    "upload": {
+        "title": "Upload Excel File",
+        "upload_bttn": "Upload",
+        "success_msg": "File uploaded successfully!",
+        "error_msg": "Error uploading file"
+    }
+    
+  }
+  

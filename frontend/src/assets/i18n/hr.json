@@ -1,0 +1,88 @@
+{
+    "navbar": {
+        "title": "Larus",
+        "profile": "Profil",
+        "logout": "Odjava"
+    },
+    "home": {
+        "title": "Aplikacija za administraciju prstenovanih ptica",
+        "title-card": "aplikacija Larus",
+        "card-description": "Rod Larus opisao je Carl Linne 1758. godine u desetom izdanju knjige Systema Naturae. Ime roda dolazi iz grčke riječi laros (λάῥος) ili iz latinskog larus, riječi koja je opisivala pticu nalik galebu ili drugu veliku morsku pticu. Tipična vrsta je veliki galeb (Larus marinus). Čije ime u prijevodu znači morski galeb, galebi u rodu su generalno vrste kolokvijalno poznate kao morski galebovi.",
+        "ring-archive": "Arhiva prstenova",
+        "ring_found": "Novi prsten / Nalaz",
+        "ring_new": "Novi prsten",
+        "ring_finding": "Nalaz",
+        "statistics": "Statistika",
+        "locations": "Lokaliteti",
+        "import_export": "Uvoz / Izvoz",
+        "import": "Uvoz",
+        "export": "Izvoz",
+        "attributes": "Atributi",
+        "specific": "Nađi specifično"
+    },
+    "attributes": {
+        "title": "Atributi",
+        "accuracy_of_coordinates": "Preciznost koordinata",
+        "accuracy_od_date": "Preciznost datuma",
+        "accuracy_of_pullus_age": "Preciznost dobi pulusa",
+        "age": "Starost",
+        "alula": "Pakrilce",
+        "bill_methods": "Metode kljuna",
+        "bird_species": "Vrste",
+        "brood_patch": "Inkubacijska koža",
+        "brood_size": "Veličina pologa",
+        "carpal_covert": "Karpalna pera",
+        "catching_lures": "Zamke za hvatanje",
+        "catching_methods": "Metode hvatanja",
+        "circumstances_presumed": "Pretpostavljene okolnosti",
+        "circumstances": "Okolnosti",
+        "condition": "Uvjeti",
+        "euring_code_identifier": "EURING kodovi",
+        "fat_score": "Ocjena masnoće",
+        "manipulated": "Manipulirano",
+        "metal_ring_information": "Informacije o metalnom prstenju",
+        "moult": "Pokrov",
+        "moved_before_the_encounter": "Premještaj prije prstenovanja",
+        "other_marks_information": "Ostale infomacije",
+        "pectoral_muscle_score": "Ocjena prsne muskulature",
+        "plumage_code": "Ocjena pokrova",
+        "primary_identification_method": "Primarna metoda identifikacije",
+        "primary_moult": "Primarni pokrov",
+        "pullus age": "Dob ptića",
+        "ringing_scheme": "Prstenovačka shema",
+        "sex": "Spol",
+        "sexing_method": "Metoda određivanja spola",
+        "state_of_wing_point": "Status vrha krila",
+        "status": "Status",
+        "tarsus_method": "Metoda određivanja tarzusa",
+        "verification_of_the_metal_ring": "Potvrda metalnog prstenja",
+        "return": "Povratak"
+    },
+    "birds": {
+        "title": "Ptičje vrste",
+        "title_details": "Detalji o vrsti",
+        "id": "Id",
+        "scientific_name": "Znanstveni naziv",
+        "common_name": "Narodni naziv",
+        "aerc": "AERC",
+        "status": "Status",
+        "season": "Sezona",
+        "return": "Povratak"
+    },
+    "places": {
+        "title": "Lokaliteti",
+        "id": "Id",
+        "name": "Naziv",
+        "latitude": "Latituda",
+        "longitude": "Longituda",
+        "delete": "Ukloni",
+        "add": "Dodaj lokalitet"
+    },
+    "upload": {
+        "title": "Uvezi Excel datoteku",
+        "upload_bttn": "Uvezi",
+        "success_msg": "Datoteka je uspješno uvezena!",
+        "error_msg": "Greška tijekom uvoza"
+    }
+  }
+  

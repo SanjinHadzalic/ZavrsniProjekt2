@@ -1,40 +1,29 @@
-<style>
-    .my-pagination ::ng-deep .ngx-pagination .current {
-      background: blue;
-    }
-
-    .scientific-name{
-        font-style: italic;
-    }
-  </style>
 <div class="container">
-    <h2 class="text-center">Bird List</h2>
-    <table class="table table-stripped">
+    <h2 class="text-center">{{ "birds.title" | translate}}</h2>
+    <table class="table table-striped table-hover">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Znanstveni naziv</th>
-                <th>Hrvatski naziv</th>
-                <th>AERC</th>
-                <th>Status</th>
-                <th>Sezona</th>
+                <th>{{ "birds.id" | translate}}</th>
+                <th>{{ "birds.scientific_name" | translate}}</th>
+                <th>{{ "birds.common_name" | translate}}</th>
+                <th>{{ "birds.aerc" | translate}}</th>
+                <th>{{ "birds.status" | translate}}</th>
+                <th>{{ "birds.season" | translate}}</th>
                 <!-- <th>EURING Bird code</th> -->
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let bird of birds | paginate: { itemsPerPage: 20, currentPage: p} ">
-                <td> {{ bird.id }} </td>
-                <td class="scientific-name"> {{ bird.scientificName }} </td>
-                <td> {{ bird.commonName }} </td>
-                <td> {{ bird.aerc }} </td>
-                <td> {{ bird.status }} </td>
-                <td> {{ bird.season }} </td>
-                <!-- <td> {{ bird.euringBirdCode}}</td> -->
-                <td>
-                    <button (click) = "onBirdClick(bird.id)" class="btn btn-info">Details</button>
-                </td>
+            <tr *ngFor="let bird of birds | paginate: { itemsPerPage: 20, currentPage: p }" 
+                (click)="onBirdClick(bird.id)" style="cursor: pointer;">
+                <td>{{ bird.id }}</td>
+                <td class="scientific-name">{{ bird.scientificName }}</td>
+                <td>{{ bird.commonName }}</td>
+                <td>{{ bird.aerc }}</td>
+                <td>{{ bird.status }}</td>
+                <td>{{ bird.season }}</td>
+                <!-- <td>{{ bird.euringBirdCode }}</td> -->
             </tr>
-            <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
         </tbody>
     </table>
+    <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
 </div>

@@ -1,21 +1,26 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-blue">
-  <a class="navbar-brand" routerLink="">Larus</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" routerLink="">{{ 'navbar.title' | translate }}</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-       <!-- Add navigation links here -->
     </div>
     <div class="navbar-nav ms-auto">
-      <!-- Dark Mode Toggle -->
       <div class="form-check form-switch ms-3">
-        <input class="form-check-input" type="checkbox" id="darkModeSwitch" (change)="toggleDarkMode()" [checked]="isDarkMode">
+        <input class="form-check-input" type="checkbox" id="darkModeSwitch" (change)="toggleDarkMode()"
+          [checked]="isDarkMode">
         <label class="form-check-label" for="darkModeSwitch">{{ isDarkMode ? 'Dark' : 'Light' }}</label>
       </div>
-      <a routerLink="/profile" class="nav-item nav-link custom-link">Profile</a>
-      <a routerLink="#" (click)="logout()" class="nav-item nav-link custom-link">Logout</a>
+      <div class="ms-3">
+        <select [(ngModel)]="selectedLanguage" (change)="onLanguageChange()" class="form-select form-select-sm">
+          <option value="hr">{{ 'hr' | translate }}</option>
+          <option value="en">{{ 'en' | translate }}</option>
+        </select>
+      </div>
+      <a routerLink="/profile" class="nav-item nav-link custom-link ms-3">{{ 'navbar.profile' | translate }}</a>
+      <a routerLink="#" (click)="logout()" class="nav-item nav-link custom-link ms-3">{{ 'navbar.logout' | translate }}</a>
     </div>
   </div>
 </nav>

@@ -4,11 +4,12 @@ import { BirdService } from '../../services/bird.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination'; // https://github.com/michaelbromley/ngx-pagination?tab=readme-ov-file
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-bird-list',
   standalone: true,
-  imports: [CommonModule, NgxPaginationModule],
+  imports: [CommonModule, NgxPaginationModule, TranslateModule],
   templateUrl: './bird-list.component.html',
   styleUrl: './bird-list.component.css',
   providers: [BirdService]
@@ -17,9 +18,7 @@ export class BirdListComponent implements OnInit{
   birds!: Bird[];
   p: number = 1;
 
-  constructor(private birdService: BirdService, private router: Router) {
-
-  }
+  constructor(private birdService: BirdService, private router: Router) {}
 
   ngOnInit(): void {
     this.getBirds();
