@@ -12,11 +12,12 @@ import { Router } from '@angular/router';
 import { NotificationService } from '../../services/notification.service';
 import { JwtDecoderService } from '../../services/jwt-decoder.service';
 import { ApplicationUser } from '../../interfaces/application-user';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, TranslateModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   providers: [AuthService],

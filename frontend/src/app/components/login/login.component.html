@@ -1,19 +1,19 @@
 <div class="login-container d-flex justify-content-center align-items-center" style="height: 100vh;">
   <div class="card" style="width: 35rem; margin-top: -280px;">
       <div class="card-body">
-          <h2 class="card-title text-center">Login</h2>
+          <h2 class="card-title text-center">{{ "login.title" | translate}}</h2>
           <form [formGroup]="loginForm" (ngSubmit)="login()">
               <div class="form-group">
-                  <label for="username">Username</label>
-                  <input type="text" formControlName="username" class="form-control" id="username" placeholder="Enter username">
+                  <label for="username">{{ "login.username" | translate}}</label>
+                  <input type="text" formControlName="username" class="form-control" id="username" placeholder="{{ 'login.usernamePlaceholder' | translate }}">
               </div>
               <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" formControlName="password" class="form-control" id="password" placeholder="Enter password">
+                  <label for="password">{{ "login.password" | translate}}</label>
+                  <input type="password" formControlName="password" class="form-control" id="password" placeholder="{{ 'login.passwordPlaceholder' | translate }}">
               </div>
               <div class="d-flex justify-content-between">
-                  <button type="submit" class="btn btn-primary">Login</button>
-                  <button type="button" (click)="registerUser()" class="btn btn-secondary">Register</button>
+                  <button type="submit" class="btn btn-primary">{{ "login.title" | translate}}</button>
+                  <button type="button" (click)="registerUser()" class="btn btn-secondary">{{ "login.register" | translate}}</button>
               </div>
               <div class="text-danger mt-2" *ngIf="loginError">{{ loginError }}</div>
           </form>

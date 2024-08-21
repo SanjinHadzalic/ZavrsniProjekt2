@@ -4,6 +4,34 @@
         "profile": "Profil",
         "logout": "Odjava"
     },
+    "login": {
+        "title": "Prijava",
+        "username": "Korisničko ime",
+        "password": "Lozinka",
+        "usernamePlaceholder": "Unesite korisničko ime",
+        "passwordPlaceholder": "Unesite lozinku",
+        "register": "Registriraj se"
+    },
+    "register": {
+        "title": "Registrirajte novog korisnika",
+        "username": "Korisničko ime",
+        "email": "E-mail",
+        "password": "Lozinka",
+        "firstname": "Ime",
+        "lastname": "Prezime",
+        "saveButton": "Spremi korisnika",
+        "back": "Natrag",
+        "usernamePlaceholder": "Unesite korisničko ime",
+        "passwordPlaceholder": "Unesite lozinku",
+        "emailPlaceholder": "Unesite E-mail",
+        "firstnamePlaceholder": "Unesite ime",
+        "lastnamePlaceholder": "Unesite prezime",
+        "usernameError": "Koresničko ime je obavezno",
+        "emailError": "E-mail je obavezan",
+        "passwordError": "Lozinka je obavezna",
+        "firstnameError": "Ime je obavezno",
+        "lastnameError": "Prezime je obavezno"
+    },
     "home": {
         "title": "Aplikacija za administraciju prstenovanih ptica",
         "title-card": "aplikacija Larus",
@@ -19,6 +47,9 @@
         "export": "Izvoz",
         "attributes": "Atributi",
         "specific": "Nađi specifično"
+    },
+    "footer": {
+        "message": "Kreirao Sanjin Hadžalić,"
     },
     "attributes": {
         "title": "Atributi",

@@ -18,7 +18,5 @@ public class ApplicationUserDTO {
     private String firstname;
     private String lastname;
     private String email;
-//    private String password;
     private List<UserRole> roles = new ArrayList<>();
-
 }

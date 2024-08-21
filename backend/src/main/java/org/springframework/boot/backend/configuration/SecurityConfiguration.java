@@ -73,7 +73,7 @@ public class SecurityConfiguration {
                                 "/verificationOfTheMetalRing/**"
                                 ).hasAnyRole(ROLE_USER)
                         .requestMatchers("/bugtracking/**").authenticated()
-                        .requestMatchers("/h2-console/**").permitAll())
+                        .requestMatchers("/h2-console/**", "/api-docs", "/swagger-ui/**", "/api/**").permitAll())
                 .authenticationProvider(authenticationProvider())
                 .csrf(AbstractHttpConfigurer::disable)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)

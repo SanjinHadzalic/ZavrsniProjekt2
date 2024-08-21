@@ -1,10 +1,10 @@
 <div class="container mt-5">
-  <h2 class="mb-4">{{ 'TITLE' | translate }}</h2>
+  <h2 class="mb-4">{{ 'upload.title' | translate }}</h2>
   <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
       <input type="file" formControlName="file" (change)="onFileChange($event)" required class="form-control" />
     </div>
-    <button type="submit" class="btn btn-primary">{{ 'UPLOAD_BUTTON' | translate }}</button>
+    <button type="submit" class="btn btn-primary">{{ 'upload.upload_bttn' | translate }}</button>
   </form>
   <p *ngIf="message" class="mt-3 alert"
     [ngClass]="{'alert-success': message === 'File uploaded successfully!', 'alert-danger': message !== 'File uploaded successfully!'}">

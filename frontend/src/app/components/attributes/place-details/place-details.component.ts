@@ -1,10 +1,6 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import Map from 'ol/Map';
-import TileLayer from 'ol/layer/Tile';
-import { OSM } from 'ol/source';
-import View from 'ol/View';
 import L from 'leaflet';
 import { Place } from '../../../interfaces/attributes/place';
 import { PlaceService } from '../../../services/attributes/place.service';
@@ -38,7 +34,6 @@ export class PlaceDetailsComponent implements OnInit {
         );
 
         const marker = L.marker([this.place.latitude, this.place.longitude]);
-
         const iconRetinaUrl = 'assets/marker-icon-2x.png';
         const iconUrl = 'assets/marker-icon.png';
         const shadowUrl = 'assets/marker-shadow.png';
@@ -52,8 +47,6 @@ export class PlaceDetailsComponent implements OnInit {
           tooltipAnchor: [16, -28],
           shadowSize: [41, 41],
         });
-
-
 
         L.Marker.prototype.options.icon = iconDefault;
         marker.bindPopup(this.makeCapitalPopup(this.place));

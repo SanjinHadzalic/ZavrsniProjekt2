@@ -1,44 +1,56 @@
-<form [formGroup]="registerForm" (ngSubmit)="register()">
-  <div class="form-group">
-    <label for="username">Username</label>
-    <input type="text" class="form-control" id="username" formControlName="username" required>
-    <div *ngIf="submitted && registerForm.get('username')?.invalid" class="alert alert-danger">
-      Username is required
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card" style="width: 100%; max-width: 500px; margin: 20px;">
+    <div class="card-header">
+      {{ "register.title" | translate}}
+    </div>
+    <div class="card-body">
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <div class="form-group">
+          <label for="username">{{ "register.username" | translate}}</label>
+          <input type="text" class="form-control" id="username" formControlName="username"
+            placeholder="{{ 'register.usernamePlaceholder' | translate}}" required>
+          <div *ngIf="submitted && registerForm.get('username')?.invalid" class="alert alert-danger">
+            {{ "register.usernameError" | translate}}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">{{ "register.email" | translate}}</label>
+          <input type="email" class="form-control" id="email" formControlName="email"
+            placeholder="{{ 'register.emailPlaceholder' | translate}}" required>
+          <div *ngIf="submitted && registerForm.get('email')?.invalid" class="alert alert-danger">
+            {{ "register.usernameError" | translate}}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">{{ "register.password" | translate}}</label>
+          <input type="password" class="form-control" id="password" formControlName="password"
+            placeholder="{{ 'register.passwordPlaceholder' | translate}}" required>
+          <div *ngIf="submitted && registerForm.get('password')?.invalid" class="alert alert-danger">
+            {{ "register.passwordError" | translate}}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="firstname">{{ "register.firstname" | translate}}</label>
+          <input type="text" class="form-control" id="firstname" formControlName="firstname" placeholder="{{ 'register.firstnamePlaceholder' | translate}}" required>
+          <div *ngIf="submitted && registerForm.get('firstname')?.invalid" class="alert alert-danger">
+            {{ "register.firstnameError" | translate}}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="lastname">{{ "register.lastname" | translate}}</label>
+          <input type="text" class="form-control" id="lastname" formControlName="lastname" placeholder="{{ 'register.lastnamePlaceholder' | translate}}" required>
+          <div *ngIf="submitted && registerForm.get('lastname')?.invalid" class="alert alert-danger">
+            {{ "register.lastnameError" | translate}}
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary m-2">{{ "register.saveButton" | translate}}</button>
+        <button type="button" class="btn btn-secondary" (click)="return()">{{ "register.back" | translate}}</button>
+      </form>
     </div>
   </div>
-
-  <div class="form-group">
-    <label for="email">E-mail</label>
-    <input type="email" class="form-control" id="email" formControlName="email" required>
-    <div *ngIf="submitted && registerForm.get('email')?.invalid" class="alert alert-danger">
-      E-mail is required
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" formControlName="password" required>
-    <div *ngIf="submitted && registerForm.get('password')?.invalid" class="alert alert-danger">
-      Password is required
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="firstname">First Name</label>
-    <input type="text" class="form-control" id="firstname" formControlName="firstname" required>
-    <div *ngIf="submitted && registerForm.get('firstname')?.invalid" class="alert alert-danger">
-      First Name is required
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="lastname">Last Name</label>
-    <input type="text" class="form-control" id="lastname" formControlName="lastname" required>
-    <div *ngIf="submitted && registerForm.get('lastname')?.invalid" class="alert alert-danger">
-      Last Name is required
-    </div>
-  </div>
-
-  <button type="submit" class="btn btn-primary">Save User</button>
-  <button type="button" class="btn btn-primary" (click)="return()">Back</button>
-</form>
+</div>

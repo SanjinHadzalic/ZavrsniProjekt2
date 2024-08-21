@@ -40,10 +40,6 @@ export class AuthService {
 
     const body = { token: refreshToken };
 
-    console.log('123')
-
-
-
     return this.http.post<any>(`${this.baseUrl}/refreshToken`, body)
       .pipe(
         tap((response) => {

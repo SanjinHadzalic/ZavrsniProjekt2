@@ -4,6 +4,34 @@
         "profile": "Profile",
         "logout": "Logout"
     },
+    "login": {
+        "title": "Login",
+        "username": "Username",
+        "password": "Password",
+        "usernamePlaceholder": "Enter username",
+        "passwordPlaceholder": "Enter password",
+        "register": "Register"
+    },
+    "register": {
+        "title": "Register New User",
+        "username": "Username",
+        "email": "E-mail",
+        "password": "Password",
+        "firstname": "First Name",
+        "lastname": "Last name",
+        "saveButton": "Save User",
+        "back": "Back",
+        "usernamePlaceholder": "Enter username",
+        "passwordPlaceholder": "Enter password",
+        "emailPlaceholder": "Enter E-mail",
+        "firstnamePlaceholder": "Enter First Name",
+        "lastnamePlaceholder": "Enter Last Name",
+        "usernameError": "Username is required",
+        "emailError": "E-mail is required",
+        "passwordError": "Password is required",
+        "firstnameError": "First Name is required",
+        "lastnameError": "Last Name is required"
+    },
     "home": {
         "title": "Application for bird banding administration",
         "title-card": "Application Larus",
@@ -19,6 +47,9 @@
         "export": "Export",
         "attributes": "Attributes",
         "specific": "Find Specific"
+    },
+    "footer": {
+        "message": "Created by Sanjin Hadžalić,"
     },
     "attributes": {
         "title": "Attributes",
