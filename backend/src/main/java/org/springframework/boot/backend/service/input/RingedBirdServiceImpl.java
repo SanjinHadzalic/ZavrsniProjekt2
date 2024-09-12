@@ -32,7 +32,6 @@ public class RingedBirdServiceImpl implements RingedBirdService{
             String age,
             String species) {
 
-        // Check and set parameters to null if blank or invalid
         if (ringCode != null && ringCode.isBlank()) {
             ringCode = null;
         }

@@ -27,7 +27,6 @@ export class PlaceDetailsComponent implements OnInit {
       .getPlaceById(this.route.snapshot.params['id'])
       .subscribe((place) => {
         this.place = place;
-        // console.log(this.place.latitude);
         const map = L.map('map').setView(
           [this.place.latitude, this.place.longitude],
           13

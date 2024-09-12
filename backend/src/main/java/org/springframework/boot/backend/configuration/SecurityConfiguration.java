@@ -25,6 +25,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfiguration {
 
     private final String ROLE_USER = "USER";
+    private final String ROLE_ADMIN = "ADMIN";
     private JwtAuthFilter jwtAuthFilter;
 
     @Bean

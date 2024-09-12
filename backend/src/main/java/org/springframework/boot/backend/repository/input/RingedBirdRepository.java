@@ -20,7 +20,7 @@ public interface RingedBirdRepository extends JpaRepository<RingedBird, Long> {
             "AND (:country IS NULL OR rb.placeCode.country = :country) " +
             "AND (:year IS NULL OR FUNCTION('YEAR', rb.date) = :year) " +
             "AND (:month IS NULL OR FUNCTION('MONTH', rb.date) = :month) " +
-            "AND (:placeCode IS NULL OR LOWER(rb.placeCode.name) LIKE LOWER(CONCAT('%', :placeCode, '%'))) " + // Convert to lowercase
+            "AND (:placeCode IS NULL OR LOWER(rb.placeCode.name) LIKE LOWER(CONCAT('%', :placeCode, '%'))) " +
             "AND (:username IS NULL OR rb.ringCode.appUser.username = :username) " +
             "AND (:sex IS NULL OR rb.sex = :sex) " +
             "AND (:age IS NULL OR rb.age = :age) " +
@@ -29,12 +29,12 @@ public interface RingedBirdRepository extends JpaRepository<RingedBird, Long> {
             @Param("ringCode") String ringCode,
             @Param("date") LocalDate date,
             @Param("country") String country,
-            @Param("year") Integer year, // Use Integer for year
-            @Param("month") Integer month, // Use Integer for month
+            @Param("year") Integer year,
+            @Param("month") Integer month,
             @Param("placeCode") String placeCode,
             @Param("username") String username,
             @Param("sex") String sex,
             @Param("age") String age,
-            @Param("species") String species // Move this parameter inside the method signature
+            @Param("species") String species
     );
 }
